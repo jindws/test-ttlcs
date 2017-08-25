@@ -18,7 +18,6 @@ const Index = r => require.ensure([], () => r(require('../pages/Index')), 'index
  */
 const store = new Vuex.Store({
     state: {
-        count: 0,
         headerName: 'jiekuan',
         mainTab:[],
     },
@@ -38,9 +37,6 @@ const store = new Vuex.Store({
         }
     },
     getters: {
-        doneTodos: state => {
-            return 1
-        },
         headName: state => state.headerName,
         getMainTabs:state=>state.mainTab,
       }
