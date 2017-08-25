@@ -1,0 +1,22 @@
+.main {
+    flex: 1;
+    margin: 10px;
+    // .el-tabs__active-bar+.is-closable {
+    //     .el-icon-close {
+    //         display: none;
+    //     }
+    // }
+    > .el-tabs {
+        min-height: 100%;
+    }
+
+    .el-tabs__nav > :first-child {
+        .el-icon-close {
+            visibility: hidden;
+        }
+    }
+
+    .el-tabs__header {
+        background-color: #fff4f4;
+    }
+}

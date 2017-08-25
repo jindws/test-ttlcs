@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+}
+
+#app,
+body,
+html {
+    height: 100%;
+    margin: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+dl,
+p {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+dd {
+    -webkit-margin-start: 0;
+}

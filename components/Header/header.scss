@@ -1,0 +1,26 @@
+.header {
+    display: flex;
+    background-color: #292323;
+    align-items: center;
+
+    > img {
+        width: 180px;
+        height: 43px;
+    }
+
+    .el-tabs__header {
+        margin: 0;
+    }
+
+    .el-tabs__item {
+        color: #ccc;
+
+        &.is-active {
+            color: #fff;
+        }
+    }
+
+    .el-tabs__active-bar {
+        background-color: #ff5600;
+    }
+}
