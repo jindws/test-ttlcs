@@ -1,9 +1,11 @@
-$color_menubg: #292323;
+:root {
+    --color_menubg: #292323;
+}
 
 .leftmenu {
-    background-color: $color_menubg;
+    background-color: var(--color_menubg);
 
-    > dl {
+    & dl {
         display: flex;
         flex-direction: column;
         width: 180px;
@@ -13,18 +15,18 @@ $color_menubg: #292323;
         align-items: center;
         overflow: hidden;
 
-        dd {
+        & dd {
             padding: 15px 0;
             width: 100%;
             font-size: 12px;
             text-indent: 20px;
-            border-left: 5px solid $color_menubg;
+            border-left: 5px solid var(--color_menubg);
 
             &:hover {
                 background-color: #5d4d4d;
             }
 
-            &.on {
+            & .on {
                 border-color: #ff5600;
             }
         }

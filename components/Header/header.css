@@ -3,16 +3,16 @@
     background-color: #292323;
     align-items: center;
 
-    > img {
+    & > img {
         width: 180px;
         height: 43px;
     }
 
-    .el-tabs__header {
+    & .el-tabs__header {
         margin: 0;
     }
 
-    .el-tabs__item {
+    & .el-tabs__item {
         color: #ccc;
 
         &.is-active {
@@ -20,7 +20,7 @@
         }
     }
 
-    .el-tabs__active-bar {
+    & .el-tabs__active-bar {
         background-color: #ff5600;
     }
 }

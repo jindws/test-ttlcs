@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
-import './base.scss'
+import './base.css'
 
 import {Tabs,TabPane} from 'element-ui'
 Vue.use(Tabs)

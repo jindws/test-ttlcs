@@ -1,2 +1,2 @@
 export {default} from './Index.vue'
-import './index.scss'
+import './index.css'

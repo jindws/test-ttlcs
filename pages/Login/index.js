@@ -1,2 +1,2 @@
 export {default} from './Login.vue'
-import './login.scss'
+import './login.css'

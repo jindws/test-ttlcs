@@ -29,8 +29,8 @@ module.exports = {
             test: /\.js$/,
             loader: 'happypack/loader?id=happybabel'
         },{
-            test: /\.(css|scss)$/,
-            loader: 'style-loader!css-loader!postcss-loader!sass-loader',
+            test: /\.css$/,
+            loader: 'style-loader!css-loader!postcss-loader',
         },{
           test: /\.png/,
           use: [

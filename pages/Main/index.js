@@ -1,2 +1,2 @@
 export {default} from './Main.vue'
-import './main.scss'
+import './main.css'
