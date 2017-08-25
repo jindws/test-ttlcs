@@ -53,7 +53,6 @@ module.exports = {
     },
     watch:true,
     plugins: [
-        // new webpack.optimize.ModuleConcatenationPlugin(),
         new HappyPack({
          id: 'happybabel',
          loaders: ['babel-loader'],
