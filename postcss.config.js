@@ -5,6 +5,6 @@ module.exports = {
     // 	zindex: false,
     // 	reduceIdents:false,
     // }),
-    require('postcss-cssnext')()
+    // require('postcss-cssnext')()
   ]
 }

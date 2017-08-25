@@ -1,9 +1,9 @@
 .index {
-    height: 100%;
-    overflow: hidden;
+  height: 100%;
+  overflow: hidden;
+}
 
-    & > section {
-        display: flex;
-        height: 100%;
-    }
+.index>section {
+  display: flex;
+  height: 100%;
 }

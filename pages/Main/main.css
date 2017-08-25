@@ -1,18 +1,16 @@
 .main {
-    flex: 1;
-    margin: 10px;
+  flex: 1;
+  margin: 10px;
+}
 
-    & > .el-tabs {
-        min-height: 100%;
-    }
+.main .el-tabs {
+  min-height: 100%;
+}
 
-    & .el-tabs__nav > :first-child {
-        & .el-icon-close {
-            visibility: hidden;
-        }
-    }
+.main .el-tabs__nav> :first-child .el-icon-close {
+  visibility: hidden;
+}
 
-    & .el-tabs__header {
-        background-color: #fff4f4;
-    }
+.main .el-tabs__header {
+  background-color: #fff4f4;
 }
