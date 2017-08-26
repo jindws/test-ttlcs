@@ -31,13 +31,13 @@ function Request(config,body) {
     const option = {
       credentials: 'same-origin',
     };
-    if(method.toUpperCase() === 'POST'){
+    if(method.toUpperCase() !== 'Get'){
       Object.assign(option, {
           headers: {
               "Accept": "application/json",
               "Content-Type": "application/x-www-form-urlencoded"
           },
-          method: 'post',
+          method,
           body: os(body)
       })
     }else{
