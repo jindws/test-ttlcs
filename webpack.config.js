@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HappyPack = require('happypack');
-const os = require('os')
+const os = require('os');
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
 module.exports = {
@@ -66,14 +66,5 @@ module.exports = {
             }
         }),
         new HtmlWebpackPlugin({template: './index.html'}),
-        // new webpack.optimize.UglifyJsPlugin({
-        //     sourceMap: true,
-        //     compress: {
-        //         warnings: false,
-        //         drop_console: true
-        //     },
-        //     beautify:false,
-        //     comments:false
-        // }),
     ]
 }
