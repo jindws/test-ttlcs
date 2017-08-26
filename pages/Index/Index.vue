@@ -11,6 +11,7 @@
 <script>
 import XHeader from '@/Header'
 import LeftMenu from '@/LeftMenu'
+
 import XMain from '../Main'
 
 import { mapGetters } from 'vuex'
@@ -22,7 +23,13 @@ export default {
     ])
   },
   mounted(){
-      // console.log(this.$store.getters.doneTodos)
+    this.$DB.Test.list({
+      name:1,
+    }).then(data=>{
+      console.log('成功',data)
+    },data=>{
+      console.log('失败',data)
+    })
   },
   components:{
     XHeader,

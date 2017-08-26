@@ -10,6 +10,11 @@ import {Tabs,TabPane} from 'element-ui'
 Vue.use(Tabs)
 Vue.use(TabPane)
 
+//fetch
+import 'whatwg-fetch'
+import DB from '@/DB'
+Object.defineProperty(Vue.prototype,'$DB',{value:DB})
+
 const Login = r => require.ensure([], () => r(require('../pages/Login')), 'login');
 const Index = r => require.ensure([], () => r(require('../pages/Index')), 'index');
 
