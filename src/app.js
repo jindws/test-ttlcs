@@ -5,6 +5,7 @@ Vue.use(VueRouter)
 Vue.use(Vuex)
 
 import './base.css'
+import '../layui'
 
 import {Tabs,TabPane} from 'element-ui'
 Vue.use(Tabs)
@@ -15,8 +16,10 @@ import 'whatwg-fetch'
 import DB from '@/DB'
 Object.defineProperty(Vue.prototype,'$DB',{value:DB})
 
-const Login = r => require.ensure([], () => r(require('../pages/Login')), 'login');
-const Index = r => require.ensure([], () => r(require('../pages/Index')), 'index');
+// const Login = r => require.ensure([], () => r(require('../pages/Login')), 'login');
+// const Index = r => require.ensure([], () => r(require('../pages/Index')), 'index');
+import Login from '../pages/Login'
+import Index from '../pages/Index'
 
 /**
  * vuex

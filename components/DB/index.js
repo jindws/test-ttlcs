@@ -21,8 +21,9 @@ DBF.create('HidePermission', {
         method    : 'GET'
     },
     signIn: {
-        url       : 'HidePermission/signIn',
-        method    : 'GET'
+       // url       : 'HidePermission/signIn',
+        method    : 'GET',
+        url       : '/DrawRecord/listWinRecord.json'
     },
     signOn: {
         url       : 'HidePermission/signOn',
