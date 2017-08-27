@@ -22,6 +22,9 @@ export default {
       'doneTodos',
     ])
   },
+    created(){
+
+    },
   mounted(){
     this.$DB.Test.list({
       name:1,

@@ -1,6 +1,8 @@
 <template>
-    <A1 v-if='this.temp==="A1"'></A1>
-    <A2 v-else-if='this.temp==="A2"'></A2>
+    <section>
+        <A1 v-if='this.temp==="A1"'></A1>
+        <A2 v-if='this.temp==="A2"'></A2>
+    </section>
 </template>
 
 <script>
