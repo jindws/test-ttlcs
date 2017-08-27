@@ -25,8 +25,8 @@ export default {
   mounted(){
     this.$DB.Test.list({
       name:1,
-    }).then(data=>{
-      console.log('成功',data)
+    }).then(re=>{
+      console.log('成功',re)
     },data=>{
       console.log('失败',data)
     })

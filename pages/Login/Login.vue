@@ -48,9 +48,9 @@ export default {
     'el-switch':Switch,
     'el-button':Button
   },
-    mounted: {
-
-    }
+  mounted(){
+      // console.log(this.remember)
+  }
 }
 </script>
 

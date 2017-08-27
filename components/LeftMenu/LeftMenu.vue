@@ -37,10 +37,13 @@ export default {
                 zijin: [{
                         name: '所有借款列表2',
                         ids: 'aa',
+                        temp:'B1',
+
                     },
                     {
                         name: '待提交列表2',
                         ids: 'bb',
+                        temp: 'B2'
                     }
                 ],
                 shenhe: [{
@@ -59,7 +62,7 @@ export default {
           this.mainTabAdd(itm)
       },
       ...mapMutations([
-          'mainTabAdd'
+          'mainTabAdd',
       ]),
     },
     computed: {
@@ -67,5 +70,8 @@ export default {
             'headName',
         ])
     },
+    mounted(){
+      // this.lists = data.list;
+    }
 }
 </script>
