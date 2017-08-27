@@ -5,7 +5,11 @@ Vue.use(VueRouter)
 Vue.use(Vuex)
 
 import './base.css'
-import '../layui'
+// import layer from '../layui'
+
+// Object.defineProperty(Vue.prototype,'$layer',{value:Layui})
+// layer.msg('hello');
+
 
 import {Tabs,TabPane} from 'element-ui'
 Vue.use(Tabs)

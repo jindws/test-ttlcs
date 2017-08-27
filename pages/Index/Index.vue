@@ -23,7 +23,8 @@ export default {
     ])
   },
     created(){
-
+      // this.$layer.msg('hello');
+      // console.log(this.$layer)
     },
   mounted(){
     this.$DB.Test.list({
