@@ -44,8 +44,9 @@ function Request(config,body) {
       url += `?${os(body)}`
     }
 
+    var _url = "https://wap.tongtongli.com";
     return new Promise((resolve, reject) => {
-        fetch(url, option).then(data => data.json()).then(({success,data,...err}) => {
+        fetch(_url + url).then(data => data.json()).then(({success,data,...err}) => {
             if (success) {
                 resolve(data)
             } else {

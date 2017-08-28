@@ -1,7 +1,3 @@
-body {
-    margin: 0;
-}
-
 #app,
 body,
 html {
@@ -18,4 +14,16 @@ p {
 
 dd {
     -webkit-margin-start: 0;
+}
+body{
+    padding:0px;
+    margin:0px auto;
+}
+a{
+    text-decoration:none;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }

@@ -13,20 +13,19 @@ DBF.create('Test', {
 
 DBF.create('HidePermission', {
     applyIpWhiteList: {
-        url       : 'HidePermission/applyIpWhiteList',
+        url       : '/HidePermission/applyIpWhiteList',
         method    : 'POST'
     },
     mainpage: {
-        url       : 'HidePermission/mainpage',
+        url       : '/HidePermission/mainpage',
         method    : 'GET'
     },
     signIn: {
-       // url       : 'HidePermission/signIn',
+        url       : '/HidePermission/signIn',
         method    : 'GET',
-        url       : '/DrawRecord/listWinRecord.json'
     },
     signOn: {
-        url       : 'HidePermission/signOn',
+        url       : '/HidePermission/signOn',
         method    : 'DELETE'
     }
 });

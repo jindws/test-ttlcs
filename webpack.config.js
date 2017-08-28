@@ -1,9 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HappyPack = require('happypack');
-const os = require('os');
-const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
 module.exports = {
     entry: {
@@ -28,7 +25,8 @@ module.exports = {
             loader: 'vue-loader'
         }, {
             test: /\.js$/,
-            loader: 'happypack/loader?id=happybabel'
+            loader: 'babel-loader',
+            exclude: /node_modules/
         },{
             test: /\.css$/,
             loader: 'style-loader!css-loader!postcss-loader',
@@ -54,13 +52,6 @@ module.exports = {
     },
     watch:true,
     plugins: [
-        new HappyPack({
-         id: 'happybabel',
-         loaders: ['babel-loader'],
-         threadPool: happyThreadPool,
-         cache: true,
-         verbose: true
-       }),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: '"development"'
