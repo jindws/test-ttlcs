@@ -5,7 +5,7 @@ export default new class {
         this.map = new Map();
     }
     create(name, methods) {
-        return this.context[name] = this.DB(methods);
+        return this.context[name] = new this.DB(methods);
     }
     set(key, value) {
         this.map.set(key, value);
@@ -21,7 +21,6 @@ export default new class {
             const config = methods[method];
             this[method] = query => new Request(config, query, method);
         }
-        return this;
     }
 }
 
@@ -45,14 +44,13 @@ function Request(config,body) {
       url += `?${os(body)}`
     }
 
-    /*var _url = "/ttl-web-system";*/
     return new Promise((resolve, reject) => {
-        fetch("/ttl-web-system"+url).then(data => data.json()).then(({success,data,...err}) => {
-            if (success) {
+        fetch("/ttl-web-system"+url).then(data => data.json()).then(({code,data,...err}) => {
+            if (!+code) {
                 resolve(data)
             } else {
                 reject({
-                  success,data,...err
+                  code,data,...err
                 })
             }
         }).catch(()=>reject({
