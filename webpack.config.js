@@ -4,7 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        app: './src/app.js'
+        app: './src/app.js',
+        common: [
+            "jquery",
+        ]
     },
     output: {
         path: path.resolve(__dirname, './dist'),
@@ -57,6 +60,8 @@ module.exports = {
                 NODE_ENV: '"development"'
             }
         }),
+        new webpack.ProvidePlugin({"$": "jquery"}),
+        new webpack.optimize.CommonsChunkPlugin({names: ['common'], minChunks: Infinity}),
         new HtmlWebpackPlugin({template: './index.html'}),
     ]
 }
