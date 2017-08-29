@@ -34,18 +34,25 @@
         methods:{
             signIn(){
                 $.ajax({
-                    url:
-                    'https://www.tongtongli.com/ttl-web-system//HidePermission/signIn?account='+this.login.account+'&password='+this.password,
+                    url: "HidePermission/signIn",
                     type: "get",
                     data: {
                         account: this.login.account,
                         password: this.login.password
                     },
-                    success: function(){
-                        alert(1)
+                    success: function(result){
+                        alert('成功')
                     },
-                    error: function(){alert(2)}
+                    error: function(){alert('失败')}
                 })
+               /* this.$DB.HidePermission.signIn({
+                    account: this.login.account,
+                    password: this.login.password
+                }).then(re=>{
+                    console.log('成功',re)
+                },data=>{
+                    console.log('失败',data)
+                })*/
             }
         },
         components:{

@@ -44,9 +44,9 @@ function Request(config,body) {
       url += `?${os(body)}`
     }
 
-    var _url = "https://www.tongtongli.com/ttl-web-system";
+    /*var _url = "/ttl-web-system";*/
     return new Promise((resolve, reject) => {
-        fetch(_url + url).then(data => data.json()).then(({success,data,...err}) => {
+        fetch(url).then(data => data.json()).then(({success,data,...err}) => {
             if (success) {
                 resolve(data)
             } else {
