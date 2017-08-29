@@ -32,7 +32,7 @@ function Request(config,body) {
       credentials: 'same-origin',
       mode: 'cors'
     };
-    if(method.toUpperCase() !== 'Get'){
+    if(method.toUpperCase() !== 'GET'){
       Object.assign(option, {
           headers: {
               "Accept": "application/json",
@@ -47,7 +47,7 @@ function Request(config,body) {
 
     /*var _url = "/ttl-web-system";*/
     return new Promise((resolve, reject) => {
-        fetch(url).then(data => data.json()).then(({success,data,...err}) => {
+        fetch("/ttl-web-system"+url).then(data => data.json()).then(({success,data,...err}) => {
             if (success) {
                 resolve(data)
             } else {
