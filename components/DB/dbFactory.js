@@ -30,6 +30,7 @@ function Request(config,body) {
     let {url,method = ''} = config;
     const option = {
       credentials: 'same-origin',
+      mode: 'cors'
     };
     if(method.toUpperCase() !== 'Get'){
       Object.assign(option, {
