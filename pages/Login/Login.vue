@@ -34,11 +34,12 @@
         methods:{
             signIn(){
                 $.ajax({
-                    url: "https://wap.tongtongli.com/HidePermission/signIn.json",
+                    url:
+                    'https://www.tongtongli.com/ttl-web-system//HidePermission/signIn?account='+this.login.account+'&password='+this.password,
                     type: "get",
                     data: {
-                        account: this.account,
-                        password: this.password
+                        account: this.login.account,
+                        password: this.login.password
                     },
                     success: function(){
                         alert(1)
