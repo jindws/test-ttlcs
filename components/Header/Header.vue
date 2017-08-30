@@ -5,7 +5,7 @@
             <span>通通理财</span>
         </div>
         <!--主菜单区域-->
-        <el-tabs v-model="activeName" @tab-click="selectNow">
+        <el-tabs v-model="activeName" @tab-click="selectMenu">
             <el-tab-pane v-for='itm in mytab' :label="itm.label" :name="itm.name" :key='itm.name'></el-tab-pane>
         </el-tabs>
         <!--头部右侧导航-->
@@ -33,13 +33,24 @@
             };
         },
         methods:{
-            selectNow(tab, event) {
+
+            selectMenu(tab, event) {
                 // console.log(tab, event);
                 this.select(tab.name)
             },
             ...mapMutations([
                 'select' // 映射 this.select() 为 this.$store.commit('select')
             ]),
+        },
+        mounted(){
+            this.$DB.HidePermission.mainpage({
+                begin: '',
+                end: ''
+            }).then(re=>{
+                console.log('成功',re)
+            },data=>{
+                console.log('失败',data)
+            })
         },
     }
 </script>
