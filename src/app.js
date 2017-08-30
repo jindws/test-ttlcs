@@ -6,7 +6,8 @@ Vue.use(Vuex);
 
 import './base.css'
 
-import {Tabs,TabPane} from 'element-ui'
+import {Tabs,TabPane,Message} from 'element-ui'
+Vue.prototype.$message = Message
 Vue.use(Tabs);
 Vue.use(TabPane);
 
@@ -17,7 +18,6 @@ Object.defineProperty(Vue.prototype,'$DB',{value:DB});
 
 import Login from '../pages/Login'
 import Index from '../pages/Index'
-
 /**
  * vuex
  */
