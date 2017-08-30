@@ -41,3 +41,10 @@
 	border-radius: 100px;
 	opacity: 0.8;
 }
+.el-form-item__error{
+	font-size: 14px;
+	top: 12px;
+	right: 13px;
+	left: auto;
+	padding: 0;
+}
