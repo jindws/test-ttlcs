@@ -1,10 +1,14 @@
 .index {
 	height: 100%;
+	overflow: hidden;
+	min-width:1000px;
 }
 .index > section{
 	display: flex;
-	height: 100%;
 }
-.mainBox{
+.index .mainBox{
 	width: 100%;
+}
+.index .container{
+	height: 100%;
 }

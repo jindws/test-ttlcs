@@ -1,7 +1,4 @@
-.leftmenu {
-  background-color: #292323;
-}
-
+/*
 .leftmenu>dl {
   display: flex;
   flex-direction: column;
@@ -21,10 +18,23 @@
   border-left: 5px solid #292323;
 }
 
-.leftmenu>dl dd:hover {
-  background-color: #5d4d4d;
+*/
+.leftmenu{
+	width: 200px;
+	height: 100%;
+	background: #23262E;
+	overflow: hidden;
+	color: #ddd;
 }
-
-.leftmenu>dl dd.on {
-  border-color: #ff5600;
+.leftmenu dd{
+	padding: 18px;
+	border-left: 4px solid #23262E;
+}
+.leftmenu dd.on{
+	border-color: #5FB878;
+}
+.leftmenu dd:hover{
+	color: #fff;
+	background: #393D49;
+	border-color: #5FB878;
 }
