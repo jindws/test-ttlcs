@@ -29,7 +29,7 @@ function Request(config,body) {
     let {url,method = ''} = config;
     const option = {
       credentials: 'same-origin',
-      mode: 'cors'
+      // mode: 'cors'
     };
     if(method.toUpperCase() !== 'GET'){
       Object.assign(option, {
