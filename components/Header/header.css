@@ -1,17 +1,11 @@
-.header {
-    display: flex;
-    background-color: #292323;
-    align-items: center;
-}
+/*
 
 header img {
     width: 180px;
     height: 43px;
 }
 
-header .el-tabs__header {
-    margin: 0;
-}
+
 
 header .el-tabs__item {
     color: #ccc;
@@ -23,4 +17,21 @@ header .el-tabs__item .is-active {
 
 header .el-tabs__active-bar {
     background-color: #ff5600;
+}
+*/
+.header{
+	height: 60px;
+	background-color: #23262e;
+	color: #fff;
+	align-items: center;
+}
+.logo{
+	line-height: 60px;
+	font-size: 22px;
+	width: 200px;
+	text-align: center;
+	letter-spacing: 3px;
+}
+.header .el-tabs__header {
+	margin: 0;
 }

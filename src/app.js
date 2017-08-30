@@ -7,7 +7,7 @@ Vue.use(Vuex);
 import './base.css'
 
 import {Tabs,TabPane,Message} from 'element-ui'
-Vue.prototype.$message = Message
+Vue.prototype.$message = Message;
 Vue.use(Tabs);
 Vue.use(TabPane);
 

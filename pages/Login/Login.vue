@@ -12,8 +12,9 @@
             <el-switch on-text="" off-text="" v-model="login.remember"></el-switch>
             <span>记住我的登录</span>
         </el-form-item>
-        <el-form-item>
+        <el-form-item class="btn">
             <el-button type="success" @click="signIn" class="btn-login">登录</el-button>
+            <el-button type="info" @click="applyIpWhiteList" class="btn-applyIp">申请ip白名单</el-button>
         </el-form-item>
     </el-form>
 </section>
@@ -25,11 +26,9 @@
         data() {
             return {
                 login: {
-                    /*account: '15088665843',
-                    password: '111111',*/
+                    account: '15088665843',
+                    password: '111111',
                     remember: true,
-                    account: '',
-                    password: '',
                 },
                 rules: {
                     account: [
@@ -54,13 +53,16 @@
                             window.location.href = '#/'
                         },data=>{
                             console.log('失败',data);
-                            this.$message.error('账户或密码错误');
+                            this.$message.error('用户名或密码错误！');
                         });
                     }else{
                         console.log('error submit!!');
                         return false;
                     }
                 });
+            },
+            applyIpWhiteList(){
+                console.log(1)
             }
         },
         components:{
