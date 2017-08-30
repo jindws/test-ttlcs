@@ -1,19 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
-Vue.use(VueRouter)
-Vue.use(Vuex)
+Vue.use(VueRouter);
+Vue.use(Vuex);
 
 import './base.css'
 
 import {Tabs,TabPane} from 'element-ui'
-Vue.use(Tabs)
-Vue.use(TabPane)
+Vue.use(Tabs);
+Vue.use(TabPane);
 
 //fetch
 import 'whatwg-fetch'
 import DB from '@/DB'
-Object.defineProperty(Vue.prototype,'$DB',{value:DB})
+Object.defineProperty(Vue.prototype,'$DB',{value:DB});
 
 import Login from '../pages/Login'
 import Index from '../pages/Index'
@@ -33,9 +33,9 @@ const store = new Vuex.Store({
             }
         },
         mainTabAdd(state,tab){
-          if(!state.mainTab.includes(tab)){
-            state.mainTab.push(tab)
-          }
+            if(!state.mainTab.includes(tab)){
+                state.mainTab.push(tab)
+            }
         },
         mainTabRemove(state,targetName){
             state.mainTab = state.mainTab.filter(itm=>itm.ids!==targetName)
@@ -44,8 +44,8 @@ const store = new Vuex.Store({
     getters: {
         headName: state => state.headerName,
         getMainTabs:state=>state.mainTab,
-      }
-})
+    }
+});
 
 /**
  * router
@@ -60,6 +60,6 @@ const router = new VueRouter({
             component: Index
         }
     ]
-})
+});
 
-new Vue({router, store}).$mount('#app')
+new Vue({router, store}).$mount('#app');

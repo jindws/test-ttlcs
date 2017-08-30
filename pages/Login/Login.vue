@@ -33,23 +33,12 @@
         },
         methods:{
             signIn(){
-                // $.ajax({
-                //     url: "HidePermission/signIn",
-                //     type: "get",
-                //     data: {
-                //         account: this.login.account,
-                //         password: this.login.password
-                //     },
-                //     success: function(result){
-                //         alert('成功')
-                //     },
-                //     error: function(){alert('失败')}
-                // })
-               this.$DB.HidePermission.signIn({
+                this.$DB.HidePermission.signIn({
                     account: this.login.account,
                     password: this.login.password
-                }).then(re=>{
-                    console.log('成功',re)
+                }).then(result=>{
+                    console.log('成功',result)
+                    window.location.href = '#/'
                 },data=>{
                     console.log('失败',data)
                 })

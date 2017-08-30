@@ -46,9 +46,11 @@ function Request(config,body) {
 
     return new Promise((resolve, reject) => {
         fetch("/ttl-web-system"+url).then(data => data.json()).then(({code,data,...err}) => {
-            if (!+code) {
+            if (code == 0) {
+                /*成功*/
                 resolve(data)
             } else {
+                /*错误信息*/
                 reject({
                   code,data,...err
                 })
