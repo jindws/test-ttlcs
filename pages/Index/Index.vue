@@ -17,15 +17,6 @@ import XMain from '../Main'
 import { mapGetters } from 'vuex'
 
 export default {
-  computed:{
-    ...mapGetters([
-      'doneTodos',
-    ])
-  },
-    created(){
-      // this.$layer.msg('hello');
-      // console.log(this.$layer)
-    },
   mounted(){
     this.$DB.Test.list({
       name:1,
