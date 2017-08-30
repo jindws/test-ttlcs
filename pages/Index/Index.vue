@@ -5,7 +5,7 @@
             <LeftMenu/>
             <div class="mainBox">
                 <XMain/>
-                <Footer/>
+                <XFooter/>
             </div>
         </section>
     </section>
@@ -14,7 +14,7 @@
 <script>
     import XHeader from '@/Header'
     import LeftMenu from '@/LeftMenu'
-    import Footer from '@/Footer'
+    import XFooter from '@/Footer'
     import XMain from '../Main'
 
     import { mapGetters } from 'vuex'
@@ -33,7 +33,7 @@
         components:{
             XHeader,
             LeftMenu,
-            Footer,
+            XFooter,
             XMain
         }
     }

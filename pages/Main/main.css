@@ -1,17 +1,17 @@
 .main {
-  flex: 1;
-  margin: 10px;
-  width: 0;
+    flex: 1;
+    margin: 10px;
+    /*width: 0;*/
 }
 
 .main .el-tabs {
-  min-height: 100%;
+    min-height: 100%;
 }
 
 .main .el-tabs__nav> :first-child .el-icon-close {
-  visibility: hidden;
+    visibility: hidden;
 }
 
 .main .el-tabs__header {
-  background-color: #fff4f4;
+    background-color: #fff4f4;
 }
