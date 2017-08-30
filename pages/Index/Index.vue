@@ -1,7 +1,7 @@
 <template>
     <section class='index'>
         <XHeader/>
-        <section>
+        <section class='container'>
             <LeftMenu/>
             <div class="mainBox">
                 <XMain/>
