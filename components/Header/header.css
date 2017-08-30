@@ -19,19 +19,26 @@ header .el-tabs__active-bar {
     background-color: #ff5600;
 }
 */
-.header{
-	height: 60px;
-	background-color: #23262e;
-	color: #fff;
-	align-items: center;
+
+.header {
+  height: 60px;
+  background-color: #23262e;
+  color: #fff;
+  align-items: center;
 }
-.logo{
-	line-height: 60px;
-	font-size: 22px;
-	width: 200px;
-	text-align: center;
-	letter-spacing: 3px;
+
+.el-tabs__item:hover {
+  color: #20a0ff;
 }
+
+.logo {
+  line-height: 60px;
+  font-size: 22px;
+  width: 200px;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
 .header .el-tabs__header {
-	margin: 0;
+  margin: 0;
 }
