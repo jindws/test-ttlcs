@@ -1,22 +1,10 @@
-/*.index {
-  height: 100%;
-  overflow: hidden;
-}
-
-.index>section {
-  display: flex;
-  height: 100%;
-}*/
-
 .index {
-  height: 100%;
-  overflow: hidden;
+	height: 100%;
 }
-
-.container {
-  height: 100%;
+.index > section{
+	display: flex;
+	height: 100%;
 }
-
-.index>section {
-  display: flex;
+.mainBox{
+	width: 100%;
 }
