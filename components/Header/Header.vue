@@ -5,11 +5,11 @@
             <span>通通理财</span>
         </div>
         <!--主菜单区域-->
-        <el-tabs v-model="activeName" @tab-click="selectMenu">
-            <el-tab-pane v-for='itm in mytab' :label="itm.label" :name="itm.name" :key='itm.name'></el-tab-pane>
+        <el-tabs :value="headerName" @tab-click="selectMenu">
+            <el-tab-pane v-for='(itm,index) in meuns.modules' :label="itm.module" :name="itm.module" :key='itm.statusLen'></el-tab-pane>
         </el-tabs>
         <!--头部右侧导航-->
-        <el-menu class="el-menu-demo" mode="horizontal">
+        <!--<el-menu class="el-menu-demo" mode="horizontal">
             <el-submenu>
                 <template slot="title">我的工作台</template>
                 <el-menu-item>选项1</el-menu-item>
@@ -17,27 +17,18 @@
                 <el-menu-item>选项3</el-menu-item>
             </el-submenu>
             <el-button type="success"></el-button>
-        </el-menu>
+        </el-menu>-->
     </section>
 </template>
 
 <script>
-    import { mapMutations } from 'vuex'
     import {Menu,Submenu,MenuItem} from 'element-ui'
+    import { mapGetters,mapMutations } from 'vuex'
+
     export default {
         data() {
             return {
-                mytab:[{
-                    label:'借款管理',
-                    name:'jiekuan',
-                },{
-                    label:'资金管理',
-                    name:'zijin',
-                },{
-                    label:'审核管理',
-                    name:'shenhe',
-                }],
-                activeName: 'jiekuan'
+
             };
         },
         components:{
@@ -46,14 +37,18 @@
             'el-menu-item':MenuItem
         },
         methods:{
-
-            selectMenu(tab, event) {
-                // console.log(tab, event);
-                this.select(tab.name)
+            selectMenu(tab) {
+                this.select(tab.index)//菜单流水号
             },
             ...mapMutations([
                 'select' // 映射 this.select() 为 this.$store.commit('select')
             ]),
+        },
+        computed: {
+            ...mapGetters([
+                'meuns',
+                'headerName'
+            ])
         },
         mounted(){
            /* this.$DB.HidePermission.mainpage({

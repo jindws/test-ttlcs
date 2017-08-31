@@ -1,17 +1,24 @@
-.leftmenu{
-	height: 100%;
-	background: #23262E;
-	color: #ddd;
-	position: relative;
-}
 .leftmenu dl{
 	overflow: hidden;
 }
-.leftmenu dd{
-	padding: 15px;
-	border-left: 4px solid #23262E;
-	white-space: nowrap;
+
+.leftmenu {
+    width: 200px;
+    height: 100%;
+    background: #23262E;
+    cursor: pointer;
+    color: #ddd;
+    position: relative;
 }
+
+.leftmenu dd {
+    padding: 18px;
+    border-left: 4px solid #23262E;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .leftmenu dd.on {
 	border-color: #5FB878;
 	color: #fff;
@@ -23,6 +30,13 @@
 	height: 38px;
 	line-height: 38px;
 	color: #fff;
+    border-color: #5FB878;
+}
+
+.leftmenu>dl {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .leftmenu .el-icon-caret-right {

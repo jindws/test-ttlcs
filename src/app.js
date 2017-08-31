@@ -23,13 +23,17 @@ import Index from '../pages/Index'
  */
 const store = new Vuex.Store({
     state: {
-        headerName: 'jiekuan',
+        headerName: '',
         mainTab:[],
+        menus:[],//整个菜单
+        leftmenus:[],//左侧菜单
     },
     mutations: {
-        select(state, sele) {
-            if (state.headerName !== sele) {
-                state.headerName = sele
+        select(state, index) {
+            const XMenu = state.menus.modules[index];
+            if (state.headerName !== XMenu.module) {//菜单变化
+                state.headerName = XMenu.module
+                state.leftmenus = XMenu.submodules//左侧菜单
             }
         },
         mainTabAdd(state,tab){
@@ -38,12 +42,17 @@ const store = new Vuex.Store({
             }
         },
         mainTabRemove(state,targetName){
-            state.mainTab = state.mainTab.filter(itm=>itm.ids!==targetName)
+            state.mainTab = state.mainTab.filter(itm=>itm.ctrlName!==targetName)
+        },
+        setMenus(state,menus){
+            state.menus = menus
         }
     },
     getters: {
-        headName: state => state.headerName,
+        headerName: state => state.headerName,
         getMainTabs:state=>state.mainTab,
+        meuns:state=>state.menus,
+        leftmenus:state=>state.leftmenus,
     }
 });
 

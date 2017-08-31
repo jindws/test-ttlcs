@@ -5,9 +5,9 @@
         <span slot="label"><i class="el-icon-menu"></i> 用户管理</span>
       我的桌面
     </el-tab-pane>
-    <el-tab-pane v-for='itm in $store.getters.getMainTabs' :name="itm.ids"  :key='itm.ids' >
+    <el-tab-pane v-for='itm in getMainTabs' :name="itm.ctrlName"  :key='itm.ctrlName' >
       <span slot="label"><i class="el-icon-document"></i> {{itm.name}}</span>
-      <XHtml :temp='itm.temp'></XHtml>
+      <XHtml :temp='itm.ctrlName'></XHtml>
     </el-tab-pane>
   </el-tabs>
 </section>
@@ -19,7 +19,7 @@ import {
     mapMutations,
 } from 'vuex'
 
-import XHtml from './html.vue'
+import XHtml from '../Html'
 
 
 export default {
