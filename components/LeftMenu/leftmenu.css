@@ -1,8 +1,11 @@
+.leftmenu dl{
+	overflow: hidden;
+}
+
 .leftmenu {
     width: 200px;
     height: 100%;
     background: #23262E;
-    /*overflow: hidden;*/
     cursor: pointer;
     color: #ddd;
     position: relative;
@@ -17,6 +20,16 @@
 }
 
 .leftmenu dd.on {
+	border-color: #5FB878;
+	color: #fff;
+}
+
+.leftmenu .el-icon-more {
+	text-align: center;
+	display: block;
+	height: 38px;
+	line-height: 38px;
+	color: #fff;
     border-color: #5FB878;
 }
 
@@ -26,33 +39,24 @@
     overflow: hidden;
 }
 
-.leftmenu>dl dd:hover {
-    background-color: #5d4d4d;
+.leftmenu .el-icon-caret-right {
+	position: absolute;
+	border-radius: 25px;
+	left: -28px;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	background: #23262E;
+	font-size: 12px;
+	text-indent: 27px;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	top: 50%;
+}
+.leftmenu dd:hover{
+	color: #fff;
+	background: #393D49;
+	border-color: #5FB878;
 }
 
-.leftmenu>dl dd.on {
-    border-color: #ff5600;
-}
-
-.leftmenu dt {
-    height: 50px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.leftmenu i {
-    position: absolute;
-    right: 0;
-    font-size: 36px;
-    top: 50%;
-    right: -25px;
-    /*color: #ff5600;*/
-}
-
-.leftmenu dd:hover {
-    color: #fff;
-    background: #393D49;
-    border-color: #5FB878;
-}

@@ -9,11 +9,20 @@
             <el-tab-pane v-for='(itm,index) in meuns.modules' :label="itm.module" :name="itm.module" :key='itm.statusLen'></el-tab-pane>
         </el-tabs>
         <!--头部右侧导航-->
-
+        <!--<el-menu class="el-menu-demo" mode="horizontal">
+            <el-submenu>
+                <template slot="title">我的工作台</template>
+                <el-menu-item>选项1</el-menu-item>
+                <el-menu-item>选项2</el-menu-item>
+                <el-menu-item>选项3</el-menu-item>
+            </el-submenu>
+            <el-button type="success"></el-button>
+        </el-menu>-->
     </section>
 </template>
 
 <script>
+    import {Menu,Submenu,MenuItem} from 'element-ui'
     import { mapGetters,mapMutations } from 'vuex'
 
     export default {
@@ -21,6 +30,11 @@
             return {
 
             };
+        },
+        components:{
+            'el-menu':Menu,
+            'el-submenu':Submenu,
+            'el-menu-item':MenuItem
         },
         methods:{
             selectMenu(tab) {

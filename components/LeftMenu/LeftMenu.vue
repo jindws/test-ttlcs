@@ -2,7 +2,7 @@
 <section class='leftmenu' :style='{width:width+"px"}'>
     <i class='el-icon-caret-right' :style='{display:width?"none":""}' @click='openMenu'></i>
     <dl>
-        <dt @click='hideMenu'>. . .</dt>
+        <i @click='hideMenu' class="el-icon-more"></i>
         <dd v-for='itm in leftmenus' :class='{on:select==itm.ctrlName}' @click='selectNow(itm)'>{{itm.name}}</dd>
     </dl>
 </section>
@@ -18,7 +18,7 @@ export default {
     data() {
         return {
             select: '',
-            width:180,
+            width: 200,
         }
     },
     methods:{
@@ -34,8 +34,8 @@ export default {
           })
       },
       openMenu(){
-        if(this.width>=180){
-          this.width=180;
+        if(this.width>=200){
+          this.width=200;
           return;
         }
         requestAnimationFrame(()=>{
