@@ -33,7 +33,7 @@ module.exports = {
             exclude: /node_modules/
         },{
             test: /\.css$/,
-            loader: 'style-loader!css-loader!postcss-loader',
+            loader: 'style-loader!css-loader',
         },{
             test: /\.(png|jpg)$/,
             use: [
