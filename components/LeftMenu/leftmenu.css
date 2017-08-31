@@ -1,24 +1,4 @@
-/*
-.leftmenu>dl {
-  display: flex;
-  flex-direction: column;
-  width: 180px;
-  align-items: center;
-  color: #fff;
-  cursor: pointer;
-  align-items: center;
-  overflow: hidden;
-}
 
-.leftmenu>dl dd {
-  padding: 15px 0;
-  width: 100%;
-  font-size: 12px;
-  text-indent: 20px;
-  border-left: 5px solid #292323;
-}
-
-*/
 .leftmenu{
 	width: 200px;
 	height: 100%;
@@ -30,8 +10,28 @@
 	padding: 18px;
 	border-left: 4px solid #23262E;
 }
-.leftmenu dd.on{
+.leftmenu dd.on {
 	border-color: #5FB878;
+}
+.leftmenu>dl dd:hover {
+    background-color: #5d4d4d;
+}
+
+.leftmenu>dl dd.on {
+    border-color: #ff5600;
+}
+
+.leftmenu dt {
+    align-self: center;
+}
+
+.leftmenu i {
+    position: absolute;
+    right: 0;
+    font-size: 36px;
+    top: 50%;
+    right: -25px;
+    /*color: #ff5600;*/
 }
 .leftmenu dd:hover{
 	color: #fff;

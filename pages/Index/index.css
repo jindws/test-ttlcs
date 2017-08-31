@@ -3,12 +3,16 @@
 	overflow: hidden;
 	min-width:1000px;
 }
-.index > section{
-	display: flex;
-}
-.index .mainBox{
-	width: 100%;
-}
 .index .container{
 	height: 100%;
+}
+.index>section {
+    display: flex;
+    height: 100%;
+}
+
+.mainBox {
+    /*width: 100%;*/
+    width: 0;
+    flex: 1;
 }
