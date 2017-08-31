@@ -2,8 +2,7 @@
 <section class='leftmenu' :style='{width:width+"px"}'>
     <i class='el-icon-caret-right' :style='{display:width?"none":""}' @click='openMenu'></i>
     <dl>
-        <dt @click='hideMenu'>. . .</dt>
-        <!-- <dd v-for='itm in lists' :class='{on:select==itm.ids}' @click='select=itm.ids'>{{itm.name}}</dd>-->
+        <i @click='hideMenu' class="el-icon-more"></i>
         <dd v-for='itm in lists[$store.getters.headName]' :class='{on:select==itm.ids}' @click='selectNow(itm)'>{{itm.name}}</dd>
     </dl>
 </section>
@@ -19,14 +18,7 @@ export default {
     data() {
         return {
             select: '',
-            width:180,
-            // lists:[{
-            //   name:'所有借款列表',
-            //   ids:'alllists',
-            // },{
-            //   name:'待提交列表',
-            //   ids:'waitlist',
-            // }]
+            width: 200,
             lists: {
                 jiekuan: [{
                     name: '所有借款列表',
@@ -72,8 +64,8 @@ export default {
           })
       },
       openMenu(){
-        if(this.width>=180){
-          this.width=180;
+        if(this.width>=200){
+          this.width=200;
           return;
         }
         requestAnimationFrame(()=>{

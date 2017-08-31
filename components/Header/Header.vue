@@ -9,13 +9,21 @@
             <el-tab-pane v-for='itm in mytab' :label="itm.label" :name="itm.name" :key='itm.name'></el-tab-pane>
         </el-tabs>
         <!--头部右侧导航-->
-
+        <el-menu class="el-menu-demo" mode="horizontal">
+            <el-submenu>
+                <template slot="title">我的工作台</template>
+                <el-menu-item>选项1</el-menu-item>
+                <el-menu-item>选项2</el-menu-item>
+                <el-menu-item>选项3</el-menu-item>
+            </el-submenu>
+            <el-button type="success"></el-button>
+        </el-menu>
     </section>
 </template>
 
 <script>
     import { mapMutations } from 'vuex'
-
+    import {Menu,Submenu,MenuItem} from 'element-ui'
     export default {
         data() {
             return {
@@ -31,6 +39,11 @@
                 }],
                 activeName: 'jiekuan'
             };
+        },
+        components:{
+            'el-menu':Menu,
+            'el-submenu':Submenu,
+            'el-menu-item':MenuItem
         },
         methods:{
 
