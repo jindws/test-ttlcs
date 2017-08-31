@@ -28,16 +28,16 @@ function Request(config,body) {
 
     let {url,method = ''} = config;
     const option = {
-      credentials: 'same-origin',
-      // mode: 'cors'
+      // credentials: 'same-origin',
+      credentials: 'includes',
+      method,
+      headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded"
+      },
     };
     if(method.toUpperCase() !== 'GET'){
       Object.assign(option, {
-          headers: {
-              "Accept": "application/json",
-              "Content-Type": "application/x-www-form-urlencoded"
-          },
-          method,
           body: os(body)
       })
     }else{
