@@ -1,18 +1,31 @@
+.leftmenu {
+    width: 200px;
+    height: 100%;
+    background: #23262E;
+    /*overflow: hidden;*/
+    cursor: pointer;
+    color: #ddd;
+    position: relative;
+}
 
-.leftmenu{
-	width: 200px;
-	height: 100%;
-	background: #23262E;
-	overflow: hidden;
-	color: #ddd;
+.leftmenu dd {
+    padding: 18px;
+    border-left: 4px solid #23262E;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.leftmenu dd{
-	padding: 18px;
-	border-left: 4px solid #23262E;
-}
+
 .leftmenu dd.on {
-	border-color: #5FB878;
+    border-color: #5FB878;
 }
+
+.leftmenu>dl {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
 .leftmenu>dl dd:hover {
     background-color: #5d4d4d;
 }
@@ -22,7 +35,11 @@
 }
 
 .leftmenu dt {
-    align-self: center;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .leftmenu i {
@@ -33,8 +50,9 @@
     right: -25px;
     /*color: #ff5600;*/
 }
-.leftmenu dd:hover{
-	color: #fff;
-	background: #393D49;
-	border-color: #5FB878;
+
+.leftmenu dd:hover {
+    color: #fff;
+    background: #393D49;
+    border-color: #5FB878;
 }
