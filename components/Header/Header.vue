@@ -43,14 +43,17 @@
             ]),
         },
         mounted(){
-            this.$DB.HidePermission.mainpage({
-                begin: '',
-                end: ''
+           /* this.$DB.HidePermission.mainpage({
             }).then(re=>{
                 console.log('成功',re)
             },data=>{
                 console.log('失败',data)
-            })
+                this.$message({
+                    message: '请先登录',
+                    type: 'warning'
+                });
+                /!*window.location.href = '#/login';*!/
+            })*/
         },
     }
 </script>
