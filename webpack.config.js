@@ -2,10 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+let publicPath = '';
+// publicPath = 'ttl-web-systemttl-web-system';
+
 module.exports = {
     devServer:{
       open: true,
-      openPage: 'ttl-web-systemttl-web-system',
+      openPage: publicPath,
     },
     entry: {
         app: './src/app.js',
@@ -19,7 +22,7 @@ module.exports = {
         chunkFilename: '[name].js',
         //  umd包含了对amd、commonjs、var等多种规范的支持
         libraryTarget:"umd",
-        publicPath:'/ttl-web-systemttl-web-system'
+        publicPath,
     },
     resolve: {
         extensions:[".js",".vue"],
@@ -55,8 +58,7 @@ module.exports = {
             loader: 'file-loader',
             query: {
                 name: '[name].[ext]?[hash]',
-                // publicPath:'../'
-                publicPath:'/ttl-web-systemttl-web-system'
+                publicPath,
             }
         }]
     },
