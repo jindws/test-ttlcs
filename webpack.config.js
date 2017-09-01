@@ -3,6 +3,10 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    devServer:{
+      open: true,
+      openPage: 'ttl-web-systemttl-web-system',
+    },
     entry: {
         app: './src/app.js',
         common: [
@@ -12,7 +16,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].js',
-        chunkFilename: '[name].[hash].js',
+        chunkFilename: '[name].js',
         //  umd包含了对amd、commonjs、var等多种规范的支持
         libraryTarget:"umd",
         publicPath:'/ttl-web-systemttl-web-system'
@@ -51,7 +55,8 @@ module.exports = {
             loader: 'file-loader',
             query: {
                 name: '[name].[ext]?[hash]',
-                publicPath:'../'
+                // publicPath:'../'
+                publicPath:'/ttl-web-systemttl-web-system'
             }
         }]
     },
