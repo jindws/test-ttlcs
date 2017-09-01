@@ -1,7 +1,7 @@
 <template>
   <section>
-    <!-- {{this.temp}} -->
     <ScheduleController v-if='this.temp==="ScheduleController"'></ScheduleController>
+    <div v-else>{{this.temp}}</div>
   </section>
 
 </template>
