@@ -12,11 +12,14 @@
 }
 
 .leftmenu dd {
-    padding: 18px;
-    border-left: 4px solid #23262E;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+	border-left: 4px solid #23262E;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 45px;
+	line-height: 45px;
+	text-indent: 20px;
+	font-size: 14px;
 }
 
 .leftmenu dd.on {
