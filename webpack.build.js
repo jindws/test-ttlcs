@@ -2,6 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+let publicPath = '';
+
 module.exports = {
     entry: {
         app: './src/app.js',
@@ -14,6 +16,7 @@ module.exports = {
         filename: '[name].js',
         chunkFilename: '[name].[hash].js',
         libraryTarget:"umd",
+        publicPath,
     },
     resolve: {
         extensions:[".js",".vue"],
@@ -49,7 +52,7 @@ module.exports = {
             loader: 'file-loader',
             query: {
                 name: '[name].[ext]?[hash]',
-                publicPath:'../'
+                publicPath,
             }
         }]
     },
@@ -58,7 +61,9 @@ module.exports = {
         // 发布版本
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: '"production"'
+                NODE_ENV: '"production"',
+                __PRO__:true,//生产环境
+                __DEV__:false,
             }
         }),
         new webpack.ProvidePlugin({"$": "jquery"}),

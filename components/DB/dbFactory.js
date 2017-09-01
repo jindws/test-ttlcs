@@ -46,29 +46,8 @@ function Request(config,body) {
     }
 
     return new Promise((resolve, reject) => {
-      // $.ajax({
-      //     url: "/ttl-web-system"+url,
-      //     // url:'http://localhost:6060'+url,
-      //     type: method,
-      //     dataType: "json",
-      //     async: false,
-      //     xhrFields: {withCredentials: true},
-      //     crossDomain: true,
-      //     data:body,
-      //  }).done(({code,data,...err})=>{
-      //    console.log(arguments)
-      //     if(!code){//code===0
-      //         // resolve(data)
-      //     }else{
-      //         /*错误信息*/
-      //         reject({
-      //             code,data,...err
-      //           })
-      //     }
-      //  }).fail(()=>reject({errorMsg:'请求失败'}))
-
-
-        fetch("/ttl-web-systemttl-web-system"+url,option).then(data => data.json()).then(({code,data,...err}) => {
+        const Head = __PRO__?'/ttl-web-system':'/ttl-web-systemttl-web-system';//__PRO__===true 表示线上环境
+        fetch(Head+url,option).then(data => data.json()).then(({code,data,...err}) => {
             if (code == 0) {
                 /*成功*/
                 resolve(data)
