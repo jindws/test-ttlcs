@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --progress",
+    "start": "webpack-dev-server --open --progress  --open-page 'ttl-web-systemttl-web-system'",
     "build": "webpack --progress --config webpack.build.js"
   },
   "author": "",

@@ -15,6 +15,7 @@ module.exports = {
         chunkFilename: '[name].[hash].js',
         //  umd包含了对amd、commonjs、var等多种规范的支持
         libraryTarget:"umd",
+        publicPath:'/ttl-web-systemttl-web-system'
     },
     resolve: {
         extensions:[".js",".vue"],
