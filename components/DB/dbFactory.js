@@ -28,12 +28,13 @@ function Request(config,body) {
 
     let {url,method = ''} = config;
     const option = {
-      credentials: 'same-origin',
-      // credentials: 'includes',
+      // credentials: 'same-origin',
+      credentials: 'include',
+      mode:'cors',
       method,
       headers: {
           "Accept": "application/json",
-          "Content-Type": "application/x-www-form-urlencoded"
+          "Content-Type": "application/x-www-form-urlencoded",
       },
     };
     if(method.toUpperCase() !== 'GET'){
@@ -67,7 +68,7 @@ function Request(config,body) {
       //  }).fail(()=>reject({errorMsg:'请求失败'}))
 
 
-        fetch("/ttl-web-system"+url,option).then(data => data.json()).then(({code,data,...err}) => {
+        fetch("/ttl-web-systemttl-web-system"+url,option).then(data => data.json()).then(({code,data,...err}) => {
             if (code == 0) {
                 /*成功*/
                 resolve(data)

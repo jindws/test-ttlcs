@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress",
-    "start1": "webpack-dev-server --open --progress  --open-page \"ttl-web-systemttl-web-system\"",
     "build": "webpack --progress --config webpack.build.js"
   },
   "author": "",
