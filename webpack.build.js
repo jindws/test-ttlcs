@@ -62,9 +62,9 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: '"production"',
-                __PRO__:true,//生产环境
-                __DEV__:false,
-            }
+            },
+            __PRO__:true,//生产环境
+            __DEV__:false,
         }),
         new webpack.ProvidePlugin({"$": "jquery"}),
         new webpack.optimize.CommonsChunkPlugin({names: ['common'], minChunks: Infinity}),

@@ -68,9 +68,9 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: '"development"',
-                __PRO__:false,
-                __DEV__:true,//开发环境
-            }
+            },
+            __PRO__:false,
+            __DEV__:true,//开发环境
         }),
         // 自动加载，不需要各个模块import或require
         new webpack.ProvidePlugin({"$": "jquery"}),
