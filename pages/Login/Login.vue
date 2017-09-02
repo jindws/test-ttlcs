@@ -21,7 +21,6 @@
 </template>
 
 <script>
-    import {Switch, Button, Form, Input, FormItem} from 'element-ui'
     import Store from '../../src/store.js'
     export default {
         data() {
@@ -68,13 +67,6 @@
             applyIpWhiteList() {
                 console.log(1)
             }
-        },
-        components: {
-            'el-switch': Switch,
-            'el-button': Button,
-            'el-form': Form,
-            'el-form-item': FormItem,
-            'el-input': Input,
         },
         mounted() {
             if (localStorage.remember) {

@@ -4,7 +4,7 @@
 	background-size: cover;
 }
 
-.login-box {
+.login .login-box {
 	width: 380px;
 	height: 380px;
 	background: rgba(57,61,73,0.8);
@@ -16,7 +16,7 @@
 	padding: 10px 20px;
 }
 
-.login-box p {
+.login .login-box p {
 	font-size: 26px;
 	color: #fff;
 	text-align: center;
@@ -24,26 +24,26 @@
 	margin: 0;
 }
 
-.el-form-item input {
+.login .el-form-item input {
 	border-radius: 20px;
 	height: 38px;
 }
 
-.el-form-item span{
+.login .el-form-item span{
 	color: #fff;
 }
-.btn-applyIp,.btn-login{
+.login .btn-applyIp,.btn-login{
 	width: 120px;
 	border-radius: 100px;
 	opacity: 0.8;
 }
-.el-form-item__error{
+.login .el-form-item__error{
 	font-size: 14px;
 	top: 12px;
 	right: 13px;
 	left: auto;
 	padding: 0;
 }
-.login-box .btn{
+.login .login-box .btn{
 	text-align: center;
 }

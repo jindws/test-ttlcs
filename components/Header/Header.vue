@@ -27,18 +27,11 @@
 </template>
 
 <script>
-    import {Dropdown,DropdownMenu,DropdownItem,Button} from 'element-ui'
     import {mapGetters, mapMutations} from 'vuex'
     import Store from '../../src/store.js'
     export default {
         data() {
             return {};
-        },
-        components: {
-            'el-dropdown': Dropdown,
-            'el-dropdown-menu': DropdownMenu,
-            'el-dropdown-item': DropdownItem,
-            'el-button': Button
         },
         methods: {
             addAdminGroup(){

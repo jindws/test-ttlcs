@@ -6,10 +6,22 @@ Vue.use(Vuex);
 
 import './base.css'
 
-import {Tabs,TabPane,Message} from 'element-ui'
+import {Tabs,TabPane,Message,Dialog,Button,Table,TableColumn,Form,FormItem,Switch,Input,Dropdown,DropdownMenu,DropdownItem} from 'element-ui'
 Vue.prototype.$message = Message;
 Vue.use(Tabs);
 Vue.use(TabPane);
+Vue.use(Dialog);
+Vue.use(Button);
+Vue.use(Table);
+Vue.use(TableColumn);
+Vue.use(Form);
+Vue.use(FormItem);
+Vue.use(Switch);
+Vue.use(Input);
+Vue.use(Dropdown);
+Vue.use(DropdownMenu);
+Vue.use(DropdownItem);
+
 
 //fetch
 import 'whatwg-fetch'

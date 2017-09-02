@@ -17,28 +17,27 @@
     import XFooter from '@/Footer'
     import XMain from '../Main'
 
-    import { mapGetters,mapMutations } from 'vuex'
+    import {mapGetters, mapMutations} from 'vuex'
 
     export default {
-        mounted(){
-            this.$DB.HidePermission.mainpage({
-            }).then(async re=>{
+        mounted() {
+            this.$DB.HidePermission.mainpage({}).then(async re => {
                 await this.setMenus(re)
                 this.select(0);
-            },async data=>{
-                console.log('失败',data)
-                if(data.code == 3304 ){
+            }, async data => {
+                console.log('失败', data)
+                if (data.code == 3304) {
                     window.location.href = '#/login';
                 }
             })
         },
-        methods:{
-          ...mapMutations([
-              'setMenus',
-              'select'
-          ]),
+        methods: {
+            ...mapMutations([
+                'setMenus',
+                'select'
+            ]),
         },
-        components:{
+        components: {
             XHeader,
             LeftMenu,
             XFooter,
