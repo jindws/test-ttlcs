@@ -6,40 +6,42 @@
         </div>
         <!--主菜单区域-->
         <el-tabs :value="headerName" @tab-click="selectMenu">
-            <el-tab-pane v-for='(itm,index) in meuns.modules' :label="itm.module" :name="itm.module" :key='itm.statusLen'></el-tab-pane>
+            <el-tab-pane v-for='(itm,index) in meuns.modules' :label="itm.module" :name="itm.module"
+                         :key='itm.statusLen'></el-tab-pane>
         </el-tabs>
         <!--头部右侧导航-->
         <div class="header-right">
-            <el-menu class="el-menu-demo" mode="horizontal">
-                <el-submenu>
-                    <template slot="title">我的工作台</template>
-                    <el-menu-item>选项1</el-menu-item>
-                    <el-menu-item>选项2</el-menu-item>
-                    <el-menu-item>选项3</el-menu-item>
-                </el-submenu>
-                <el-button type="success"></el-button>
-            </el-menu>
+            <el-dropdown>
+              <span class="el-dropdown-link">
+                  您好：<span id="name"></span><i class="el-icon-caret-bottom el-icon--right"></i>
+              </span>
+                <el-dropdown-menu slot="dropdown" class="dropdown">
+                    <el-dropdown-item>修改手机</el-dropdown-item>
+                    <el-dropdown-item>修改密码</el-dropdown-item>
+                    <el-dropdown-item>注销</el-dropdown-item>
+                </el-dropdown-menu>
+            </el-dropdown>
 
         </div>
     </section>
 </template>
 
 <script>
-    import {Menu,Submenu,MenuItem} from 'element-ui'
-    import { mapGetters,mapMutations } from 'vuex'
-
+    import {Dropdown,DropdownMenu,DropdownItem} from 'element-ui'
+    import {mapGetters, mapMutations} from 'vuex'
+    /*Vue.use(Dropdown);
+    Vue.use(DropdownMenu);
+    Vue.use(DropdownItem);*/
     export default {
         data() {
-            return {
-
-            };
+            return {};
         },
-        components:{
-            'el-menu':Menu,
-            'el-submenu':Submenu,
-            'el-menu-item':MenuItem
+        components: {
+            'el-dropdown': Dropdown,
+            'el-dropdown-menu': DropdownMenu,
+            'el-dropdown-item': DropdownItem
         },
-        methods:{
+        methods: {
             selectMenu(tab) {
                 this.select(tab.index)//菜单流水号
             },
@@ -53,18 +55,8 @@
                 'headerName'
             ])
         },
-        mounted(){
-           /* this.$DB.HidePermission.mainpage({
-            }).then(re=>{
-                console.log('成功',re)
-            },data=>{
-                console.log('失败',data)
-                this.$message({
-                    message: '请先登录',
-                    type: 'warning'
-                });
-                /!*window.location.href = '#/login';*!/
-            })*/
+        mounted() {
+
         },
     }
 </script>

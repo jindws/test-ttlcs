@@ -2,7 +2,7 @@
 <section class='main'>
   <el-tabs :closable='true' type="border-card" @tab-remove="removeTab" v-model="activeName" @tab-click="selectNow">
     <el-tab-pane name="home">
-        <span slot="label"><i class="el-icon-menu"></i> 用户管理</span>
+        <span slot="label"><i class="el-icon-menu"></i> 我的桌面</span>
       我的桌面
     </el-tab-pane>
     <el-tab-pane v-for='itm in getMainTabs' :name="itm.ctrlName"  :key='itm.ctrlName' >
