@@ -27,7 +27,7 @@
 </template>
 
 <script>
-    import {Dropdown,DropdownMenu,DropdownItem} from 'element-ui'
+    import {Dropdown,DropdownMenu,DropdownItem,Button} from 'element-ui'
     import {mapGetters, mapMutations} from 'vuex'
     /*Vue.use(Dropdown);
     Vue.use(DropdownMenu);
@@ -39,9 +39,13 @@
         components: {
             'el-dropdown': Dropdown,
             'el-dropdown-menu': DropdownMenu,
-            'el-dropdown-item': DropdownItem
+            'el-dropdown-item': DropdownItem,
+            'el-button':Button
         },
         methods: {
+            addAdminGroup(){
+
+            },
             selectMenu(tab) {
                 this.select(tab.index)//菜单流水号
             },
