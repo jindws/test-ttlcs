@@ -24,8 +24,8 @@ DBF.create('HidePermission', {
         url       : '/HidePermission/signIn',
         method    : 'GET',
     },
-    signOn: {
-        url       : '/HidePermission/signOn',
+    signOut: {
+        url       : '/HidePermission/signOut',
         method    : 'DELETE'
     }
 });

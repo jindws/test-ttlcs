@@ -18,20 +18,18 @@
                 <el-dropdown-menu slot="dropdown" class="dropdown">
                     <el-dropdown-item>修改手机</el-dropdown-item>
                     <el-dropdown-item>修改密码</el-dropdown-item>
-                    <el-dropdown-item>注销</el-dropdown-item>
+                    <el-dropdown-item @click="cancel">注销</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
-            <el-button type="primary" @click="addAdminGroup">添加管理组</el-button>
+            <el-button type="success" @click="refresh" style="opacity: 0.8" size="small">刷新</el-button>
         </div>
     </section>
 </template>
 
 <script>
-    import {Dropdown,DropdownMenu,DropdownItem} from 'element-ui'
+    import {Dropdown,DropdownMenu,DropdownItem,Button} from 'element-ui'
     import {mapGetters, mapMutations} from 'vuex'
-    /*Vue.use(Dropdown);
-    Vue.use(DropdownMenu);
-    Vue.use(DropdownItem);*/
+    import Store from '../../src/store.js'
     export default {
         data() {
             return {};
@@ -39,7 +37,8 @@
         components: {
             'el-dropdown': Dropdown,
             'el-dropdown-menu': DropdownMenu,
-            'el-dropdown-item': DropdownItem
+            'el-dropdown-item': DropdownItem,
+            'el-button': Button
         },
         methods: {
             selectMenu(tab) {
@@ -48,6 +47,19 @@
             ...mapMutations([
                 'select' // 映射 this.select() 为 this.$store.commit('select')
             ]),
+            refresh(){
+
+            },
+            cancel(){
+                this.$DB.HidePermission.signOut({
+                }).then(result=>{
+                    console.log(result)
+                    alert(1)
+                },data=>{
+                    console.log(data)
+                    alert(2)
+                })
+            }
         },
         computed: {
             ...mapGetters([
@@ -56,7 +68,7 @@
             ])
         },
         mounted() {
-
+            $('#name').text(Store.fetch().name);
         },
     }
 </script>

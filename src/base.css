@@ -28,3 +28,10 @@ a{
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+.el-table{
+    margin-top: 10px;
+    text-align: center;
+}
+.el-table th>.cell{
+    text-align: center;
+}

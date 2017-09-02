@@ -22,7 +22,7 @@
 
 <script>
     import {Switch, Button, Form, Input, FormItem} from 'element-ui'
-
+    import Store from '../../src/store.js'
     export default {
         data() {
             return {
@@ -51,7 +51,8 @@
                             password: this.login.password
                         }).then(result => {
                             console.log('成功', result);
-                            window.location.href = '#/'
+                            window.location.href = '#/';
+                            Store.save(result);
                         }, data => {
                             console.log('失败', data);
                             if (data.code == 3306) {
