@@ -40,8 +40,8 @@ const store = new Vuex.Store({
         mainTabAdd(state,tab){
             if(!state.mainTab.includes(tab)){
                 state.mainTab.push(tab)
-                state.activeName = tab.ctrlName;//新增tab的时候,设置 activeName
             }
+            state.activeName = tab.ctrlName;//新增tab的时候,设置 activeName
         },
         mainTabRemove(state,targetName){
             state.mainTab = state.mainTab.filter(itm=>itm.ctrlName!==targetName)
