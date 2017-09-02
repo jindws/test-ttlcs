@@ -1,6 +1,6 @@
 <template>
 <section class='main'>
-  <el-tabs :closable='true' type="border-card" @tab-remove="removeTab" v-model="activeName" @tab-click="selectNow">
+  <el-tabs :closable='true' type="border-card" @tab-remove="removeTab" :value="activeName" @tab-click="selectNow">
     <el-tab-pane name="home">
         <span slot="label"><i class="el-icon-menu"></i> 我的桌面</span>
       我的桌面
@@ -25,7 +25,7 @@ import XHtml from '../Html'
 export default {
   data(){
     return{
-        activeName:'home',
+
     }
   },
   components:{
@@ -36,23 +36,25 @@ export default {
         this.mainTabRemove(targetName)
     },
     selectNow(tab, event){
-      this.activeName = tab.name;
+        this.setActiveName(tab.name)
     },
     ...mapMutations([
-        'mainTabRemove'
+        'mainTabRemove',
+        'setActiveName'
     ]),
   },
   computed: {
       ...mapGetters([
           'getMainTabs',
+          'activeName',
       ])
   },
-  watch:{
-    getMainTabs(val,oldval){
-      if(val.length === oldval.length){//add
-          this.activeName = val[val.length-1].ids
-      }
-    }
-  }
+  // watch:{
+  //   getMainTabs(val,oldval){
+  //     if(val.length === oldval.length){//add
+  //         this.activeName = val[val.length-1].ids
+  //     }
+  //   }
+  // }
 }
 </script>

@@ -27,6 +27,7 @@ const store = new Vuex.Store({
         mainTab:[],
         menus:[],//整个菜单
         leftmenus:[],//左侧菜单
+        activeName:'home',//主页面 选中tab的name
     },
     mutations: {
         select(state, index) {
@@ -39,6 +40,7 @@ const store = new Vuex.Store({
         mainTabAdd(state,tab){
             if(!state.mainTab.includes(tab)){
                 state.mainTab.push(tab)
+                state.activeName = tab.ctrlName;//新增tab的时候,设置 activeName
             }
         },
         mainTabRemove(state,targetName){
@@ -46,6 +48,9 @@ const store = new Vuex.Store({
         },
         setMenus(state,menus){
             state.menus = menus
+        },
+        setActiveName(state,activeName){
+            state.activeName = activeName
         }
     },
     getters: {
@@ -53,6 +58,7 @@ const store = new Vuex.Store({
         getMainTabs:state=>state.mainTab,
         meuns:state=>state.menus,
         leftmenus:state=>state.leftmenus,
+        activeName:state=>state.activeName,
     }
 });
 
