@@ -41,6 +41,9 @@
             'el-button': Button
         },
         methods: {
+            addAdminGroup(){
+
+            },
             selectMenu(tab) {
                 this.select(tab.index)//菜单流水号
             },
