@@ -32,14 +32,18 @@ DBF.create('HidePermission', {
 
 DBF.create('OperateLog', {
     list: {
-        url       : 'OperateLog',
+        url       : '/OperateLog',
         method    : 'GET'
     }
 });
 
 DBF.create('AdminGroup', {
     AdminGroup: {
-        url       : 'AdminGroup',
+        url       : '/AdminGroup',
         method    : 'POST'
+    },
+    list: {
+        url       : '/AdminGroup/list',
+        method    : 'GET'
     }
 });

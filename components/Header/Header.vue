@@ -11,14 +11,14 @@
         </el-tabs>
         <!--头部右侧导航-->
         <div class="header-right">
-            <el-dropdown>
+            <el-dropdown @command="handleCommand">
               <span class="el-dropdown-link">
                   您好：<span id="name"></span><i class="el-icon-caret-bottom el-icon--right"></i>
               </span>
                 <el-dropdown-menu slot="dropdown" class="dropdown">
-                    <el-dropdown-item>修改手机</el-dropdown-item>
-                    <el-dropdown-item>修改密码</el-dropdown-item>
-                    <el-dropdown-item @click="cancel">注销</el-dropdown-item>
+                    <el-dropdown-item command="userChangePhone">修改手机</el-dropdown-item>
+                    <el-dropdown-item command="userInfo">修改密码</el-dropdown-item>
+                    <el-dropdown-item command="cancel">注销</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
             <el-button type="success" @click="refresh" style="opacity: 0.8" size="small">刷新</el-button>
@@ -53,15 +53,20 @@
             refresh(){
 
             },
-            cancel(){
-                this.$DB.HidePermission.signOut({
-                }).then(result=>{
-                    console.log(result)
-                    alert(1)
-                },data=>{
-                    console.log(data)
-                    alert(2)
-                })
+            handleCommand(command) {
+                if(command == 'cancel'){
+                    this.$DB.HidePermission.signOut({
+                    }).then(result=>{
+                        console.log(result)
+                        window.location.href = '#/login';
+                    },data=>{
+                        console.log(data);
+                    })
+                }else if(command == 'userInfo'){
+
+                }else{
+
+                }
             }
         },
         computed: {

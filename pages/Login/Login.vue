@@ -76,7 +76,7 @@
             'el-form-item': FormItem,
             'el-input': Input,
         },
-        mounted: function () {
+        mounted() {
             if (localStorage.remember) {
                 this.login.account = localStorage.login.account;
                 this.login.password = localStorage.login.password;

@@ -35,3 +35,6 @@ a{
 .el-table th>.cell{
     text-align: center;
 }
+.el-button{
+    opacity: 0.8;
+}
