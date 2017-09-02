@@ -44,7 +44,21 @@ const store = new Vuex.Store({
             state.activeName = tab.ctrlName;//新增tab的时候,设置 activeName
         },
         mainTabRemove(state,targetName){
-            state.mainTab = state.mainTab.filter(itm=>itm.ctrlName!==targetName)
+            const mainTab =  [...state.mainTab];
+
+            state.mainTab = state.mainTab.filter((itm,index)=>{
+              if(itm.ctrlName!==targetName){
+                return true;
+              }else if(itm.ctrlName!==state.activeName){
+                return false;
+              }else if(index<mainTab.length-1){
+                state.activeName = mainTab[index+1].ctrlName
+              }else if(index){//关闭 最后一项,但关后至少有2个tab
+                  state.activeName = mainTab[index-1].ctrlName
+              }else{//全部关闭,除了 我的
+                  state.activeName = 'home'
+              }
+            })
         },
         setMenus(state,menus){
             state.menus = menus
