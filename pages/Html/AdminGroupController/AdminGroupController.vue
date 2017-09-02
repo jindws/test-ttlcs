@@ -21,12 +21,7 @@
     export default {
         data() {
             return {
-                AdminGroupList: [{
-                    id: '',
-                    name: '',
-                    createTime: '',
-                    operates: ''
-                }]
+                AdminGroupList: []
             }
         },
         methods: {
@@ -75,13 +70,17 @@
                 pageNum: '1',
                 pageSize: '10'
             }).then(result=>{
-                for(let cell = 0; cell < result.pageList.length; cell++){
-                    this.AdminGroupList.name = result.pageList[cell].name;
-                }
+                // for(let cell = 0; cell < result.pageList.length; cell++){
+                //     this.AdminGroupList.name = result.pageList[cell].name;
+                // }
+                this.AdminGroupList = result.pageList
                 console.log('成功',result)
                 /*接口对应的信息{"code":0,"msg":"操作成功","data":{"total":3,"operates":[],"pageSize":3,"pageList":[{"id":2,"name":"无","fatherId":1,"createId":1,"updateId":1,"createTime":1504318057000,"updateTime":1504338087000},{"id":3,"name":"jiang","fatherId":1,"createId":1,"updateId":1,"createTime":1504319771000,"updateTime":1504319771000},{"id":4,"name":"dd","fatherId":1,"createId":1,"updateId":1,"createTime":1504321079000,"updateTime":1504321079000}],"pageNum":1}}*/
             },data=>{
                 console.log('失败',data)
+                // const a = {"code":0,"msg":"操作成功","data":{"total":3,"operates":[],"pageSize":3,"pageList":[{"id":2,"name":"无","fatherId":1,"createId":1,"updateId":1,"createTime":1504318057000,"updateTime":1504338087000},{"id":3,"name":"jiang","fatherId":1,"createId":1,"updateId":1,"createTime":1504319771000,"updateTime":1504319771000},{"id":4,"name":"dd","fatherId":1,"createId":1,"updateId":1,"createTime":1504321079000,"updateTime":1504321079000}],"pageNum":1}}
+                // console.log(a.data)
+                // this.AdminGroupList = a.data.pageList
             })
         }
     }
