@@ -5,16 +5,16 @@
 </template>
 
 <script>
+    import {Button} from 'element-ui'
     export default {
         data() {
             return {}
         },
         methods: {
             addAdminGroup(){
-                this.$DB.HidePermission.mainpage({
+                this.$DB.AdminGroup.AdminGroup({
                 }).then(async re=>{
-                    await this.setMenus(re)
-                    this.select(0);
+                    console.log('成功',re)
                 },async data=>{
                     console.log('失败',data)
                     if(data.code == 3304 ){
@@ -23,6 +23,9 @@
                 })
             }
         },
+        components: {
+            'el-button': Button
+        }
     }
 </script>
 
