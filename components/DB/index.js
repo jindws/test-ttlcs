@@ -40,6 +40,6 @@ DBF.create('OperateLog', {
 DBF.create('AdminGroup', {
     AdminGroup: {
         url       : 'AdminGroup',
-        method    : 'GET'
+        method    : 'POST'
     }
 });

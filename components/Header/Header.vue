@@ -21,7 +21,7 @@
                     <el-dropdown-item>注销</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
-
+            <el-button type="primary" @click="addAdminGroup">添加管理组</el-button>
         </div>
     </section>
 </template>

@@ -12,15 +12,13 @@
         },
         methods: {
             addAdminGroup(){
-                this.$DB.AdminGroup.AdminGroup({
+                alert(1)
+                /*this.$DB.AdminGroup.AdminGroup({
                 }).then(async re=>{
                     console.log('成功',re)
                 },async data=>{
                     console.log('失败',data)
-                    if(data.code == 3304 ){
-                        window.location.href = '#/login';
-                    }
-                })
+                })*/
             }
         },
         components: {
