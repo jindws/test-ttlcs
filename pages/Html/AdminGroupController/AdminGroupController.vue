@@ -31,12 +31,29 @@
         },
         methods: {
             addAdminGroup(){
-                /*this.$DB.AdminGroup.AdminGroup({
-                }).then(async re=>{
-                    console.log('成功',re)
-                },async data=>{
-                    console.log('失败',data)
-                })*/
+                /*this.$prompt('管理组名称', '添加管理员组', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    inputPattern: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+                    inputErrorMessage: '邮箱格式不正确'
+                }).then(({ value }) => {
+                    /!*this.$DB.AdminGroup.AdminGroup({
+                        name: '33'
+                    }).then(result=>{
+                        console.log('成功',result)
+                    },data=>{
+                        console.log('失败',data)
+                    })*!/
+                    this.$message({
+                        type: 'success',
+                        message: '你的邮箱是: ' + value
+                    });
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '取消输入'
+                    });
+                });*/
             },
             deleted(){
 
@@ -62,6 +79,7 @@
                     this.AdminGroupList.name = result.pageList[cell].name;
                 }
                 console.log('成功',result)
+                /*接口对应的信息{"code":0,"msg":"操作成功","data":{"total":3,"operates":[],"pageSize":3,"pageList":[{"id":2,"name":"无","fatherId":1,"createId":1,"updateId":1,"createTime":1504318057000,"updateTime":1504338087000},{"id":3,"name":"jiang","fatherId":1,"createId":1,"updateId":1,"createTime":1504319771000,"updateTime":1504319771000},{"id":4,"name":"dd","fatherId":1,"createId":1,"updateId":1,"createTime":1504321079000,"updateTime":1504321079000}],"pageNum":1}}*/
             },data=>{
                 console.log('失败',data)
             })
