@@ -13,7 +13,7 @@
         <div class="header-right">
             <el-dropdown @command="handleCommand">
               <span class="el-dropdown-link">
-                  您好：<span id="name"></span><i class="el-icon-caret-bottom el-icon--right"></i>
+                  您好：<span>{{name}}</span><i class="el-icon-caret-bottom el-icon--right"></i>
               </span>
                 <el-dropdown-menu slot="dropdown" class="dropdown">
                     <el-dropdown-item command="userChangePhone">修改手机</el-dropdown-item>
@@ -31,7 +31,9 @@
     import Store from '../../src/store.js'
     export default {
         data() {
-            return {};
+            return {
+                name:'',
+            };
         },
         methods: {
             addAdminGroup(){
@@ -41,7 +43,8 @@
                 this.select(tab.index)//菜单流水号
             },
             ...mapMutations([
-                'select' // 映射 this.select() 为 this.$store.commit('select')
+                'select', // 映射 this.select() 为 this.$store.commit('select')
+                'mainTabAdd',
             ]),
             refresh(){
 
@@ -55,10 +58,18 @@
                     },data=>{
                         console.log(data);
                     })
-                }else if(command == 'userInfo'){
-
-                }else{
-
+                }else if(command==='userChangePhone'){
+                    this.mainTabAdd({
+                        ctrlName:command,
+                        name:'修改手机',
+                        htmlName:"Ext_Schedule"
+                    })
+                }else if(command==='userInfo'){
+                    this.mainTabAdd({
+                        ctrlName:command,
+                        name:'修改密码',
+                        htmlName:"Ext_Schedule"
+                    })
                 }
             }
         },
@@ -69,7 +80,10 @@
             ])
         },
         mounted() {
-            $('#name').text(Store.fetch().name);
+//            $('#name').text();
+//            this.$refs.name.innerText= '666'
+            const {name='未登录'} = Store.fetch()||{};
+            this.name=name;
         },
     }
 </script>

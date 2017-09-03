@@ -7,7 +7,7 @@
             <el-table-column prop="createTime" label="添加时间" width="500"></el-table-column>
             <el-table-column prop="operates" label="操作">
                 <template scope="scope">
-                    <el-button type="danger" @click="deleted" size="small">删除</el-button>
+                    <el-button type="danger" @click="deleted(scope.row.id)" size="small">删除</el-button>
                     <el-button type="info" @click="modify" size="small">编辑</el-button>
                     <el-button type="warning" @click="manage" size="small">权限管理</el-button>
                 </template>
@@ -16,7 +16,7 @@
         <el-dialog title="添加管理员组" :visible.sync="addAdminGroup">
             <el-form :model="addAdminGroupForm">
                 <el-form-item label="管理组名称" :label-width="formLabelWidth">
-                    <el-input v-model="addAdminGroupForm.name" auto-complete="off" placeholder="请输入管理组名称"></el-input>
+                    <el-input ref="name" v-model="addAdminGroupForm.name" auto-complete="off" placeholder="请输入管理组名称"></el-input>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+    import moment from 'moment'
     export default {
         data() {
             return {
@@ -47,7 +48,7 @@
                     this.AdminGroupList.push(result);
                     this.addAdminGroup = false;
                 }, data => {
-                    if(data.code == 3301){
+                    if(data.code === 3301){
                         this.$message({
                             type: 'warning',
                             message: data.msg
@@ -58,14 +59,15 @@
             addAdminGroupReset(){
                 this.addAdminGroupForm.name = '';
             },
-            deleted() {
+            deleted(id) {
+                console.log(id)
                 this.$DB.AdminGroup.AdminGroup({
                     name: this.addAdminGroupForm.name
                 }).then(result => {
                     this.AdminGroupList.push(result);
                     this.addAdminGroup = false;
                 }, data => {
-                    if(data.code == 3301){
+                    if(data.code === 3301){
                         this.$message({
                             type: 'warning',
                             message: data.msg
@@ -85,14 +87,50 @@
                 pageNum: '1',
                 pageSize: '10'
             }).then(result => {
-                this.AdminGroupList = result.pageList;
+//                this.AdminGroupList = result.pageList;
+                this.AdminGroupList = result.pageList.map(itm=>Object.assign({},itm,{
+                    createTime:moment(+(itm.createTime+'000')).format("YYYY-MM-DD HH:mm:ss")
+                }))
                 console.log('成功', result)
+
             }, data => {
                 console.log('失败', data)
+                const list = [
+                    {
+                        createId:1,
+                        createTime:1496739993,
+                        fatherId:1,
+                        id:2,
+                        name:"test",
+                        status:0,
+                        updateId:1,
+                        updateTime:1496739993
+                    },
+                    {
+                        createId:1,
+                        createTime:1496739993,
+                        fatherId:1,
+                        id:21,
+                        name:"test2",
+                        status:0,
+                        updateId:1,
+                        updateTime:1496739993
+                    },
+                ];
+                this.AdminGroupList = list.map(itm=>Object.assign({},itm,{
+                    createTime:moment(+(itm.createTime+'000')).format("YYYY-MM-DD HH:mm:ss")
+                }))
+
+
+
             })
+        },
+        watch:{
+//            addAdminGroup(val,oldval){
+//                if(val){
+//                    console.log(this.$refs.name)
+//                }
+//            }
         }
     }
 </script>
-
-<style lang="css">
-</style>

@@ -1,67 +1,72 @@
 .index {
-	height: 100%;
-	overflow: hidden;
-	min-width: 1000px;
+    height: 100%;
+    overflow: hidden;
+    min-width: 1000px;
 }
 
 .index .container {
-	height: 100%;
+    height: 100%;
 }
 
 .index > section {
-	display: flex;
-	height: 100%;
+    display: flex;
+    height: 100%;
 }
 
 .mainBox {
-	width: 0;
-	flex: 1;
+    width: 0;
+    flex: 1;
 }
 
 .el-table {
-	margin-top: 10px;
-	text-align: center;
+    margin-top: 10px;
+    text-align: center;
 }
 
 .el-table th > .cell {
-	text-align: center;
+    text-align: center;
 }
 
 .el-button {
-	opacity: 0.8;
+    opacity: 0.8;
 }
-.el-dialog--small{
-	width: 450px;
+
+.el-dialog--small {
+    width: 450px;
 }
+
 .el-dialog__header {
-	padding: 0 20px;
-	border-bottom: 1px solid #eee;
-	font-size: 14px;
-	color: #333;
-	height: 42px;
-	line-height: 42px;
-	overflow: hidden;
-	background-color: #F8F8F8;
-	border-radius: 2px 2px 0 0;
+    padding: 0 20px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #333;
+    height: 42px;
+    line-height: 42px;
+    overflow: hidden;
+    background-color: #F8F8F8;
+    border-radius: 2px 2px 0 0;
 }
+
 .el-dialog__headerbtn .el-dialog__close {
-	line-height: 42px;
-	color: #333;
-	font-size: 14px;
+    line-height: 42px;
+    color: #333;
+    font-size: 14px;
 }
-.el-dialog__body .el-form-item__label{
-	width: 120px;
-	border: 1px solid #e6e6e6;
-	border-radius: 2px 0 0 2px;
-	text-align: center;
-	background-color: #FBFBFB;
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	padding: 0;
-	line-height: 34px;
-	border-right: 0;
+
+.el-dialog__body .el-form-item__label {
+    width: 120px;
+    border: 1px solid #e6e6e6;
+    border-radius: 2px 0 0 2px;
+    text-align: center;
+    background-color: #FBFBFB;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0;
+    line-height: 34px;
+    border-right: 0;
 }
-.el-dialog__body .el-input__inner{
-	border-radius: 0px;
+
+.el-dialog__body .el-input__inner {
+    border-radius: 0px;
 }
