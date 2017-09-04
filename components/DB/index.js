@@ -2,15 +2,6 @@ import DBF from './dbFactory'
 
 export default DBF.context
 
-
-DBF.create('Test', {
-    list: {
-        url       : '/api/test/list',
-        method    :'delete',
-    },
-});
-
-
 DBF.create('HidePermission', {
     applyIpWhiteList: {
         url       : '/HidePermission/applyIpWhiteList',
@@ -45,5 +36,9 @@ DBF.create('AdminGroup', {
     list: {
         url       : '/AdminGroup/list',
         method    : 'GET'
+    },
+    deleted: {
+        url       : '/AdminGroup/',
+        method    : 'DELETE'
     }
 });

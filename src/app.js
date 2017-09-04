@@ -6,8 +6,10 @@ Vue.use(Vuex);
 
 import './base.css'
 
-import {Tabs,TabPane,Message,Dialog,Button,Table,TableColumn,Form,FormItem,Switch,Input,Dropdown,DropdownMenu,DropdownItem} from 'element-ui'
+import {Tabs,TabPane,Message,Dialog,Button,Table,TableColumn,Form,FormItem,Switch,Input,Dropdown,DropdownMenu,DropdownItem,MessageBox} from 'element-ui'
+Vue.prototype.$msgbox = MessageBox;
 Vue.prototype.$message = Message;
+Vue.prototype.$confirm = MessageBox.confirm;
 Vue.use(Tabs);
 Vue.use(TabPane);
 Vue.use(Dialog);
@@ -49,10 +51,17 @@ const store = new Vuex.Store({
                 state.leftmenus = XMenu.submodules//左侧菜单
             }
         },
+        /*主界面增加tab*/
         mainTabAdd(state,tab){
-            if(!state.mainTab.includes(tab)){
-                state.mainTab.push(tab)
-            }
+            const ctrName = [];
+            state.mainTab.push(tab);
+            state.mainTab = state.mainTab.filter(({ctrlName})=>{
+                if(!ctrlNames.includes(ctrlName)){
+                    ctrlNames.push(ctrlName)
+                    return true;
+                }
+                return false;
+            })
             state.activeName = tab.ctrlName;//新增tab的时候,设置 activeName
         },
         mainTabRemove(state,targetName){

@@ -49,7 +49,6 @@
                             account: this.login.account,
                             password: this.login.password
                         }).then(result => {
-                            console.log('成功', result);
                             window.location.href = '#/';
                             Store.save(result);
                         }, data => {
