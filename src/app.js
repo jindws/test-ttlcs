@@ -53,17 +53,20 @@ const store = new Vuex.Store({
         },
         /*主界面增加tab*/
         mainTabAdd(state,tab){
-            const ctrName = [];
+            const ctrlNames = []
             state.mainTab.push(tab);
             state.mainTab = state.mainTab.filter(({ctrlName})=>{
-                if(!ctrlNames.includes(ctrlName)){
-                    ctrlNames.push(ctrlName)
-                    return true;
-                }
+              if(!ctrlNames.includes(ctrlName)){
+                  ctrlNames.push(ctrlName)
+                  return true;
+              }
                 return false;
             })
             state.activeName = tab.ctrlName;//新增tab的时候,设置 activeName
         },
+        // mainTabAddByRight(){
+        //
+        // },
         mainTabRemove(state,targetName){
             const mainTab =  [...state.mainTab];
 

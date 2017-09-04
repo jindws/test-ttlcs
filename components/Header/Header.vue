@@ -58,16 +58,16 @@
                     },data=>{
                         console.log(data);
                     })
-                }else if(command == 'userInfo'){
-                    this.mainTabAdd({
-                        ctrlName:command,
-                        name:'修改密码',
-                        htmlName:"Ext_Schedule"
-                    })
                 }else if(command==='userChangePhone'){
                     this.mainTabAdd({
                         ctrlName:command,
                         name:'修改手机',
+                        htmlName:"Ext_Schedule"
+                    })
+                }else if(command==='userInfo'){
+                    this.mainTabAdd({
+                        ctrlName:command,
+                        name:'修改密码',
                         htmlName:"Ext_Schedule"
                     })
                 }

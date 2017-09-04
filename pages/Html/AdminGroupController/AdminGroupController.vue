@@ -16,7 +16,7 @@
         <el-dialog title="添加管理员组" :visible.sync="addAdminGroup">
             <el-form :model="addAdminGroupForm">
                 <el-form-item label="管理组名称" :label-width="formLabelWidth">
-                    <el-input v-model="addAdminGroupForm.name" auto-complete="off" placeholder="请输入管理组名称"></el-input>
+                    <el-input ref="name" v-model="addAdminGroupForm.name" auto-complete="off" placeholder="请输入管理组名称"></el-input>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -54,10 +54,12 @@
                         message: '添加成功'
                     });
                 }, data => {
-                    this.$message({
-                        type: 'warning',
-                        message: data.msg
-                    });
+                    if(data.code === 3301){
+                        this.$message({
+                            type: 'warning',
+                            message: data.msg
+                        });
+                    }
                 });
             },
             adminGroupList(){
@@ -128,9 +130,6 @@
             }, data => {
                 console.log('失败', data)
             })
-        }
+        },
     }
 </script>
-
-<style lang="css">
-</style>
