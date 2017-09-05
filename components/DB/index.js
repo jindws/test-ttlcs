@@ -38,7 +38,7 @@ DBF.create('AdminGroup', {
         method    : 'GET'
     },
     deleted: {
-        url       : '/AdminGroup/',
+        url       : '/AdminGroup/{deleteId}',
         method    : 'DELETE'
     }
 });
