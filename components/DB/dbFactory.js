@@ -27,6 +27,12 @@ export default new class {
 function Request(config,body) {
 
     let {url,method = ''} = config;
+
+    const needReply = url.indexOf('{');
+    if(needReply !== -1){
+        url = url.substring(0,needReply)+body[url.substring(needReply+1,url.length-1)]
+    }
+
     const option = {
       // credentials: 'same-origin',
       credentials: 'include',
