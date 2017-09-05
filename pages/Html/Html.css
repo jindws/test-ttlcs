@@ -1,0 +1,3 @@
+.el-form-item.is-required .el-form-item__label:before{
+	content: '';
+}
