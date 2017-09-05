@@ -1,6 +1,6 @@
 <template>
     <section class="AdminGroupController">
-        <el-button type="primary" @click="addAdminGroup = true">添加管理组</el-button>
+        <el-button type="primary" @click="addAdminGroup = true" :disabled="disabled">添加管理组</el-button>
         <el-table :data="AdminGroupList" border style="width: 100%">
             <el-table-column prop="id" label="ID" width="80"></el-table-column>
             <el-table-column prop="name" label="管理组名称" width="300"></el-table-column>
@@ -37,7 +37,8 @@
                 addAdminGroupForm: {
                     name: ''
                 },
-                formLabelWidth: '120px'
+                formLabelWidth: '120px',
+                disabled: true,
             }
         },
         methods: {
@@ -54,12 +55,10 @@
                         message: '添加成功'
                     });
                 }, data => {
-                    if(data.code === 3301){
-                        this.$message({
-                            type: 'warning',
-                            message: data.msg
-                        });
-                    }
+                    this.$message({
+                        type: 'warning',
+                        message: data.msg
+                    });
                 });
             },
             adminGroupList(){

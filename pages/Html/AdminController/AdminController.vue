@@ -27,7 +27,8 @@
                 </el-form-item>
                 <el-form-item label="所属管理组" :label-width="formLabelWidth">
                     <el-select v-model="selectAdminGroup" placeholder="请选择管理组" >
-                        <el-option v-for='item in options' :key="item.value" :label="item.label" :value="item.value"></el-option>
+                        <el-option v-for='item in options' :key="item.id" :label="item.name"
+                                   :value="item.id"></el-option>
                     </el-select>
                 </el-form-item>
             </el-form>
@@ -53,12 +54,7 @@
                 },
                 selectAdminGroup: '',
                 formLabelWidth: '120px',
-                options: [
-                    {value: '1',label: 'label1'},
-                    {value: '2',label: 'label2'},
-                    {value: '3',label: 'label3'},
-                    {value: '4',label: 'label4'}
-                ]
+                options: []
             }
         },
         methods: {
@@ -71,7 +67,7 @@
                 }).then(result => {
                     let newAdd = Object.assign({}, result, {createTime:
                         moment(result.createTime).format('YYYY-MM-DD HH:mm:ss')});
-                    this.AdminGroupList.push(newAdd);
+                    this.AdminList.push(newAdd);
                     this.addAdmin = false;
                     this.$message({
                         type: 'success',
@@ -153,6 +149,12 @@
                 });
             }, data => {
                 console.log('失败', data)
+            });
+            this.$DB.AdminGroup.list({
+            }).then(result => {
+                this.option = result.pageList.map(item => { return item})
+            },data => {
+                console.log(data)
             })
         },
     }
