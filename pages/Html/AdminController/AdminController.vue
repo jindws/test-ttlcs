@@ -1,27 +1,39 @@
 <template>
-    <section class="AdminGroupController">
-        <el-button type="primary" @click="addAdminGroup = true">添加管理组</el-button>
-        <el-table :data="AdminGroupList" border style="width: 100%">
+    <section class="AdminController">
+        <el-button type="primary" @click="addAdmin = true">添加管理员</el-button>
+        <el-table :data="AdminList" border style="width: 100%">
             <el-table-column prop="id" label="ID" width="80"></el-table-column>
-            <el-table-column prop="name" label="管理组名称" width="300"></el-table-column>
-            <el-table-column prop="createTime" label="添加时间" width="500"></el-table-column>
+            <el-table-column prop="name" label="姓名"></el-table-column>
+            <el-table-column prop="phone" label="手机"></el-table-column>
+            <el-table-column prop="email" label="邮箱"></el-table-column>
+            <el-table-column prop="adminGroupName" label="所属管理组"></el-table-column>
+            <el-table-column prop="createTime" label="添加时间"></el-table-column>
             <el-table-column prop="operates" label="操作">
                 <template scope="scope">
-                    <el-button type="danger" @click.native.prevent="deleted(scope.$index, AdminGroupList)" size="small">删除</el-button>
                     <el-button type="info" @click="modify" size="small">编辑</el-button>
-                    <el-button type="warning" @click="manage" size="small">权限管理</el-button>
                 </template>
             </el-table-column>
         </el-table>
-        <el-dialog title="添加管理员组" :visible.sync="addAdminGroup">
-            <el-form :model="addAdminGroupForm">
-                <el-form-item label="管理组名称" :label-width="formLabelWidth">
-                    <el-input ref="name" v-model="addAdminGroupForm.name" auto-complete="off" placeholder="请输入管理组名称"></el-input>
+        <el-dialog title="添加管理员" :visible.sync="addAdmin">
+            <el-form :model="addAdminForm">
+                <el-form-item label="姓名" :label-width="formLabelWidth">
+                <el-input v-model="addAdminForm.name" auto-complete="off" placeholder="请输入姓名"></el-input>
+            </el-form-item>
+                <el-form-item label="手机" :label-width="formLabelWidth">
+                    <el-input v-model="addAdminForm.phone" auto-complete="off" placeholder="请输入手机号码"></el-input>
+                </el-form-item>
+                <el-form-item label="邮箱" :label-width="formLabelWidth">
+                    <el-input v-model="addAdminForm.email" auto-complete="off" placeholder="请输入邮箱"></el-input>
+                </el-form-item>
+                <el-form-item label="所属管理组" :label-width="formLabelWidth">
+                    <el-select v-model="selectAdminGroup" placeholder="请选择管理组" >
+                        <el-option v-for='item in options' :key="item.value" :label="item.label" :value="item.value"></el-option>
+                    </el-select>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="addAdminGroupReset">重置</el-button>
-                <el-button type="success" @click="addAdminGroupSub">立即提交</el-button>
+                <el-button @click="addAdminReset">重置</el-button>
+                <el-button type="success" @click="addAdminSub">立即提交</el-button>
             </div>
         </el-dialog>
     </section>
@@ -32,23 +44,35 @@
     export default {
         data() {
             return {
-                AdminGroupList: [],
-                addAdminGroup: false,
-                addAdminGroupForm: {
-                    name: ''
+                AdminList: [],
+                addAdmin: false,
+                addAdminForm: {
+                    name: '',
+                    phone: '',
+                    email: '',
                 },
-                formLabelWidth: '120px'
+                selectAdminGroup: '',
+                formLabelWidth: '120px',
+                options: [
+                    {value: '1',label: 'label1'},
+                    {value: '2',label: 'label2'},
+                    {value: '3',label: 'label3'},
+                    {value: '4',label: 'label4'}
+                ]
             }
         },
         methods: {
-            addAdminGroupSub(){
-                this.$DB.AdminGroup.AdminGroup({
-                    name: this.addAdminGroupForm.name
+            addAdminSub(){
+                this.$DB.Admin.Admin({
+                    name: this.addAdminForm.name,
+                    phone: this.addAdminForm.phone,
+                    email: this.addAdminForm.email,
+                    adminGroupId: ''
                 }).then(result => {
                     let newAdd = Object.assign({}, result, {createTime:
                         moment(result.createTime).format('YYYY-MM-DD HH:mm:ss')});
                     this.AdminGroupList.push(newAdd);
-                    this.addAdminGroup = false;
+                    this.addAdmin = false;
                     this.$message({
                         type: 'success',
                         message: '添加成功'
@@ -62,11 +86,11 @@
                     }
                 });
             },
-            adminGroupList(){
+            adminList(){
 
             },
-            addAdminGroupReset(){
-                this.addAdminGroupForm.name = '';
+            addAdminReset(){
+                this.addAdminForm = '';
             },
             deleted(index,row) {
                 this.$confirm('确定做删除操作吗?', '提示信息', {
@@ -120,11 +144,11 @@
             }
         },
         mounted() {
-            this.$DB.AdminGroup.list({
+            this.$DB.Admin.list({
                 pageNum: '1',
                 pageSize: '30'
             }).then(result => {
-                this.AdminGroupList = result.pageList.map(item=> {
+                this.AdminList = result.pageList.map(item=> {
                     return Object.assign({}, item, {createTime: moment(item.createTime).format('YYYY-MM-DD HH:mm:ss')});
                 });
             }, data => {

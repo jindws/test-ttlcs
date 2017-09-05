@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 import './base.css'
 
-import {Tabs,TabPane,Message,Dialog,Button,Table,TableColumn,Form,FormItem,Switch,Input,Dropdown,DropdownMenu,DropdownItem,MessageBox} from 'element-ui'
+import {Tabs,TabPane,Message,Dialog,Button,Table,TableColumn,Form,FormItem,Switch,Input,Dropdown,DropdownMenu,DropdownItem,MessageBox,Select,Option} from 'element-ui'
 Vue.prototype.$msgbox = MessageBox;
 Vue.prototype.$message = Message;
 Vue.prototype.$confirm = MessageBox.confirm;
@@ -23,6 +23,8 @@ Vue.use(Input);
 Vue.use(Dropdown);
 Vue.use(DropdownMenu);
 Vue.use(DropdownItem);
+Vue.use(Select);
+Vue.use(Option);
 
 
 //fetch

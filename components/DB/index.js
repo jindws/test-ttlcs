@@ -42,3 +42,13 @@ DBF.create('AdminGroup', {
         method    : 'DELETE'
     }
 });
+DBF.create('Admin', {
+    Admin: {
+        url       : '/Admin',
+        method    : 'POST'
+    },
+    list: {
+        url       : '/Admin/list',
+        method    : 'GET'
+    }
+});
