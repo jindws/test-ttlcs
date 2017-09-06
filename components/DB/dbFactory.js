@@ -42,7 +42,8 @@ function Request(config,body) {
           "Content-Type": "application/x-www-form-urlencoded",
       },
     };
-    if(method.toUpperCase() !== 'GET'){
+
+    if(!['GET','PUT'].includes(method.toUpperCase())){
       Object.assign(option, {
           body: os(body)
       })
@@ -53,6 +54,7 @@ function Request(config,body) {
     return new Promise((resolve, reject) => {
         const Head = __PRO__?'/ttl-web-system':'/ttl-web-systemttl-web-system';//__PRO__===true 表示线上环境
         /*const Head = 'ttl-web-system';*/
+        // const Head = __PRO__?'/ttl-web-system':'https://www.tongtongli.com/ttl-web-system';//__PRO__===true 表示线上环境
         fetch(Head+url,option).then(data => data.json()).then(({code,data,...err}) => {
             if (code == 0) {
                 /*成功*/
