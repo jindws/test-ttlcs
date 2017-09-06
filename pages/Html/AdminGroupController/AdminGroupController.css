@@ -1,0 +1,18 @@
+.AdminGroupController .minBox,.AdminGroupController .manageBox{
+	display: none;
+}
+.AdminGroupController .manageBox > .title{
+	position: relative;
+	height: 42px;
+	line-height: 42px;
+	padding: 0 15px 0 18px;
+	color: #333;
+	background-color: #f2f2f2;
+	cursor: pointer;
+}
+.AdminGroupController .manageBox dd,.AdminGroupController .manageBox dl{
+	margin-left: 20px;
+}
+.AdminGroupController .manageList{
+	border: 1px solid;
+}

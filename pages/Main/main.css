@@ -24,6 +24,3 @@
 	box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
 	margin-top: 20px;
 }
-.main .el-tabs--border-card>.el-tabs__header .el-tabs__item.is-active:last-child{
-	border-color: #d1dbe5;
-}

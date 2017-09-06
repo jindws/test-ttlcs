@@ -8,7 +8,7 @@ import './base.css'
 /*导入小图标*/
 import 'font-awesome/css/font-awesome.min.css'
 
-import {Tabs,TabPane,Message,Dialog,Button,Table,TableColumn,Form,FormItem,Switch,Input,Dropdown,DropdownMenu,DropdownItem,MessageBox,Select,Option,Pagination} from 'element-ui'
+import {Tabs,TabPane,Message,Dialog,Button,Table,TableColumn,Form,FormItem,Switch,Input,Dropdown,DropdownMenu,DropdownItem,MessageBox,Select,Option,Pagination,Tree} from 'element-ui'
 Vue.prototype.$msgbox = MessageBox;
 Vue.prototype.$message = Message;
 Vue.prototype.$confirm = MessageBox.confirm;
@@ -28,6 +28,7 @@ Vue.use(DropdownItem);
 Vue.use(Select);
 Vue.use(Option);
 Vue.use(Pagination);
+Vue.use(Tree);
 
 
 //fetch

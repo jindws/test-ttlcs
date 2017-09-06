@@ -1,161 +1,156 @@
 <template>
     <section class="AdminController">
-        <el-button type="primary" @click="addAdmin = true">添加管理员</el-button>
+        <!--主界面-->
+        <el-button type="primary" @click="addAdmin" :disabled="addDisabled">添加管理员</el-button>
+        <!--列表-->
         <el-table :data="AdminList" border style="width: 100%">
             <el-table-column prop="id" label="ID" width="80"></el-table-column>
-            <el-table-column prop="name" label="姓名"></el-table-column>
+            <el-table-column prop="name" label="姓名" width="80"></el-table-column>
             <el-table-column prop="phone" label="手机"></el-table-column>
             <el-table-column prop="email" label="邮箱"></el-table-column>
             <el-table-column prop="adminGroupName" label="所属管理组"></el-table-column>
             <el-table-column prop="createTime" label="添加时间"></el-table-column>
+            <el-table-column prop="updateTime" label="更新时间"></el-table-column>
             <el-table-column prop="operates" label="操作">
                 <template scope="scope">
-                    <el-button type="info" @click="modify" size="small">编辑</el-button>
+                    <el-button type="danger" @click="deleted(scope.$index, scope.row)"
+                               size="small" :disabled="deleteDisabled">删除
+                    </el-button>
+                    <el-button type="info" @click="modify(scope.$index, scope.row)" size="small"
+                               :disabled="modifyDisabled">编辑
+                    </el-button>
+                    <el-button type="warning" @click="manage(scope.$index, scope.row)" size="small"
+                               :disabled="manageDisabled">权限管理
+                    </el-button>
                 </template>
             </el-table-column>
         </el-table>
-        <el-dialog title="添加管理员" :visible.sync="addAdmin">
-            <el-form :model="addAdminForm">
-                <el-form-item label="姓名" :label-width="formLabelWidth">
-                <el-input v-model="addAdminForm.name" auto-complete="off" placeholder="请输入姓名"></el-input>
-            </el-form-item>
-                <el-form-item label="手机" :label-width="formLabelWidth">
+        <!--工具条，分页-->
+        <el-pagination @current-change="handleCurrentChange"
+                       :current-page.sync="currentPage"
+                       layout="prev, pager, next, jumper" :total="total" style="float:right;margin:20px 10px 0;">
+        </el-pagination>
+        <!--新增界面-->
+        <el-dialog title="添加管理员" :visible.sync="addAdminVisible" :close-on-click-modal="false">
+            <el-form :model="addAdminForm" :rules="addAdminRules" ref="addAdminForm">
+                <el-form-item label="姓名" prop="name">
+                    <el-input v-model="addAdminForm.name" auto-complete="off" placeholder="请输入姓名"></el-input>
+                </el-form-item>
+                <el-form-item label="手机" prop="phone">
                     <el-input v-model="addAdminForm.phone" auto-complete="off" placeholder="请输入手机号码"></el-input>
                 </el-form-item>
-                <el-form-item label="邮箱" :label-width="formLabelWidth">
+                <el-form-item label="邮箱" prop="emailo">
                     <el-input v-model="addAdminForm.email" auto-complete="off" placeholder="请输入邮箱"></el-input>
                 </el-form-item>
-                <el-form-item label="所属管理组" :label-width="formLabelWidth">
-                    <el-select v-model="selectAdminGroup" placeholder="请选择管理组" >
+                <el-form-item label="所属管理组" prop="select">
+                    <el-select v-model="selectAdminGroup" placeholder="请选择管理组">
                         <el-option v-for='item in options' :key="item.id" :label="item.name"
                                    :value="item.id"></el-option>
                     </el-select>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="addAdminReset">重置</el-button>
+                <el-button @click="AdminReset">重置</el-button>
                 <el-button type="success" @click="addAdminSub">立即提交</el-button>
             </div>
         </el-dialog>
+        <!--TODO 编辑界面-->
     </section>
 </template>
 
 <script>
     import moment from 'moment'
+
     export default {
         data() {
             return {
+                /*列表*/
                 AdminList: [],
-                addAdmin: false,
+
+                /*新增页面*/
+                addDisabled: true,
+                addAdminVisible: false,
                 addAdminForm: {
                     name: '',
                     phone: '',
                     email: '',
                 },
+                addAdminRules: {
+                    name: [{required: true, message: '请输入姓名', trigger: 'blur'}]
+                },
+                /*新增界面的下拉框*/
                 selectAdminGroup: '',
                 formLabelWidth: '120px',
-                options: []
+                options: [],
+                /*分页*/
+                currentPage: 1,
+                total: 0,
+                pageNum: 1,
+                /*编辑*/
+                modifyDisabled: true,
+                /*权限管理*/
+                manageDisabled: true,
+                /*删除*/
+                deleteDisabled: true,
             }
         },
         methods: {
-            addAdminSub(){
-                this.$DB.Admin.Admin({
-                    name: this.addAdminForm.name,
-                    phone: this.addAdminForm.phone,
-                    email: this.addAdminForm.email,
-                    adminGroupId: ''
+            /*获取列表信息*/
+            getList() {
+                this.$DB.Admin.list({
+                    pageNum: this.pageNum,
+                    pageSize: '10'
                 }).then(result => {
-                    let newAdd = Object.assign({}, result, {createTime:
-                        moment(result.createTime).format('YYYY-MM-DD HH:mm:ss')});
-                    this.AdminList.push(newAdd);
-                    this.addAdmin = false;
-                    this.$message({
-                        type: 'success',
-                        message: '添加成功'
+                    /*权限判断，实现按钮是否可执行。*/
+                    if (result.operates.includes("添加")) {
+                        this.addDisabled = false;
+                    }
+                    if (result.operates.includes("删除")) {
+                        this.deleteDisabled = false;
+                    }
+                    if (result.operates.includes("修改")) {
+                        this.modifyDisabled = false;
+                    }
+                    if (result.operates.includes("权限管理")) {
+                        this.manageDisabled = false;
+                    }
+                    /*工具栏，分页*/
+                    this.total = result.total;
+                    /*列表展示，时间格式转换 */
+                    this.AdminList = result.pageList.map(item => {
+                        return Object.assign({}, item, {
+                            createTime: moment(item.createTime).format('YYYY-MM-DD HH:mm:ss'),
+                            updateTime: moment(item.updateTime).format('YYYY-MM-DD HH:mm:ss')
+                        });
                     });
                 }, data => {
-                    if(data.code === 3301){
-                        this.$message({
-                            type: 'warning',
-                            message: data.msg
-                        });
-                    }
+                    console.log('失败', data)
                 });
             },
-            adminList(){
-
-            },
-            addAdminReset(){
+            /*重置*/
+            AdminReset() {
                 this.addAdminForm = '';
             },
-            deleted(index,row) {
-                this.$confirm('确定做删除操作吗?', '提示信息', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                    type: 'warning'
-                }).then(() => {
-                    $.ajax({
-                        url: "/ttl-web-systemttl-web-system/AdminGroup/"+row[index].id,
-                        type: "DELETE",
-                        data: {},
-                        success: function(result){
-                            row.splice(index, 1);
-                        },
-                        error: function(data){
-                            if(data.code == 3302){
-                                this.$message({
-                                    type: 'warning',
-                                    message: data.msg
-                                });
-                            }
-                        }
-                    });
-                    this.$message({
-                        type: 'success',
-                        message: '删除成功!'
-                    });
-                }).catch(() => {
-                    this.$message({
-                        type: 'info',
-                        message: '已取消删除'
-                    });
-                });
-                /*this.$DB.AdminGroup.deleted({
-                     row[index].id
-                }).then(result => {
-                    console.log(resule);
-                }, data => {
-                    /!*code=3302对不起你没有相应的权限*!/
-                    this.$message({
-                        type: 'warning',
-                        message: data.msg
-                    });
-                });*/
+            /*显示新增管理员对话框页面*/
+            addAdmin() {
+                this.addAdminVisible = true;
             },
+            /*新增*/
+            addAdminSub() {
+
+            },
+            /*显示编辑对话框*/
             modify() {
 
             },
-            manage() {
-
-            }
+            /*分页跳转到输入的页面*/
+            handleCurrentChange(val) {
+                this.pageNum = val;
+                this.getList();
+            },
         },
         mounted() {
-            this.$DB.Admin.list({
-                pageNum: '1',
-                pageSize: '30'
-            }).then(result => {
-                this.AdminList = result.pageList.map(item=> {
-                    return Object.assign({}, item, {createTime: moment(item.createTime).format('YYYY-MM-DD HH:mm:ss')});
-                });
-            }, data => {
-                console.log('失败', data)
-            });
-            this.$DB.AdminGroup.list({
-            }).then(result => {
-                this.option = result.pageList.map(item => { return item})
-            },data => {
-                console.log(data)
-            })
+            this.getList();
         },
     }
 </script>

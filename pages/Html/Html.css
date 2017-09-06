@@ -1,3 +1,12 @@
 .el-form-item.is-required .el-form-item__label:before{
 	content: '';
 }
+h2{
+	font-size: 14px;
+}
+/*input[type=checkbox] {
+	display: none;
+}*/
+li{
+	list-style: none;
+}

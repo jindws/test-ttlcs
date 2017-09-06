@@ -48,6 +48,11 @@ DBF.create('AdminGroup', {
     modify: {
         url       : '/AdminGroup/{id}',
         method    : 'PUT'
+    },
+    /*权限列表*/
+    manage: {
+        url       : '/AdminGroup/manage/{adminGroupId}',
+        method   : 'GET'
     }
 });
 /*管理员*/

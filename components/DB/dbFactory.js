@@ -29,7 +29,6 @@ function Request(config,body) {
     let {url,method = ''} = config;
 
     const needReply = url.indexOf('{');
-    /*const finishReply = url.indexOf('}');*/
     if(needReply !== -1){
         url = url.substring(0,needReply)+body[url.substring(needReply+1,url.length-1)];
     }
