@@ -27,21 +27,30 @@ DBF.create('OperateLog', {
         method    : 'GET'
     }
 });
-
+/*管理组*/
 DBF.create('AdminGroup', {
-    AdminGroup: {
+    /*增加管理组*/
+    add: {
         url       : '/AdminGroup',
         method    : 'POST'
     },
+    /*管理组列表*/
     list: {
         url       : '/AdminGroup/list',
         method    : 'GET'
     },
+    /*删除管理组*/
     deleted: {
         url       : '/AdminGroup/{id}',
         method    : 'DELETE'
+    },
+    /*修改管理员组，权限管理*/
+    modify: {
+        url       : '/AdminGroup/{id}?',
+        method    : 'PUT'
     }
 });
+/*管理员*/
 DBF.create('Admin', {
     Admin: {
         url       : '/Admin',

@@ -25,7 +25,6 @@
                 await this.setMenus(re)
                 this.select(0);
             }, async data => {
-                console.log('失败', data)
                 if (data.code == 3304) {
                     window.location.href = '#/login';
                 }

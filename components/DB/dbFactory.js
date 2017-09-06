@@ -30,9 +30,8 @@ function Request(config,body) {
 
     const needReply = url.indexOf('{');
     if(needReply !== -1){
-        url = url.substring(0,needReply)+body[url.substring(needReply+1,url.length-1)]
+        url = url.substring(0,needReply)+body[url.substring(needReply+1,url.length-1)];
     }
-
     const option = {
       // credentials: 'same-origin',
       credentials: 'include',
@@ -53,6 +52,7 @@ function Request(config,body) {
 
     return new Promise((resolve, reject) => {
         const Head = __PRO__?'/ttl-web-system':'/ttl-web-systemttl-web-system';//__PRO__===true 表示线上环境
+        /*const Head = 'ttl-web-system';*/
         fetch(Head+url,option).then(data => data.json()).then(({code,data,...err}) => {
             if (code == 0) {
                 /*成功*/
