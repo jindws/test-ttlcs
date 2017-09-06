@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bfebb432-b297-4f0f-bbe2-b470115f4143" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/DB/dbFactory.js" afterPath="$PROJECT_DIR$/components/DB/dbFactory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/DB/index.js" afterPath="$PROJECT_DIR$/components/DB/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Html/AdminController/AdminController.vue" afterPath="$PROJECT_DIR$/pages/Html/AdminController/AdminController.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.css" afterPath="$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.vue" afterPath="$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Html/AdminGroupController/index.js" afterPath="$PROJECT_DIR$/pages/Html/AdminGroupController/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Html/Html.css" afterPath="$PROJECT_DIR$/pages/Html/Html.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Main/main.css" afterPath="$PROJECT_DIR$/pages/Main/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app.js" afterPath="$PROJECT_DIR$/src/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/base.css" afterPath="$PROJECT_DIR$/src/base.css" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -27,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AdminController.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AdminController.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/Html/AdminController/AdminController.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="10" column="64" lean-forward="false" selection-start-line="10" selection-start-column="64" selection-end-line="10" selection-end-column="64" />
+            <state relative-caret-position="338">
+              <caret line="82" column="85" lean-forward="false" selection-start-line="82" selection-start-column="85" selection-end-line="82" selection-end-column="85" />
               <folding>
                 <element signature="n#style#0;n#el-table#0;n#section#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#el-pagination#0;n#section#0;n#template#0;n#!!top" expanded="true" />
@@ -40,15 +30,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminGroupController.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AdminGroupController.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="218" column="22" lean-forward="false" selection-start-line="218" selection-start-column="20" selection-end-line="218" selection-end-column="1358" />
+            <state relative-caret-position="149">
+              <caret line="55" column="73" lean-forward="false" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="73" />
               <folding>
                 <element signature="n#style#0;n#el-table#0;n#section#0;n#section#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#el-pagination#0;n#section#0;n#section#0;n#template#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Login.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/Login/Login.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="27" column="24" lean-forward="true" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -110,16 +110,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/Main/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="650">
-              <caret line="25" column="1" lean-forward="false" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="base.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/base.css">
           <provider selected="true" editor-type-id="text-editor">
@@ -169,6 +159,7 @@
       <find>selectAdminGroup</find>
       <find>adminList</find>
       <find>formLabelWidth</find>
+      <find>model</find>
     </findStrings>
     <replaceStrings>
       <replace>addAdmin</replace>
@@ -204,8 +195,8 @@
         <option value="$PROJECT_DIR$/pages/Html/Html.css" />
         <option value="$PROJECT_DIR$/components/DB/index.js" />
         <option value="$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.css" />
-        <option value="$PROJECT_DIR$/pages/Html/AdminController/AdminController.vue" />
         <option value="$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.vue" />
+        <option value="$PROJECT_DIR$/pages/Html/AdminController/AdminController.vue" />
       </list>
     </option>
   </component>
@@ -291,13 +282,6 @@
               <item name="ttlcsystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="ttlcsystem" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="Html" type="462c0819:PsiDirectoryNode" />
-              <item name="AdminGroupController" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ttlcsystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ttlcsystem" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="Index" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -353,7 +337,7 @@
       <workItem from="1504417049026" duration="8975000" />
       <workItem from="1504573823665" duration="29429000" />
       <workItem from="1504659167651" duration="27096000" />
-      <workItem from="1504699749714" duration="3985000" />
+      <workItem from="1504699749714" duration="6508000" />
     </task>
     <task id="LOCAL-00001" summary="layer">
       <created>1503819308462</created>
@@ -366,7 +350,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81210000" />
+    <option name="totallyTimeSpent" value="83733000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -735,25 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/Login/Login.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/Html/AdminController/AdminController.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="10" column="64" lean-forward="false" selection-start-line="10" selection-start-column="64" selection-end-line="10" selection-end-column="64" />
-          <folding>
-            <element signature="n#style#0;n#el-table#0;n#section#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#el-pagination#0;n#section#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/Index/Index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="668">
@@ -764,13 +729,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pages/Login/Login.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="27" column="24" lean-forward="true" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="218" column="22" lean-forward="false" selection-start-line="218" selection-start-column="20" selection-end-line="218" selection-end-column="1358" />
+        <state relative-caret-position="149">
+          <caret line="55" column="73" lean-forward="false" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="73" />
           <folding>
             <element signature="n#style#0;n#el-table#0;n#section#0;n#section#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#el-pagination#0;n#section#0;n#section#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/Html/AdminController/AdminController.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="82" column="85" lean-forward="false" selection-start-line="82" selection-start-column="85" selection-end-line="82" selection-end-column="85" />
+          <folding>
+            <element signature="n#style#0;n#el-table#0;n#section#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-pagination#0;n#section#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

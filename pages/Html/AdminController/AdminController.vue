@@ -11,7 +11,7 @@
             <el-table-column prop="adminGroupName" label="所属管理组"></el-table-column>
             <el-table-column prop="createTime" label="添加时间"></el-table-column>
             <el-table-column prop="updateTime" label="更新时间"></el-table-column>
-            <el-table-column prop="operates" label="操作">
+            <el-table-column prop="operates" label="操作" width="250">
                 <template scope="scope">
                     <el-button type="danger" @click="deleted(scope.$index, scope.row)"
                                size="small" :disabled="deleteDisabled">删除
@@ -33,13 +33,13 @@
         <!--新增界面-->
         <el-dialog title="添加管理员" :visible.sync="addAdminVisible" :close-on-click-modal="false">
             <el-form :model="addAdminForm" :rules="addAdminRules" ref="addAdminForm">
-                <el-form-item label="姓名" prop="name">
+                <el-form-item label="姓名" prop="name" :label-width="formLabelWidth">
                     <el-input v-model="addAdminForm.name" auto-complete="off" placeholder="请输入姓名"></el-input>
                 </el-form-item>
-                <el-form-item label="手机" prop="phone">
+                <el-form-item label="手机" prop="phone" :label-width="formLabelWidth">
                     <el-input v-model="addAdminForm.phone" auto-complete="off" placeholder="请输入手机号码"></el-input>
                 </el-form-item>
-                <el-form-item label="邮箱" prop="emailo">
+                <el-form-item label="邮箱" prop="email" :label-width="formLabelWidth">
                     <el-input v-model="addAdminForm.email" auto-complete="off" placeholder="请输入邮箱"></el-input>
                 </el-form-item>
                 <el-form-item label="所属管理组" prop="select">
@@ -76,7 +76,12 @@
                     email: '',
                 },
                 addAdminRules: {
-                    name: [{required: true, message: '请输入姓名', trigger: 'blur'}]
+                    name: [{required: true, message: '请输入姓名', trigger: 'blur'}],
+                    phone: [{required: true, message: '请输入手机号码', trigger: 'blur'}],
+                    email: [
+                        {required: true, message: '', trigger: 'blur'},
+                        {type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur,change'}
+                        ]
                 },
                 /*新增界面的下拉框*/
                 selectAdminGroup: '',
@@ -129,7 +134,11 @@
             },
             /*重置*/
             AdminReset() {
-                this.addAdminForm = '';
+                this.addAdminForm = {
+                    name: '',
+                    phone: '',
+                    email: ''
+                };
             },
             /*显示新增管理员对话框页面*/
             addAdmin() {
