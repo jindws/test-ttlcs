@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c58f0a5b-ba71-4e49-8281-68952633710e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="bfebb432-b297-4f0f-bbe2-b470115f4143" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/DB/dbFactory.js" afterPath="$PROJECT_DIR$/components/DB/dbFactory.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/DB/index.js" afterPath="$PROJECT_DIR$/components/DB/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.vue" afterPath="$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Index/Index.vue" afterPath="$PROJECT_DIR$/pages/Index/Index.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Index/index.css" afterPath="$PROJECT_DIR$/pages/Index/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/base.css" afterPath="$PROJECT_DIR$/src/base.css" />
     </list>
-    <ignored path="$PROJECT_DIR$/.tmp/" />
-    <ignored path="$PROJECT_DIR$/temp/" />
-    <ignored path="$PROJECT_DIR$/tmp/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,11 +27,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminGroupController.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AdminGroupController.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="221" column="39" lean-forward="true" selection-start-line="221" selection-start-column="39" selection-end-line="221" selection-end-column="39" />
+            <state relative-caret-position="526">
+              <caret line="230" column="28" lean-forward="false" selection-start-line="230" selection-start-column="28" selection-end-line="230" selection-end-column="28" />
               <folding>
                 <element signature="n#style#0;n#el-table#0;n#section#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#el-pagination#0;n#section#0;n#template#0;n#!!top" expanded="true" />
@@ -71,7 +64,7 @@
         <entry file="file://$PROJECT_DIR$/components/DB/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="479">
-              <caret line="48" column="38" lean-forward="false" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+              <caret line="48" column="37" lean-forward="false" selection-start-line="48" selection-start-column="37" selection-end-line="48" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -97,11 +90,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dbFactory.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dbFactory.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/DB/dbFactory.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="30" column="39" lean-forward="false" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+            <state relative-caret-position="505">
+              <caret line="35" column="20" lean-forward="true" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -177,9 +170,9 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/app.js" />
         <option value="$PROJECT_DIR$/pages/Html/Html.css" />
+        <option value="$PROJECT_DIR$/pages/Index/Index.vue" />
         <option value="$PROJECT_DIR$/components/DB/index.js" />
         <option value="$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.vue" />
-        <option value="$PROJECT_DIR$/pages/Index/Index.vue" />
         <option value="$PROJECT_DIR$/components/DB/dbFactory.js" />
       </list>
     </option>
@@ -201,12 +194,6 @@
   </component>
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="159" />
-    <option name="y" value="480" />
-    <option name="width" value="1689" />
-    <option name="height" value="602" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -250,12 +237,6 @@
               <item name="ttlcsystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="ttlcsystem" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ttlcsystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ttlcsystem" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="Index" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ttlcsystem" type="b2602c69:ProjectViewProjectNode" />
@@ -307,7 +288,7 @@
       <workItem from="1503812125446" duration="7144000" />
       <workItem from="1504417049026" duration="8975000" />
       <workItem from="1504573823665" duration="29429000" />
-      <workItem from="1504659167651" duration="12389000" />
+      <workItem from="1504659167651" duration="14317000" />
     </task>
     <task id="LOCAL-00001" summary="layer">
       <created>1503819308462</created>
@@ -320,7 +301,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62518000" />
+    <option name="totallyTimeSpent" value="64446000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -348,16 +329,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
-      <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
-      </list>
-    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -705,14 +676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/DB/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="48" column="38" lean-forward="false" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/Index/Index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
@@ -723,22 +686,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/components/DB/dbFactory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="35" column="20" lean-forward="true" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/DB/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="48" column="37" lean-forward="false" selection-start-line="48" selection-start-column="37" selection-end-line="48" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="221" column="39" lean-forward="true" selection-start-line="221" selection-start-column="39" selection-end-line="221" selection-end-column="39" />
+        <state relative-caret-position="526">
+          <caret line="230" column="28" lean-forward="false" selection-start-line="230" selection-start-column="28" selection-end-line="230" selection-end-column="28" />
           <folding>
             <element signature="n#style#0;n#el-table#0;n#section#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#el-pagination#0;n#section#0;n#template#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/DB/dbFactory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="30" column="39" lean-forward="false" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>

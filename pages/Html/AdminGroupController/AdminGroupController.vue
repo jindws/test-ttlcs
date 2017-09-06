@@ -208,7 +208,7 @@
 
             /*编辑*/
             editAdminGroupSub(){
-                $.ajax({
+                /*$.ajax({
                     url:  "/ttl-web-systemttl-web-system/AdminGroup/"+this.editAdminGroupForm.id+'?name='+this.editAdminGroupForm.name,
                     type: "PUT",
                     async: true,
@@ -217,14 +217,14 @@
                     cache: true,
                     dataType: "json",
                     success: function (result) {
-                        console.log(this.editAdminGroup)
-                        this.editAdminGroup = false;
-                        this.getList();
+                        console.log(result)
+                        /!*this.editAdminGroup = false;
+                        this.getList();*!/
                     },
                     error: function () {
                     }
-                });
-                /*this.$refs.editAdminGroupForm.validate((valid) => {
+                });*/
+                this.$refs.editAdminGroupForm.validate((valid) => {
                     if(valid){
                         this.$DB.AdminGroup.modify({
                             id: this.editAdminGroupForm.id,
@@ -238,7 +238,7 @@
                             });
                         });
                     }
-                });*/
+                });
             },
 
             /*跳转到输入的页面*/

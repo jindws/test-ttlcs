@@ -46,7 +46,7 @@ DBF.create('AdminGroup', {
     },
     /*修改管理员组，权限管理*/
     modify: {
-        url       : '/AdminGroup/{id}?',
+        url       : '/AdminGroup/{id}',
         method    : 'PUT'
     }
 });
