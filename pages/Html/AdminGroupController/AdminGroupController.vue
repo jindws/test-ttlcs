@@ -289,15 +289,14 @@
                 this.$DB.AdminGroup.manage({
                     adminGroupId: row.id
                 }).then(result => {
-                    result.map((item,index) => {
+                    result.map(async (item,index) => {
                         let tree1 = {
                             label: item.module,
                             children: this.submodules(item.submodules)
                         };
-                        this.manageList.push(tree1);
+                        await this.manageList.push(tree1);
                         /*设置选中的节点*/
                         this.$refs.manageList.setCheckedKeys(this.checkedList);
-                        console.log(this.checkedList)
                     });
                 }, data => {
                     console.log(data)
