@@ -37,15 +37,14 @@
                     <el-input v-model="addAdminForm.name" auto-complete="off" placeholder="请输入姓名"></el-input>
                 </el-form-item>
                 <el-form-item label="手机" prop="phone" :label-width="formLabelWidth">
-                    <el-input v-model="addAdminForm.phone" auto-complete="off" placeholder="请输入手机号码"></el-input>
+                    <el-input v-model="addAdminForm.phone" auto-complete="off" placeholder="请输入手机号码" :maxlength="11"></el-input>
                 </el-form-item>
                 <el-form-item label="邮箱" prop="email" :label-width="formLabelWidth">
                     <el-input v-model="addAdminForm.email" auto-complete="off" placeholder="请输入邮箱"></el-input>
                 </el-form-item>
                 <el-form-item label="所属管理组" prop="select" :label-width="formLabelWidth">
                     <el-select v-model="selectAdminGroup" placeholder="请选择管理组" >
-                        <el-option v-for='(item,index) in options' :key="item.id" :label="item"
-                                   :value="index"></el-option>
+                        <el-option v-for='item in options' :label="item.name" :value="item.id"></el-option>
                     </el-select>
                 </el-form-item>
             </el-form>
@@ -83,15 +82,16 @@
                     name: '',
                     phone: '',
                     email: '',
+                    select: ''
                 },
                 addAdminRules: {
                     name: [{required: true, message: '请输入姓名', trigger: 'blur'}],
                     phone: [{validator: phoneValidate, trigger: 'blur'}],
                     email: [
                         {required: true, message: '请输入邮箱', trigger: 'blur'},
-                        {type: 'email', message: '邮箱格式不正确', trigger: 'blur,change'}
+                        {type: 'email', message: '邮箱格式不正确', trigger: 'blur'}
                     ],
-                    select: [{ required: true, message: '请选择所属管理组', trigger: 'change' }
+                    select: [{ required: true, message: '请选择所属管理组', trigger: 'blur' }
                     ],
                 },
                 /*新增界面的下拉框*/
@@ -145,11 +145,7 @@
             },
             /*重置*/
             AdminReset() {
-                this.addAdminForm = {
-                    name: '',
-                    phone: '',
-                    email: ''
-                };
+                this.$refs.addAdminForm.resetFields();
             },
             /*显示新增管理员对话框页面*/
             addAdmin() {
@@ -157,17 +153,19 @@
                 this.$DB.AdminGroup.list({
                 }).then(result => {
                     result.pageList.map(item =>{
-                        console.log(item)
-                        this.options.push(item.name);
+                        let select = {
+                            id: item.id,
+                            name: item.name
+                        };
+                        this.options.push(select);
                     });
                 },data => {
                     console.log('失败',data)
                 });
-                console.log()
             },
             /*新增*/
             addAdminSub() {
-                this.$refs.addAdminForm.validate((valid) => {
+                /*this.$refs.addAdminForm.validate((valid) => {
                     if (valid) {
                         this.$DB.Admin.add({
                             name: this.addAdminForm.name,
@@ -180,7 +178,8 @@
                             console.log('失败',data);
                         })
                     }
-                });
+                });*/
+                console.log(this.selectAdminGroup)
             },
             /*显示编辑对话框*/
             modify() {

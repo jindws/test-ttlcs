@@ -118,6 +118,7 @@
 
                 /*权限列表*/
                 manageList: [],
+                checkedList: [],
                 treeTitle: '',
 
                 /*分页*/
@@ -260,27 +261,25 @@
             /*权限管理树结构的children*/
             submodules(item){    //tree2
                 const result = [];
-                const tree2 = item.map(itm=>{
+                const tree2 = item.map((itm,index)=>{
                     const tree2Object = {
-                        id: itm.ctrlName,
                         label:itm.name,
                         children:this.operate(itm.operate)
                     };
-                    result.push(tree2Object)
+                    result.push(tree2Object);
                 });
                 return result;
             },
             operate(item){     //tree3
-                const result = [];
-                const tree3 = item.map(itm =>{
-                    const tree3Object = {
+                return item.map(itm =>{
+                    if(itm.status){
+                        this.checkedList.push(itm.id);
+                    }
+                    return {
                         label: itm.name,
-                        id: itm.id,
-                        status: itm.status
+                        id: +itm.id
                     };
-                    return result.push(tree3Object);
                 });
-                return result;
             },
             /*权限管理*/
             manage(index, row) {
@@ -290,17 +289,16 @@
                 this.$DB.AdminGroup.manage({
                     adminGroupId: row.id
                 }).then(result => {
-                    /*设置选中的节点*/
-                    /*let checkedId = [2,3];
-                    this.$refs.manageList.setCheckedKeys(checkedId);*/
-                    const manageResult = result.map((item,index) => {
+                    result.map((item,index) => {
                         let tree1 = {
                             label: item.module,
                             children: this.submodules(item.submodules)
                         };
                         this.manageList.push(tree1);
+                        /*设置选中的节点*/
+                        this.$refs.manageList.setCheckedKeys(this.checkedList);
+                        console.log(this.checkedList)
                     });
-                    return manageResult;
                 }, data => {
                     console.log(data)
                 })
