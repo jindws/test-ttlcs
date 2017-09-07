@@ -30,25 +30,19 @@
                            layout="prev, pager, next, jumper" :total="total" style="float:right;margin:20px 10px 0;">
             </el-pagination>
         </section>
-        <!--权限管理界面-->
-        <section :class="{manageBox: isdisplayBox}">
-            <!--权限管理树结构-->
-            <div v-for="(item,index) in manageList" class="manageList">
-                <h2 class="title">【{{item.module}}】</h2>
-                <div>
-                    <ul>
-                        <li>
-                            <input type="checkbox" checked>{{item.module}}
-                            <dl v-for="(item,index2) in manageList[index].submodules">
-                                <input type="checkbox" checked>{{item.name}}
-                                <dd v-for="(item,index3) in manageList[index].submodules[index2].operate">
-                                    <input type="checkbox" checked>{{item.name}}
-                                </dd>
-                            </dl>
-                        </li>
-                    </ul>
-                </div>
+        <!--TODO 权限管理界面-->
+        <section :class="{ manageBox: isdisplayBox }">
+            <div class="treeTitle">
+                权限管理 --- {{treeTitle}}
+                <i class="el-icon-close" @click="manageClose"></i>
             </div>
+            <!--权限管理树结构-->
+            <el-tree :data="manageList" show-checkbox default-expand-all node-key="id"
+                      ref="manageList">
+            </el-tree>
+            <!--权限管理操作-->
+            <el-button type="success" @click="getCheckedKeys">立即提交</el-button>
+            <el-button :plain="true" type="success" @click="">恢复</el-button>
         </section>
         <!--新增界面-->
         <el-dialog title="添加管理员组" :visible.sync="addAdminGroupVisible" :close-on-click-modal="false">
@@ -123,62 +117,9 @@
                 isdisplayBox: true,
 
                 /*权限列表*/
-                manageList: [
-                    /*{
-                        "module": "借款管理",
-                        "submodules": [
-                            {
-                                "ctrlName": "ProjectController",
-                                "htmlName": "Loan_allList",
-                                "operate": [
-                                    {"ctrlMethod": "listAll", "name": "列表", "id": 1, "status": 1},
-                                    {"ctrlMethod": "exportAll", "name": "导出全部", "id": 4, "status": 1},
-                                    {"ctrlMethod": "exportFront", "name": "导出当前", "id": 3, "status": 1},
-                                    {"ctrlMethod": "detailsAll", "name": "详情", "id": 2, "status": 1}],
-                                "name": "所有借款列表",
-                                "statusLen": 4
-                            },
-                            {
-                                "ctrlName": "RealNameController",
-                                "htmlName": "TEST",
-                                "operate": [
-                                    {"ctrlMethod": "getBorrowerInfo", "name": "获取借款人", "id": 247, "status": 1},
-                                    {"ctrlMethod": "updatePend", "name": "修改", "id": 6, "status": 1},
-                                    {"ctrlMethod": "listPend", "name": "列表", "id": 8, "status": 1},
-                                ],
-                                "name": "待提交列表",
-                                "statusLen": 7
-                            }
-                        ]
-                    },
-                    {
-                        "module": "现金管理",
-                        "submodules": [
-                            {
-                                "ctrlName": "ProjectController",
-                                "htmlName": "Loan_allList",
-                                "operate": [
-                                    {"ctrlMethod": "listAll", "name": "列表", "id": 1, "status": 1},
-                                    {"ctrlMethod": "exportAll", "name": "导出全部", "id": 4, "status": 1},
-                                    {"ctrlMethod": "exportFront", "name": "导出当前", "id": 3, "status": 1},
-                                    {"ctrlMethod": "detailsAll", "name": "详情", "id": 2, "status": 1}],
-                                "name": "所有借款列表",
-                                "statusLen": 4
-                            },
-                            {
-                                "ctrlName": "RealNameController",
-                                "htmlName": "TEST",
-                                "operate": [
-                                    {"ctrlMethod": "getBorrowerInfo", "name": "获取借款人", "id": 247, "status": 1},
-                                    {"ctrlMethod": "updatePend", "name": "修改", "id": 6, "status": 1},
-                                    {"ctrlMethod": "listPend", "name": "列表", "id": 8, "status": 1},
-                                ],
-                                "name": "待提交列表",
-                                "statusLen": 7
-                            }
-                        ]
-                    }*/
-                ],
+                manageList: [],
+                treeTitle: '',
+
                 /*分页*/
                 currentPage: 1,
                 total: 0,
@@ -216,7 +157,9 @@
                     });
                 }, data => {
                     console.log('失败', data)
-                    /*var a = {"code":0,"msg":"操作成功","data":{"total":11,"operates":["列表","添加","删除","修改","权限修改","权限管理"],"pageSize":10,"pageList":[{"id":7,"name":"88","fatherId":1,"createId":1,"updateId":1,"createTime":1504347791000,"updateTime":1504347791000},{"id":49,"name":"test","fatherId":1,"createId":1,"updateId":1,"createTime":1504576277000,"updateTime":1504576277000},{"id":52,"name":"yayayyay","fatherId":1,"createId":1,"updateId":1,"createTime":1504607642000,"updateTime":1504609744000},{"id":55,"name":"weisha ","fatherId":1,"createId":1,"updateId":1,"createTime":1504610435000,"updateTime":1504610435000},{"id":61,"name":"777777","fatherId":1,"createId":1,"updateId":1,"createTime":1504662907000,"updateTime":1504667282000},{"id":62,"name":"巍峨剩余费用会是","fatherId":1,"createId":1,"updateId":1,"createTime":1504667575000,"updateTime":1504667575000},{"id":63,"name":"为u由于该","fatherId":1,"createId":1,"updateId":1,"createTime":1504667790000,"updateTime":1504667790000},{"id":64,"name":"hhhhhh对对对","fatherId":1,"createId":1,"updateId":1,"createTime":1504667974000,"updateTime":1504677265000},{"id":67,"name":"546546","fatherId":1,"createId":1,"updateId":1,"createTime":1504677858000,"updateTime":1504684347000},{"id":68,"name":"656565656566","fatherId":1,"createId":1,"updateId":1,"createTime":1504685480000,"updateTime":1504685480000}],"pageNum":1}};*/
+                    if (data.code == 3304) {
+                        window.location.href = '#/login';
+                    }
                 })
             },
             /*重置*/
@@ -314,20 +257,63 @@
                 this.pageNum = val;
                 this.getList();
             },
-
+            /*权限管理树结构的children*/
+            submodules(item){    //tree2
+                const result = [];
+                const tree2 = item.map(itm=>{
+                    const tree2Object = {
+                        id: itm.ctrlName,
+                        label:itm.name,
+                        children:this.operate(itm.operate)
+                    };
+                    result.push(tree2Object)
+                });
+                return result;
+            },
+            operate(item){     //tree3
+                const result = [];
+                const tree3 = item.map(itm =>{
+                    const tree3Object = {
+                        label: itm.name,
+                        id: itm.id,
+                        status: itm.status
+                    };
+                    return result.push(tree3Object);
+                });
+                return result;
+            },
             /*权限管理*/
             manage(index, row) {
                 this.isdisplayMain = true;
                 this.isdisplayBox = false;
+                this.treeTitle = row.name;
                 this.$DB.AdminGroup.manage({
                     adminGroupId: row.id
                 }).then(result => {
-                    this.manageList = result;
-                    console.log(result)
+                    /*设置选中的节点*/
+                    /*let checkedId = [2,3];
+                    this.$refs.manageList.setCheckedKeys(checkedId);*/
+                    const manageResult = result.map((item,index) => {
+                        let tree1 = {
+                            label: item.module,
+                            children: this.submodules(item.submodules)
+                        };
+                        this.manageList.push(tree1);
+                    });
+                    return manageResult;
                 }, data => {
                     console.log(data)
                 })
             },
+            /*权限管理界面关闭*/
+            manageClose(){
+                this.isdisplayMain = false;
+                this.isdisplayBox = true;
+            },
+            /*获取被选中的节点*/
+            getCheckedKeys(){
+                const getChecked = this.$refs.manageList.getCheckedKeys();
+            }
         },
         mounted() {
             this.getList();

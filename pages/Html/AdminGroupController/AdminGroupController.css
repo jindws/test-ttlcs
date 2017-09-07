@@ -1,18 +1,29 @@
-.AdminGroupController .minBox,.AdminGroupController .manageBox{
+.AdminGroupController .minBox{
 	display: none;
 }
-.AdminGroupController .manageBox > .title{
-	position: relative;
+.AdminGroupController .manageBox{
+	display: none;
+}
+.AdminGroupController .treeTitle{
+	padding: 0 20px 0 20px;
 	height: 42px;
 	line-height: 42px;
-	padding: 0 15px 0 18px;
+	border: 1px solid #e2e2e2;
+	font-size: 14px;
 	color: #333;
-	background-color: #f2f2f2;
+	overflow: hidden;
+	background-color: #F8F8F8;
+	border-radius: 2px 2px 0 0;
+}
+.AdminGroupController .treeTitle .el-icon-close{
+	float: right;
+	line-height: 42px;
+}
+.AdminGroupController .el-icon-close:hover{
 	cursor: pointer;
 }
-.AdminGroupController .manageBox dd,.AdminGroupController .manageBox dl{
-	margin-left: 20px;
-}
-.AdminGroupController .manageList{
-	border: 1px solid;
+.AdminGroupController .el-tree{
+	margin: 20px 0;
+	max-height: 600px;
+	overflow: auto;
 }

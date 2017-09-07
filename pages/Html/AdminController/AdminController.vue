@@ -42,10 +42,10 @@
                 <el-form-item label="邮箱" prop="email" :label-width="formLabelWidth">
                     <el-input v-model="addAdminForm.email" auto-complete="off" placeholder="请输入邮箱"></el-input>
                 </el-form-item>
-                <el-form-item label="所属管理组" prop="select">
-                    <el-select v-model="selectAdminGroup" placeholder="请选择管理组">
-                        <el-option v-for='item in options' :key="item.id" :label="item.name"
-                                   :value="item.id"></el-option>
+                <el-form-item label="所属管理组" prop="select" :label-width="formLabelWidth">
+                    <el-select v-model="selectAdminGroup" placeholder="请选择管理组" >
+                        <el-option v-for='(item,index) in options' :key="item.id" :label="item"
+                                   :value="index"></el-option>
                     </el-select>
                 </el-form-item>
             </el-form>
@@ -63,6 +63,15 @@
 
     export default {
         data() {
+            let phoneValidate = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('请输入手机号码'));
+                } else if (!/^1[345678]\d{9}$/.test(value)) {
+                    callback(new Error('手机号码格式不正确'));
+                } else {
+                    callback();
+                }
+            };
             return {
                 /*列表*/
                 AdminList: [],
@@ -77,11 +86,13 @@
                 },
                 addAdminRules: {
                     name: [{required: true, message: '请输入姓名', trigger: 'blur'}],
-                    phone: [{required: true, message: '请输入手机号码', trigger: 'blur'}],
+                    phone: [{validator: phoneValidate, trigger: 'blur'}],
                     email: [
-                        {required: true, message: '', trigger: 'blur'},
-                        {type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur,change'}
-                        ]
+                        {required: true, message: '请输入邮箱', trigger: 'blur'},
+                        {type: 'email', message: '邮箱格式不正确', trigger: 'blur,change'}
+                    ],
+                    select: [{ required: true, message: '请选择所属管理组', trigger: 'change' }
+                    ],
                 },
                 /*新增界面的下拉框*/
                 selectAdminGroup: '',
@@ -143,10 +154,33 @@
             /*显示新增管理员对话框页面*/
             addAdmin() {
                 this.addAdminVisible = true;
+                this.$DB.AdminGroup.list({
+                }).then(result => {
+                    result.pageList.map(item =>{
+                        console.log(item)
+                        this.options.push(item.name);
+                    });
+                },data => {
+                    console.log('失败',data)
+                });
+                console.log()
             },
             /*新增*/
             addAdminSub() {
-
+                this.$refs.addAdminForm.validate((valid) => {
+                    if (valid) {
+                        this.$DB.Admin.add({
+                            name: this.addAdminForm.name,
+                            phone: this.addAdminForm.phone,
+                            email: this.addAdminForm.email,
+                            adminGroupId: this.item.id
+                        }).then(result => {
+                            console.log('成功',result);
+                        },data => {
+                            console.log('失败',data);
+                        })
+                    }
+                });
             },
             /*显示编辑对话框*/
             modify() {

@@ -1,7 +1,7 @@
 import DBF from './dbFactory'
 
 export default DBF.context
-
+/*隐藏权限：登录，上传图片等*/
 DBF.create('HidePermission', {
     applyIpWhiteList: {
         url       : '/HidePermission/applyIpWhiteList',
@@ -27,7 +27,7 @@ DBF.create('OperateLog', {
         method    : 'GET'
     }
 });
-/*管理组*/
+/*系统管理：管理组*/
 DBF.create('AdminGroup', {
     /*增加管理组*/
     add: {
@@ -44,7 +44,7 @@ DBF.create('AdminGroup', {
         url       : '/AdminGroup/{id}',
         method    : 'DELETE'
     },
-    /*修改管理员组，权限管理*/
+    /*修改管理员组，管理员组重命名*/
     modify: {
         url       : '/AdminGroup/{id}',
         method    : 'PUT'
@@ -52,17 +52,29 @@ DBF.create('AdminGroup', {
     /*权限列表*/
     manage: {
         url       : '/AdminGroup/manage/{adminGroupId}',
-        method   : 'GET'
+        method    : 'GET'
+    },
+    /*修改权限*/
+    modifyManage: {
+        url       : '/AdminGroup/updatePermission/{adminGroupId}',
+        method    : 'PUT'
     }
 });
-/*管理员*/
+/*系统管理：管理员*/
 DBF.create('Admin', {
-    Admin: {
+    /*增加管理员*/
+    add: {
         url       : '/Admin',
         method    : 'POST'
     },
+    /*子管理员列表*/
     list: {
         url       : '/Admin/list',
         method    : 'GET'
+    },
+    /*编辑管理员*/
+    modify: {
+        url       : '/Admin/{id}',
+        method    : 'PUT'
     }
 });
