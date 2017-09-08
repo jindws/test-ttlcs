@@ -36,8 +36,8 @@
                 权限管理 --- {{treeTitle}}
                 <i class="el-icon-close" @click="manageClose"></i>
             </div>
-            <!--权限管理树结构default-expand-all-->
-            <el-tree :data="manageList" show-checkbox  node-key="id"
+            <!--权限管理树结构-->
+            <el-tree :data="manageList" show-checkbox default-expand-all node-key="id"
                       ref="manageList">
             </el-tree>
             <!--权限管理操作-->
@@ -312,6 +312,7 @@
             manageClose(){
                 this.isdisplayMain = false;
                 this.isdisplayBox = true;
+                this.manageList = [];
             },
             /*权限修改提交*/
             getCheckedKeys(){

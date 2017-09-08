@@ -13,14 +13,8 @@
             <el-table-column prop="updateTime" label="更新时间"></el-table-column>
             <el-table-column prop="operates" label="操作" width="250">
                 <template scope="scope">
-                    <el-button type="danger" @click="deleted(scope.$index, scope.row)"
-                               size="small" :disabled="deleteDisabled">删除
-                    </el-button>
                     <el-button type="info" @click="modify(scope.$index, scope.row)" size="small"
                                :disabled="modifyDisabled">编辑
-                    </el-button>
-                    <el-button type="warning" @click="manage(scope.$index, scope.row)" size="small"
-                               :disabled="manageDisabled">权限管理
                     </el-button>
                 </template>
             </el-table-column>
@@ -31,7 +25,7 @@
                        layout="prev, pager, next, jumper" :total="total" style="float:right;margin:20px 10px 0;">
         </el-pagination>
         <!--新增界面-->
-        <el-dialog title="添加管理员" :visible.sync="addAdminVisible" :close-on-click-modal="false">
+        <el-dialog title="添加管理员" :visible.sync="addAdminVisible" :close-on-click-modal="false" @close="closeAddAdmin">
             <el-form :model="addAdminForm" :rules="addAdminRules" ref="addAdminForm">
                 <el-form-item label="姓名" prop="name" :label-width="formLabelWidth">
                     <el-input v-model="addAdminForm.name" auto-complete="off" placeholder="请输入姓名"></el-input>
@@ -44,7 +38,8 @@
                 </el-form-item>
                 <el-form-item label="所属管理组" prop="select" :label-width="formLabelWidth">
                     <el-select v-model="selectAdminGroup" placeholder="请选择管理组" >
-                        <el-option v-for='item in options' :label="item.name" :value="item.id"></el-option>
+                        <el-option v-for='item in options' :label="item.name" :value="item.id"
+                                   :key="item.id"></el-option>
                     </el-select>
                 </el-form-item>
             </el-form>
@@ -54,6 +49,29 @@
             </div>
         </el-dialog>
         <!--TODO 编辑界面-->
+        <!--<el-dialog title="添加管理员" :visible.sync="addAdminVisible" :close-on-click-modal="false">
+            <el-form :model="addAdminForm" :rules="addAdminRules" ref="addAdminForm">
+                <el-form-item label="姓名" prop="name" :label-width="formLabelWidth">
+                    <el-input v-model="addAdminForm.name" auto-complete="off" placeholder="请输入姓名"></el-input>
+                </el-form-item>
+                <el-form-item label="手机" prop="phone" :label-width="formLabelWidth">
+                    <el-input v-model="addAdminForm.phone" auto-complete="off" placeholder="请输入手机号码" :maxlength="11"></el-input>
+                </el-form-item>
+                <el-form-item label="邮箱" prop="email" :label-width="formLabelWidth">
+                    <el-input v-model="addAdminForm.email" auto-complete="off" placeholder="请输入邮箱"></el-input>
+                </el-form-item>
+                <el-form-item label="所属管理组" prop="select" :label-width="formLabelWidth">
+                    <el-select v-model="addAdminForm.select" placeholder="请选择管理组" >
+                        <el-option v-for='item in options' :label="item.name" :value="item.id"
+                                   :key="item.id"></el-option>
+                    </el-select>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="AdminReset">重置</el-button>
+                <el-button type="success" @click="addAdminSub">立即提交</el-button>
+            </div>
+        </el-dialog>-->
     </section>
 </template>
 
@@ -91,7 +109,8 @@
                         {required: true, message: '请输入邮箱', trigger: 'blur'},
                         {type: 'email', message: '邮箱格式不正确', trigger: 'blur'}
                     ],
-                    select: [{ required: true, message: '请选择所属管理组', trigger: 'blur' }
+                    select: [
+                        {required: true, message: '请选择所属管理组', trigger: 'blur', type: 'number'}
                     ],
                 },
                 /*新增界面的下拉框*/
@@ -104,10 +123,6 @@
                 pageNum: 1,
                 /*编辑*/
                 modifyDisabled: true,
-                /*权限管理*/
-                manageDisabled: true,
-                /*删除*/
-                deleteDisabled: true,
             }
         },
         methods: {
@@ -150,6 +165,7 @@
             /*显示新增管理员对话框页面*/
             addAdmin() {
                 this.addAdminVisible = true;
+                /*所属管理组列表*/
                 this.$DB.AdminGroup.list({
                 }).then(result => {
                     result.pageList.map(item =>{
@@ -165,21 +181,33 @@
             },
             /*新增*/
             addAdminSub() {
-                /*this.$refs.addAdminForm.validate((valid) => {
+                this.$refs.addAdminForm.validate((valid) => {
                     if (valid) {
                         this.$DB.Admin.add({
                             name: this.addAdminForm.name,
                             phone: this.addAdminForm.phone,
                             email: this.addAdminForm.email,
-                            adminGroupId: this.item.id
+                            adminGroupId: this.selectAdminGroup
                         }).then(result => {
-                            console.log('成功',result);
-                        },data => {
-                            console.log('失败',data);
-                        })
+                            this.getList();
+                            this.addAdminVisible = false;
+                            this.$message({
+                                type: 'success',
+                                message: '添加成功'
+                            });
+                        }, data => {
+                            this.$message({
+                                type: 'warning',
+                                message: data.msg
+                            });
+                        });
                     }
-                });*/
-                console.log(this.selectAdminGroup)
+                });
+            },
+            /*关闭新增对话框*/
+            closeAddAdmin(){
+                this.options = [];
+                this.AdminReset();
             },
             /*显示编辑对话框*/
             modify() {
