@@ -38,8 +38,7 @@
                 </el-form-item>
                 <el-form-item label="所属管理组" prop="select" :label-width="formLabelWidth">
                     <el-select v-model="selectAdminGroup" placeholder="请选择管理组" >
-                        <el-option v-for='item in options' :label="item.name" :value="item.id"
-                                   :key="item.id"></el-option>
+                        <el-option v-for='(item,index) in options' :label="item.name" :value="item.id" :key='index'></el-option>
                     </el-select>
                 </el-form-item>
             </el-form>
@@ -110,7 +109,7 @@
                         {type: 'email', message: '邮箱格式不正确', trigger: 'blur'}
                     ],
                     select: [
-                        {required: true, message: '请选择所属管理组', trigger: 'blur', type: 'number'}
+                        {required: true, message: '请选择所属管理组', trigger: 'blur'}
                     ],
                 },
                 /*新增界面的下拉框*/
