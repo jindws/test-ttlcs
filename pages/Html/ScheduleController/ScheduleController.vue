@@ -54,9 +54,9 @@ export default {
         children:this.submodules(itm.submodules)
       };
       await this.list.push(it)
-      console.log(this.checkedLists)
       this.$refs.tree.setCheckedKeys(this.checkedLists)
     })
+      console.log(this.list)
   }
 }
 </script>

@@ -36,13 +36,13 @@
                 权限管理 --- {{treeTitle}}
                 <i class="el-icon-close" @click="manageClose"></i>
             </div>
-            <!--权限管理树结构-->
-            <el-tree :data="manageList" show-checkbox default-expand-all node-key="id"
+            <!--权限管理树结构default-expand-all-->
+            <el-tree :data="manageList" show-checkbox  node-key="id"
                       ref="manageList">
             </el-tree>
             <!--权限管理操作-->
             <el-button type="success" @click="getCheckedKeys">立即提交</el-button>
-            <el-button :plain="true" type="success" @click="">恢复</el-button>
+            <el-button :plain="true" type="success" @click="manageReset">恢复</el-button>
         </section>
         <!--新增界面-->
         <el-dialog title="添加管理员组" :visible.sync="addAdminGroupVisible" :close-on-click-modal="false">
@@ -115,6 +115,7 @@
                 manageDisabled: true,
                 isdisplayMain: false,
                 isdisplayBox: true,
+                groupId: '',
 
                 /*权限列表*/
                 manageList: [],
@@ -271,29 +272,34 @@
                 return result;
             },
             operate(item){     //tree3
-                return item.map(itm =>{
+                const result = [];
+                const tree3 = item.map(itm =>{
                     if(itm.status){
                         this.checkedList.push(itm.id);
                     }
-                    return {
+                    const tree3Object = {
                         label: itm.name,
-                        id: +itm.id
+                        id: itm.id,
                     };
+                    result.push(tree3Object)
                 });
+                return result;
             },
             /*权限管理*/
             manage(index, row) {
                 this.isdisplayMain = true;
                 this.isdisplayBox = false;
                 this.treeTitle = row.name;
+                this.groupId = row.id;
                 this.$DB.AdminGroup.manage({
-                    adminGroupId: row.id
+                    adminGroupId: this.groupId
                 }).then(result => {
                     result.map(async (item,index) => {
                         let tree1 = {
                             label: item.module,
                             children: this.submodules(item.submodules)
                         };
+                        /*只有在async方法里面才能使用await操作符。等待push之后再设置选中的节点*/
                         await this.manageList.push(tree1);
                         /*设置选中的节点*/
                         this.$refs.manageList.setCheckedKeys(this.checkedList);
@@ -307,9 +313,27 @@
                 this.isdisplayMain = false;
                 this.isdisplayBox = true;
             },
-            /*获取被选中的节点*/
+            /*权限修改提交*/
             getCheckedKeys(){
+                /*获取被选中的节点*/
                 const getChecked = this.$refs.manageList.getCheckedKeys();
+                this.$DB.AdminGroup.modifyManage({
+                    adminGroupId: this.groupId,
+                    permissionIds: getChecked,
+                }).then(result => {
+                    this.checkedList = getChecked;
+                    this.$message({
+                        showClose: true,
+                        message: '权限更新成功',
+                        type: 'success'
+                    });
+                },data => {
+                    console.log('失败',data);
+                })
+            },
+            /*恢复页面*/
+            manageReset(){
+                this.$refs.manageList.setCheckedKeys(this.checkedList);
             }
         },
         mounted() {

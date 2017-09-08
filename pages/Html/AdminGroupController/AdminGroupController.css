@@ -24,6 +24,6 @@
 }
 .AdminGroupController .el-tree{
 	margin: 20px 0;
-	max-height: 600px;
+	max-height: 500px;
 	overflow: auto;
 }
