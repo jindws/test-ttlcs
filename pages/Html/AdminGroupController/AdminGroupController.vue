@@ -30,7 +30,7 @@
                            layout="prev, pager, next, jumper" :total="total" style="float:right;margin:20px 10px 0;">
             </el-pagination>
         </section>
-        <!--TODO 权限管理界面-->
+        <!--权限管理界面-->
         <section :class="{ manageBox: isdisplayBox }">
             <div class="treeTitle">
                 权限管理 --- {{treeTitle}}
@@ -45,7 +45,7 @@
             <el-button :plain="true" type="success" @click="manageReset">恢复</el-button>
         </section>
         <!--新增界面-->
-        <el-dialog title="添加管理员组" :visible.sync="addAdminGroupVisible" :close-on-click-modal="false">
+        <el-dialog title="添加管理员组" :visible.sync="addAdminGroupVisible" :close-on-click-modal="false" @close="closeAddAdminGroup">
             <el-form :model="addAdminGroupForm" :rules="addAdminGroupRules" ref="addAdminGroupForm">
                 <el-form-item label="管理组名称" :label-width="formLabelWidth" prop="name">
                     <el-input ref="name" v-model="addAdminGroupForm.name" auto-complete="off"
@@ -58,7 +58,8 @@
             </div>
         </el-dialog>
         <!--编辑界面-->
-        <el-dialog title="编辑管理员组" :visible.sync="editAdminGroup" :close-on-click-modal="false">
+        <el-dialog title="编辑管理员组" :visible.sync="editAdminGroup" :close-on-click-modal="false"
+                   @close="closeEditAdminGroup">
             <el-form :model="editAdminGroupForm" :rules="editAdminGroupRules" ref="editAdminGroupForm">
                 <el-form-item label="管理组名称" :label-width="formLabelWidth" prop="name">
                     <el-input ref="name" v-model="editAdminGroupForm.name" auto-complete="off"
@@ -166,8 +167,8 @@
             },
             /*重置*/
             AdminGroupReset() {
-                this.addAdminGroupForm.name = '';
-                this.editAdminGroupForm.name = '';
+                this.addAdminGroupForm = {name : ''};
+                this.editAdminGroupForm = {name : ''};
             },
             /*显示新增对话框页面*/
             addAdminGroup() {
@@ -335,6 +336,14 @@
             /*恢复页面*/
             manageReset(){
                 this.$refs.manageList.setCheckedKeys(this.checkedList);
+            },
+            /*关闭新增对话框之后清空内容*/
+            closeAddAdminGroup(){
+                this.$refs.addAdminGroupForm.resetFields();
+            },
+            /*关闭编辑对话框之后重置并去除验证结果*/
+            closeEditAdminGroup(){
+                this.$refs.editAdminGroupForm.resetFields();
             }
         },
         mounted() {

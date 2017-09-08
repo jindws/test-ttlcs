@@ -10,3 +10,18 @@ h2{
 li{
 	list-style: none;
 }
+.el-input .el-input__inner{
+	margin-right: -1px;
+}
+.el-dialog__body .el-form-item__label {
+	width: 120px;
+	border: 1px solid #e6e6e6;
+	border-radius: 2px 0 0 2px;
+	text-align: center;
+	background-color: #FBFBFB;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	padding: 0;
+	line-height: 34px;
+}

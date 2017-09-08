@@ -11,7 +11,7 @@
             <el-table-column prop="adminGroupName" label="所属管理组"></el-table-column>
             <el-table-column prop="createTime" label="添加时间"></el-table-column>
             <el-table-column prop="updateTime" label="更新时间"></el-table-column>
-            <el-table-column prop="operates" label="操作" width="250">
+            <el-table-column prop="operates" label="操作">
                 <template scope="scope">
                     <el-button type="info" @click="modify(scope.$index, scope.row)" size="small"
                                :disabled="modifyDisabled">编辑
@@ -37,7 +37,7 @@
                     <el-input v-model="addAdminForm.email" auto-complete="off" placeholder="请输入邮箱"></el-input>
                 </el-form-item>
                 <el-form-item label="所属管理组" prop="select" :label-width="formLabelWidth">
-                    <el-select v-model="selectAdminGroup" placeholder="请选择管理组" >
+                    <el-select v-model="addAdminForm.select" placeholder="请选择管理组" >
                         <el-option v-for='(item,index) in options' :label="item.name" :value="item.id" :key='index'></el-option>
                     </el-select>
                 </el-form-item>
@@ -48,29 +48,32 @@
             </div>
         </el-dialog>
         <!--TODO 编辑界面-->
-        <!--<el-dialog title="添加管理员" :visible.sync="addAdminVisible" :close-on-click-modal="false">
-            <el-form :model="addAdminForm" :rules="addAdminRules" ref="addAdminForm">
-                <el-form-item label="姓名" prop="name" :label-width="formLabelWidth">
-                    <el-input v-model="addAdminForm.name" auto-complete="off" placeholder="请输入姓名"></el-input>
+        <el-dialog title="编辑管理员" :visible.sync="editAdminVisible" :close-on-click-modal="false" @close="closeEditAdmin">
+            <el-form :model="editAdminForm" ref="editAdminForm">
+                <el-form-item label="姓名" :label-width="formLabelWidth">
+                    <el-input v-model="editAdminForm.name" auto-complete="off" placeholder="请输入姓名" :disabled="true"></el-input>
                 </el-form-item>
-                <el-form-item label="手机" prop="phone" :label-width="formLabelWidth">
-                    <el-input v-model="addAdminForm.phone" auto-complete="off" placeholder="请输入手机号码" :maxlength="11"></el-input>
+                <el-form-item label="手机" :label-width="formLabelWidth">
+                    <el-input v-model="editAdminForm.phone" auto-complete="off" placeholder="请输入手机号码" :maxlength="11" :disabled="true"></el-input>
                 </el-form-item>
-                <el-form-item label="邮箱" prop="email" :label-width="formLabelWidth">
-                    <el-input v-model="addAdminForm.email" auto-complete="off" placeholder="请输入邮箱"></el-input>
+                <el-form-item label="邮箱" :label-width="formLabelWidth">
+                    <el-input v-model="editAdminForm.email" auto-complete="off" placeholder="请输入邮箱" :disabled="true"></el-input>
                 </el-form-item>
                 <el-form-item label="所属管理组" prop="select" :label-width="formLabelWidth">
-                    <el-select v-model="addAdminForm.select" placeholder="请选择管理组" >
+                    <el-select v-model="editAdminForm.select" placeholder="请选择管理组" >
                         <el-option v-for='item in options' :label="item.name" :value="item.id"
                                    :key="item.id"></el-option>
                     </el-select>
                 </el-form-item>
+                <el-form-item label="状态" prop="status" :label-width="formLabelWidth" >
+                    <el-radio class="radio" v-model="editAdminForm.radio" label="1" style="margin-left:20px">删除</el-radio>
+                    <el-radio class="radio" v-model="editAdminForm.radio" label="2">正常</el-radio>
+                </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="AdminReset">重置</el-button>
-                <el-button type="success" @click="addAdminSub">立即提交</el-button>
+                <el-button type="success" @click="editAdminSub">立即提交</el-button>
             </div>
-        </el-dialog>-->
+        </el-dialog>
     </section>
 </template>
 
@@ -99,7 +102,7 @@
                     name: '',
                     phone: '',
                     email: '',
-                    select: ''
+                    select: '',
                 },
                 addAdminRules: {
                     name: [{required: true, message: '请输入姓名', trigger: 'blur'}],
@@ -109,19 +112,31 @@
                         {type: 'email', message: '邮箱格式不正确', trigger: 'blur'}
                     ],
                     select: [
-                        {required: true, message: '请选择所属管理组', trigger: 'blur'}
+                        {required: true, message: '请选择所属管理组', trigger: 'blur,change', type: 'number'}
                     ],
                 },
+
                 /*新增界面的下拉框*/
-                selectAdminGroup: '',
                 formLabelWidth: '120px',
                 options: [],
+
                 /*分页*/
                 currentPage: 1,
                 total: 0,
                 pageNum: 1,
-                /*编辑*/
+
+                /*编辑页面*/
                 modifyDisabled: true,
+                editAdminVisible: false,
+                editAdminForm: {
+                    id: '',
+                    name: '',
+                    phone: '',
+                    email: '',
+                    select: '',
+                    radio: '2',
+                    adminGroupId: ''
+                },
             }
         },
         methods: {
@@ -186,13 +201,13 @@
                             name: this.addAdminForm.name,
                             phone: this.addAdminForm.phone,
                             email: this.addAdminForm.email,
-                            adminGroupId: this.selectAdminGroup
+                            adminGroupId: this.addAdminForm.select
                         }).then(result => {
                             this.getList();
                             this.addAdminVisible = false;
                             this.$message({
                                 type: 'success',
-                                message: '添加成功'
+                                message: '添加管理员成功'
                             });
                         }, data => {
                             this.$message({
@@ -208,9 +223,39 @@
                 this.options = [];
                 this.AdminReset();
             },
+            /*关闭编辑对话框*/
+            closeEditAdmin(){
+                this.options = [];
+            },
             /*显示编辑对话框*/
-            modify() {
-
+            modify(index,row) {
+                this.editAdminVisible = true;
+                this.editAdminForm.name = row.name;
+                this.editAdminForm.phone = row.phone;
+                this.editAdminForm.email = row.email;
+                this.editAdminForm.select = row.adminGroupId;
+                /*所属管理组列表*/
+                this.$DB.AdminGroup.list({
+                }).then(result => {
+                    result.pageList.map(item =>{
+                        let select = {
+                            id: item.id,
+                            name: item.name
+                        };
+                        this.options.push(select);
+                    });
+                },data => {
+                    console.log('失败',data)
+                });
+            },
+            /*编辑页面提交*/
+            editAdminSub(){
+                console.log(this.editAdminForm.radio)
+                /*this.$DB.Admin.modify({
+                    id: this.editAdminForm.id,
+                    adminGroupId: this.editAdminForm.select,
+                    status:
+                })*/
             },
             /*分页跳转到输入的页面*/
             handleCurrentChange(val) {
