@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section v-if='show'>
     <ScheduleController v-if='this.temp==="ScheduleController"'></ScheduleController>
     <AdminGroupController v-else-if='this.temp==="AdminGroupController"'></AdminGroupController>
     <AdminController v-else-if='this.temp==="AdminController"'></AdminController>
@@ -19,9 +19,24 @@ export default {
       AdminGroupController,
       AdminController
   },
-  props:['temp'],
+  props:['temp','refreshing'],
+  data(){
+      return{
+        show:true
+      }
+  },
   mounted(){
     console.log(this.temp)
+  },
+  methods:{
+  },
+  watch:{
+    refreshing(refresh){
+      if(refresh){
+          this.show = false;
+          setTimeout(()=>this.show = true,0)
+      }
+    }
   }
 }
 </script>

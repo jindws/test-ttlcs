@@ -22,8 +22,13 @@
                     </el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
-            <el-button type="success" @click="refresh"
-                       style="opacity: 0.8;margin-left: 30px;"><i class="fa fa-refresh"></i></el-button>
+            <el-button v-if='!refreshing' type="success" @click="refresh"
+                       style="opacity: 0.8;margin-left: 30px;">
+                       <i class="fa fa-refresh"></i>
+            </el-button>
+            <el-button v-else type="success" icon="loading" disabled
+                       style="opacity: 0.8;margin-left: 30px;">
+            </el-button>
         </div>
     </section>
 </template>
@@ -34,7 +39,8 @@
     export default {
         data() {
             return {
-                name: ''
+                name: '',
+                refreshing:false,
             };
         },
         methods: {
@@ -46,10 +52,13 @@
             },
             ...mapMutations([
                 'select', // 映射 this.select() 为 this.$store.commit('select')
-                'mainTabAdd'
+                'mainTabAdd',
+                'refeshNow'
             ]),
             refresh(){
-
+                this.refeshNow()
+                this.refreshing = true;
+                setTimeout(()=>this.refreshing = false,1000)
             },
             handleCommand(command) {
                 if(command == 'cancel'){

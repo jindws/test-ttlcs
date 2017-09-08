@@ -7,7 +7,7 @@
     </el-tab-pane>
     <el-tab-pane v-for='itm in getMainTabs' :name="itm.ctrlName"  :key='itm.ctrlName'>
       <span slot="label"><i class="el-icon-document"></i> {{itm.name}}</span>
-      <XHtml :temp='itm.ctrlName'></XHtml>
+      <XHtml :temp='itm.ctrlName' :refreshing='refreshing'></XHtml>
     </el-tab-pane>
   </el-tabs>
 </section>
@@ -20,11 +20,6 @@ import XHtml from '../Html'
 
 
 export default {
-  data(){
-    return{
-
-    }
-  },
   components:{
     XHtml
   },
@@ -44,14 +39,8 @@ export default {
       ...mapGetters([
           'getMainTabs',
           'activeName',
+          'refreshing',
       ])
   },
-  // watch:{
-  //   getMainTabs(val,oldval){
-  //     if(val.length === oldval.length){//add
-  //         this.activeName = val[val.length-1].ids
-  //     }
-  //   }
-  // }
 }
 </script>
