@@ -12,19 +12,21 @@
         <!--头部右侧导航-->
         <div class="header-right">
             <el-dropdown @command="handleCommand">
-              <span class="el-dropdown-link">
+                <span class="el-dropdown-link">
                   您好：<span>{{name}}</span><i class="el-icon-caret-bottom el-icon--right"></i>
-              </span>
+                </span>
                 <el-dropdown-menu slot="dropdown" class="dropdown">
-                    <el-dropdown-item command="userChangePhone"><i class="fa fa-user-o" style="margin-right: 6px;"></i>修改手机</el-dropdown-item>
-                    <el-dropdown-item command="userInfo"><i class="fa fa-unlock-alt" style="margin-right: 6px;"></i>修改密码</el-dropdown-item>
+                    <el-dropdown-item command="userChangePhone"><i class="fa fa-user-o" style="margin-right: 6px;"></i>修改手机
+                    </el-dropdown-item>
+                    <el-dropdown-item command="userInfo"><i class="fa fa-unlock-alt" style="margin-right: 6px;"></i>修改密码
+                    </el-dropdown-item>
                     <el-dropdown-item command="cancel"><i class="fa fa-sign-out" style="margin-right: 6px;"></i>注销
                     </el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
             <el-button v-if='!refreshing' type="success" @click="refresh"
                        style="opacity: 0.8;margin-left: 30px;">
-                       <i class="fa fa-refresh"></i>
+                <i class="fa fa-refresh"></i>
             </el-button>
             <el-button v-else type="success" icon="loading" disabled
                        style="opacity: 0.8;margin-left: 30px;">
@@ -36,15 +38,16 @@
 <script>
     import {mapGetters, mapMutations} from 'vuex'
     import Store from '../../src/store.js'
+
     export default {
         data() {
             return {
                 name: '',
-                refreshing:false,
+                refreshing: false,
             };
         },
         methods: {
-            addAdminGroup(){
+            addAdminGroup() {
 
             },
             selectMenu(tab) {
@@ -55,31 +58,30 @@
                 'mainTabAdd',
                 'refeshNow'
             ]),
-            refresh(){
+            refresh() {
                 this.refeshNow()
                 this.refreshing = true;
-                setTimeout(()=>this.refreshing = false,1000)
+                setTimeout(() => this.refreshing = false, 1000)
             },
             handleCommand(command) {
-                if(command == 'cancel'){
-                    this.$DB.HidePermission.signOut({
-                    }).then(result=>{
+                if (command == 'cancel') {
+                    this.$DB.HidePermission.signOut({}).then(result => {
                         console.log(result)
                         window.location.href = '#/login';
-                    },data=>{
+                    }, data => {
                         console.log(data);
                     })
-                }else if(command==='userChangePhone'){
+                } else if (command === 'userChangePhone') {
                     this.mainTabAdd({
-                        ctrlName:command,
-                        name:'修改手机',
-                        htmlName:"Ext_Schedule"
+                        ctrlName: command,
+                        name: '修改手机',
+                        htmlName: "Ext_Schedule"
                     })
-                }else if(command==='userInfo'){
+                } else if (command === 'userInfo') {
                     this.mainTabAdd({
-                        ctrlName:command,
-                        name:'修改密码',
-                        htmlName:"Ext_Schedule"
+                        ctrlName: command,
+                        name: '修改密码',
+                        htmlName: "Ext_Schedule"
                     })
                 }
             }
@@ -91,7 +93,7 @@
             ])
         },
         mounted() {
-            const {name = '未登录'} = Store.fetch()||{};
+            const {name = '未登录'} = Store.fetch() || {};
             this.name = name;
         },
     }

@@ -333,11 +333,11 @@
                     console.log('失败',data);
                 })
             },
-            /*恢复页面*/
+            /*权限管理恢复操作*/
             manageReset(){
                 this.$refs.manageList.setCheckedKeys(this.checkedList);
             },
-            /*关闭新增对话框之后清空内容*/
+            /*关闭新增对话框之后去除验证结果并重置数据*/
             closeAddAdminGroup(){
                 this.$refs.addAdminGroupForm.resetFields();
             },

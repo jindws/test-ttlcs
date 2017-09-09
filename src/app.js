@@ -55,7 +55,7 @@ const store = new Vuex.Store({
         select(state, index) {
             const XMenu = state.menus.modules[index];
             if (state.headerName !== XMenu.module) {//菜单变化
-                state.headerName = XMenu.module
+                state.headerName = XMenu.module;
                 state.leftmenus = XMenu.submodules//左侧菜单
             }
         },
@@ -72,6 +72,7 @@ const store = new Vuex.Store({
             })
             state.activeName = tab.ctrlName;//新增tab的时候,设置 activeName
         },
+        /*刷新*/
         refeshNow(state){
             state.refreshing = true;
             setTimeout(()=>state.refreshing = false,1000);

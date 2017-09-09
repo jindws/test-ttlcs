@@ -66,8 +66,8 @@
                     </el-select>
                 </el-form-item>
                 <el-form-item label="状态" prop="status" :label-width="formLabelWidth" >
-                    <el-radio class="radio" v-model="editAdminForm.radio" label="1" style="margin-left:20px">删除</el-radio>
-                    <el-radio class="radio" v-model="editAdminForm.radio" label="2">正常</el-radio>
+                    <el-radio class="radio" v-model="editAdminForm.radio" label="DELETED" style="margin-left:20px">删除</el-radio>
+                    <el-radio class="radio" v-model="editAdminForm.radio" label="NORMAL">正常</el-radio>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -134,7 +134,7 @@
                     phone: '',
                     email: '',
                     select: '',
-                    radio: '2',
+                    radio: 'NORMAL',
                     adminGroupId: ''
                 },
             }
@@ -234,6 +234,7 @@
                 this.editAdminForm.phone = row.phone;
                 this.editAdminForm.email = row.email;
                 this.editAdminForm.select = row.adminGroupId;
+                this.editAdminForm.id = row.id;
                 /*所属管理组列表*/
                 this.$DB.AdminGroup.list({
                 }).then(result => {
@@ -250,12 +251,20 @@
             },
             /*编辑页面提交*/
             editAdminSub(){
-                console.log(this.editAdminForm.radio)
-                /*this.$DB.Admin.modify({
+                this.$DB.Admin.modify({
                     id: this.editAdminForm.id,
                     adminGroupId: this.editAdminForm.select,
-                    status:
-                })*/
+                    status: this.editAdminForm.radio
+                }).then(result => {
+                    this.editAdminVisible = false;
+                    this.$message({
+                        type: 'success',
+                        message: '修改成功'
+                    });
+                    this.getList();
+                },data => {
+                    console.log('失败',data)
+                })
             },
             /*分页跳转到输入的页面*/
             handleCurrentChange(val) {

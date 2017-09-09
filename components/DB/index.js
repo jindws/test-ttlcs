@@ -78,3 +78,26 @@ DBF.create('Admin', {
         method    : 'PUT'
     }
 });
+/*系统管理：权限管理*/
+DBF.create('Permission',{
+    /*增加权限*/
+    add: {
+        url        : '',
+        method     : ''
+    },
+    /*权限列表*/
+    list: {
+        url        : 'Permission/list',
+        method     : 'GET'
+    },
+    /*删除权限*/
+    deleted: {
+        url        : '/Permission/{id}',
+        method     : 'DELETE'
+    },
+    /*修改权限*/
+    modify: {
+        url        : '/Permission/{id}',
+        method     : 'PUT'
+    }
+})
