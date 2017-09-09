@@ -4,7 +4,7 @@
         <el-button type="primary" @click="addAdmin" :disabled="addDisabled">添加管理员</el-button>
         <!--列表-->
         <el-table :data="AdminList" border style="width: 100%">
-            <el-table-column prop="id" label="ID" width="80"></el-table-column>
+            <el-table-column prop="id" label="ID" width="70"></el-table-column>
             <el-table-column prop="name" label="姓名" width="80"></el-table-column>
             <el-table-column prop="phone" label="手机"></el-table-column>
             <el-table-column prop="email" label="邮箱"></el-table-column>
@@ -47,7 +47,7 @@
                 <el-button type="success" @click="addAdminSub">立即提交</el-button>
             </div>
         </el-dialog>
-        <!--TODO 编辑界面-->
+        <!--编辑界面-->
         <el-dialog title="编辑管理员" :visible.sync="editAdminVisible" :close-on-click-modal="false" @close="closeEditAdmin">
             <el-form :model="editAdminForm" ref="editAdminForm">
                 <el-form-item label="姓名" :label-width="formLabelWidth">

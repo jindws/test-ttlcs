@@ -82,12 +82,12 @@ DBF.create('Admin', {
 DBF.create('Permission',{
     /*增加权限*/
     add: {
-        url        : '',
-        method     : ''
+        url        : '/Permission',
+        method     : 'POST'
     },
     /*权限列表*/
     list: {
-        url        : 'Permission/list',
+        url        : '/Permission/list',
         method     : 'GET'
     },
     /*删除权限*/

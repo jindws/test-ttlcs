@@ -6,7 +6,7 @@
             <el-button type="primary" @click="addAdminGroup" :disabled="addDisabled">添加管理组</el-button>
             <!--列表-->
             <el-table :data="AdminGroupList" border style="width: 100%">
-                <el-table-column prop="id" label="ID" width="80"></el-table-column>
+                <el-table-column prop="id" label="ID" width="70"></el-table-column>
                 <el-table-column prop="name" label="管理组名称"></el-table-column>
                 <el-table-column prop="createTime" label="添加时间"></el-table-column>
                 <el-table-column prop="updateTime" label="更新时间"></el-table-column>

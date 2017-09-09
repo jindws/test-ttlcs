@@ -63,8 +63,18 @@
                     }
                 });
             },
+            /*申请ip白名单*/
             applyIpWhiteList() {
-                console.log(1)
+                this.$DB.HidePermission.applyIpWhiteList({
+                    phone: this.login.account
+                }).then(result => {
+                    this.$message({
+                        type: 'success',
+                        message: '申请Ip白名单成功'
+                    });
+                },data => {
+                    console.log('成功',data)
+                })
             }
         },
         mounted() {

@@ -3,6 +3,7 @@
     <ScheduleController v-if='this.temp==="ScheduleController"'></ScheduleController>
     <AdminGroupController v-else-if='this.temp==="AdminGroupController"'></AdminGroupController>
     <AdminController v-else-if='this.temp==="AdminController"'></AdminController>
+    <PermissionController v-else-if='this.temp==="PermissionController"'></PermissionController>
     <div v-else>{{this.temp}}</div>
   </section>
 </template>
@@ -11,12 +12,14 @@
 import ScheduleController from './ScheduleController'
 import AdminGroupController from './AdminGroupController'
 import AdminController from './AdminController'
+import PermissionController from './PermissionController'
 
 export default {
   components:{
       ScheduleController,
       AdminGroupController,
-      AdminController
+      AdminController,
+      PermissionController
   },
   props:['temp'],
   mounted(){
