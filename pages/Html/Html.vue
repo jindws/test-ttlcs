@@ -4,6 +4,7 @@
     <AdminGroupController v-else-if='this.temp==="AdminGroupController"'></AdminGroupController>
     <AdminController v-else-if='this.temp==="AdminController"'></AdminController>
     <PermissionController v-else-if='this.temp==="PermissionController"'></PermissionController>
+    <IpWhiteListController v-else-if='this.temp==="IpWhiteListController"'></IpWhiteListController>
     <div v-else>{{this.temp}}</div>
   </section>
 </template>
@@ -13,13 +14,15 @@ import ScheduleController from './ScheduleController'
 import AdminGroupController from './AdminGroupController'
 import AdminController from './AdminController'
 import PermissionController from './PermissionController'
+import IpWhiteListController from './IpWhiteListController'
 
 export default {
   components:{
       ScheduleController,
       AdminGroupController,
       AdminController,
-      PermissionController
+      PermissionController,
+      IpWhiteListController
   },
   props:['temp'],
   mounted(){

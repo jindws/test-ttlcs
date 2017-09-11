@@ -1,6 +1,7 @@
 import DBF from './dbFactory'
 
 export default DBF.context
+
 /*隐藏权限：登录，上传图片等*/
 DBF.create('HidePermission', {
     applyIpWhiteList: {
@@ -100,4 +101,33 @@ DBF.create('Permission',{
         url        : '/Permission/{id}',
         method     : 'PUT'
     }
-})
+});
+/*系统管理： Ip白名单*/
+DBF.create('IpWhiteList',{
+    /*Ip白名单列表*/
+    list: {
+        url        : '/IpWhiteList/list',
+        method     : 'GET'
+    },
+    /*增加公共Ip白名单*/
+    add: {
+        url        : '/IpWhiteList',
+        method     : 'POST'
+    },
+    /*审批白名单申请*/
+    approve: {
+        url        : '/IpWhiteList/auditing/{id}',
+        method     : 'PUT'
+    },
+    /*删除公共Ip白名单*/
+    deleted: {
+        url        : '/IpWhiteList/{id}',
+        method     : 'DELETE'
+    },
+    /*修改公共Ip白名单*/
+    modify: {
+        url        : '/IpWhiteList/{id}',
+        method     : 'PUT'
+    }
+});
+

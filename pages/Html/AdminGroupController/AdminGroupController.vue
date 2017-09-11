@@ -10,7 +10,7 @@
                 <el-table-column prop="name" label="管理组名称"></el-table-column>
                 <el-table-column prop="createTime" label="添加时间"></el-table-column>
                 <el-table-column prop="updateTime" label="更新时间"></el-table-column>
-                <el-table-column prop="operates" label="操作">
+                <el-table-column prop="operates" label="操作" width="250">
                     <template scope="scope">
                         <el-button type="danger" @click="deleted(scope.$index, scope.row)"
                                    size="small" :disabled="deleteDisabled">删除
@@ -62,7 +62,7 @@
                    @close="closeEditAdminGroup">
             <el-form :model="editAdminGroupForm" :rules="editAdminGroupRules" ref="editAdminGroupForm">
                 <el-form-item label="管理组名称" :label-width="formLabelWidth" prop="name">
-                    <el-input ref="name" v-model="editAdminGroupForm.name" auto-complete="off"
+                    <el-input v-model="editAdminGroupForm.name" auto-complete="off"
                               placeholder="请输入管理组名称"></el-input>
                 </el-form-item>
             </el-form>
@@ -214,11 +214,15 @@
                             message: '删除成功!'
                         });
                     }, data => {
-                        /*3302对不起你没有相应的权限,3309还存在子管理组和子管理员*/
-                        this.$message({
-                            type: 'warning',
-                            message: data.msg
-                        });
+                        if(data.code == 3304){
+                            window.location.href = '#/login';
+                        }else{
+                            /*3302对不起你没有相应的权限,3309还存在子管理组和子管理员*/
+                            this.$message({
+                                type: 'warning',
+                                message: data.msg
+                            });
+                        }
                     });
                 }).catch(() => {
                     this.$message({

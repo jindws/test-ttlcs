@@ -66,10 +66,12 @@
             handleCommand(command) {
                 if (command == 'cancel') {
                     this.$DB.HidePermission.signOut({}).then(result => {
-                        console.log(result)
                         window.location.href = '#/login';
                     }, data => {
                         console.log(data);
+                        if(data.code == 3304){
+                            window.location.href = '#/login';
+                        }
                     })
                 } else if (command === 'userChangePhone') {
                     this.mainTabAdd({
