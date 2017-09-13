@@ -22,10 +22,10 @@ DBF.create('HidePermission', {
         method    : 'DELETE'
     }
 });
-
+/*系统管理：管理员操作日志*/
 DBF.create('OperateLog', {
     list: {
-        url       : '/OperateLog',
+        url       : '/OperateLog/list',
         method    : 'GET'
     }
 });
