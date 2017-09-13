@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bfebb432-b297-4f0f-bbe2-b470115f4143" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/Html/IpWhiteListController/IpWhiteListController.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/Html/IpWhiteListController/IpWhiteListController.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/Html/IpWhiteListController/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/DB/index.js" afterPath="$PROJECT_DIR$/components/DB/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/Header/Header.vue" afterPath="$PROJECT_DIR$/components/Header/Header.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.vue" afterPath="$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Html/Html.vue" afterPath="$PROJECT_DIR$/pages/Html/Html.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Html/PermissionController/PermissionController.vue" afterPath="$PROJECT_DIR$/pages/Html/PermissionController/PermissionController.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Html/IpWhiteListController/IpWhiteListController.vue" afterPath="$PROJECT_DIR$/pages/Html/IpWhiteListController/IpWhiteListController.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app.js" afterPath="$PROJECT_DIR$/src/app.js" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -28,8 +22,8 @@
       <file leaf-file-name="PermissionController.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/Html/PermissionController/PermissionController.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9256">
-              <caret line="356" column="0" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="356" selection-end-column="0" />
+            <state relative-caret-position="-6567">
+              <caret line="64" column="61" lean-forward="true" selection-start-line="64" selection-start-column="61" selection-end-line="64" selection-end-column="61" />
               <folding>
                 <element signature="n#style#0;n#el-table#0;n#section#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#el-pagination#0;n#section#0;n#template#0;n#!!top" expanded="true" />
@@ -39,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminGroupController.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AdminGroupController.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="64" column="29" lean-forward="false" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
+            <state relative-caret-position="-795">
+              <caret line="165" column="18" lean-forward="true" selection-start-line="165" selection-start-column="18" selection-end-line="165" selection-end-column="18" />
               <folding>
                 <element signature="n#style#0;n#el-table#0;n#section#0;n#section#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#el-pagination#0;n#section#0;n#section#0;n#template#0;n#!!top" expanded="true" />
@@ -52,15 +46,59 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IpWhiteListController.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="IpWhiteListController.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/Html/IpWhiteListController/IpWhiteListController.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="38" column="30" lean-forward="false" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+            <state relative-caret-position="-4877">
+              <caret line="17" column="69" lean-forward="false" selection-start-line="17" selection-start-column="69" selection-end-line="17" selection-end-column="69" />
               <folding>
                 <element signature="n#style#0;n#el-table#0;n#section#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#el-pagination#0;n#section#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#el-form#0;n#el-dialog#2;n#section#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#el-radio#0;n#el-radio-group#0;n#el-form-item#0;n#el-form#0;n#el-dialog#2;n#section#0;n#template#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="store.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/store.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="182">
+              <caret line="7" column="60" lean-forward="false" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IpWhiteListController.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/Html/IpWhiteListController/IpWhiteListController.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="805">
+              <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+              <folding>
+                <element signature="e#147#193#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dbFactory.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/DB/dbFactory.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="505">
+              <caret line="64" column="34" lean-forward="false" selection-start-line="64" selection-start-column="34" selection-end-line="64" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -68,7 +106,7 @@
       <file leaf-file-name="Login.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/Login/Login.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
+            <state relative-caret-position="-899">
               <caret line="28" column="41" lean-forward="false" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="41" />
               <folding />
             </state>
@@ -78,8 +116,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/DB/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2808">
-              <caret line="108" column="41" lean-forward="false" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="41" />
+            <state relative-caret-position="375">
+              <caret line="117" column="11" lean-forward="false" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -97,7 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>adminList</find>
       <find>formLabelWidth</find>
       <find>model</find>
       <find>submodules</find>
@@ -127,11 +164,13 @@
       <find>addDisabled</find>
       <find>IpWhiteList</find>
       <find>addIpWhiteList</find>
+      <find>approveIpWhiteList</find>
     </findStrings>
     <replaceStrings>
       <replace>addAdmin</replace>
       <replace>select</replace>
       <replace>closeReset</replace>
+      <replace>approveIpWhiteForm</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -149,7 +188,6 @@
         <option value="$PROJECT_DIR$/pages/Html/index.js" />
         <option value="$PROJECT_DIR$/components/Header/header.css" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/components/DB/dbFactory.js" />
         <option value="$PROJECT_DIR$/pages/Html/AdminGroupController/index.js" />
         <option value="$PROJECT_DIR$/src/base.css" />
         <option value="$PROJECT_DIR$/pages/Main/Main.vue" />
@@ -158,19 +196,21 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/pages/Index/index.css" />
         <option value="$PROJECT_DIR$/pages/Html/Html.css" />
-        <option value="$PROJECT_DIR$/src/app.js" />
         <option value="$PROJECT_DIR$/pages/Html/PermissionController/index.js" />
         <option value="$PROJECT_DIR$/pages/Html/AdminController/AdminController.vue" />
         <option value="$PROJECT_DIR$/pages/Main/main.css" />
         <option value="$PROJECT_DIR$/pages/Login/Login.vue" />
         <option value="$PROJECT_DIR$/components/Header/Header.vue" />
-        <option value="$PROJECT_DIR$/pages/Html/PermissionController/PermissionController.vue" />
         <option value="$PROJECT_DIR$/pages/Index/Index.vue" />
         <option value="$PROJECT_DIR$/pages/Html/IpWhiteListController/index.js" />
         <option value="$PROJECT_DIR$/pages/Html/Html.vue" />
         <option value="$PROJECT_DIR$/components/DB/index.js" />
-        <option value="$PROJECT_DIR$/pages/Html/IpWhiteListController/IpWhiteListController.vue" />
         <option value="$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.vue" />
+        <option value="$PROJECT_DIR$/components/DB/dbFactory.js" />
+        <option value="$PROJECT_DIR$/pages/Html/PermissionController/PermissionController.vue" />
+        <option value="$PROJECT_DIR$/pages/Html/IpWhiteListController/IpWhiteListController.css" />
+        <option value="$PROJECT_DIR$/src/app.js" />
+        <option value="$PROJECT_DIR$/pages/Html/IpWhiteListController/IpWhiteListController.vue" />
       </list>
     </option>
   </component>
@@ -250,13 +290,6 @@
               <item name="ttlcsystem" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="Html" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ttlcsystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ttlcsystem" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="Html" type="462c0819:PsiDirectoryNode" />
-              <item name="AdminGroupController" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ttlcsystem" type="b2602c69:ProjectViewProjectNode" />
@@ -351,7 +384,8 @@
       <workItem from="1504945931328" duration="5127000" />
       <workItem from="1505092854113" duration="22175000" />
       <workItem from="1505133395892" duration="12000" />
-      <workItem from="1505136065618" duration="3247000" />
+      <workItem from="1505136065618" duration="5212000" />
+      <workItem from="1505266560066" duration="22485000" />
     </task>
     <task id="LOCAL-00001" summary="layer">
       <created>1503819308462</created>
@@ -364,7 +398,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188600000" />
+    <option name="totallyTimeSpent" value="213050000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -373,13 +407,13 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12539515" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -522,13 +556,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/Html/ScheduleController/ScheduleController.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
@@ -597,13 +624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="635">
           <caret line="55" column="30" lean-forward="false" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/DB/dbFactory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
-          <caret line="45" column="30" lean-forward="false" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -677,24 +697,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/Html/IpWhiteListController/IpWhiteListController.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/Index/Index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="806">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -726,10 +732,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/components/DB/dbFactory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="64" column="34" lean-forward="false" selection-start-line="64" selection-start-column="34" selection-end-line="64" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/Login/Login.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-899">
+          <caret line="28" column="41" lean-forward="false" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-795">
+          <caret line="165" column="18" lean-forward="true" selection-start-line="165" selection-start-column="18" selection-end-line="165" selection-end-column="18" />
+          <folding>
+            <element signature="n#style#0;n#el-table#0;n#section#0;n#section#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-pagination#0;n#section#0;n#section#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/Html/IpWhiteListController/IpWhiteListController.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pages/Html/PermissionController/PermissionController.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9256">
-          <caret line="356" column="0" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="356" selection-end-column="0" />
+        <state relative-caret-position="-6567">
+          <caret line="64" column="61" lean-forward="true" selection-start-line="64" selection-start-column="61" selection-end-line="64" selection-end-column="61" />
           <folding>
             <element signature="n#style#0;n#el-table#0;n#section#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#el-pagination#0;n#section#0;n#template#0;n#!!top" expanded="true" />
@@ -738,40 +779,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="805">
+          <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+          <folding>
+            <element signature="e#147#193#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/components/DB/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2808">
-          <caret line="108" column="41" lean-forward="false" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="41" />
+        <state relative-caret-position="375">
+          <caret line="117" column="11" lean-forward="false" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/Login/Login.vue">
+    <entry file="file://$PROJECT_DIR$/src/store.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="28" column="41" lean-forward="false" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="41" />
+        <state relative-caret-position="182">
+          <caret line="7" column="60" lean-forward="false" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/Html/IpWhiteListController/IpWhiteListController.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="38" column="30" lean-forward="false" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+        <state relative-caret-position="-4877">
+          <caret line="17" column="69" lean-forward="false" selection-start-line="17" selection-start-column="69" selection-end-line="17" selection-end-column="69" />
           <folding>
             <element signature="n#style#0;n#el-table#0;n#section#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#el-pagination#0;n#section#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/Html/AdminGroupController/AdminGroupController.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="64" column="29" lean-forward="false" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
-          <folding>
-            <element signature="n#style#0;n#el-table#0;n#section#0;n#section#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#el-pagination#0;n#section#0;n#section#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-form#0;n#el-dialog#2;n#section#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-radio#0;n#el-radio-group#0;n#el-form-item#0;n#el-form#0;n#el-dialog#2;n#section#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
