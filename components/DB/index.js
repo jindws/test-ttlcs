@@ -1,6 +1,7 @@
 import DBF from './dbFactory'
 
-export default DBF.context
+// export default DBF.context
+export default DBF
 
 /*隐藏权限：登录，上传图片等*/
 DBF.create('HidePermission', {
@@ -130,4 +131,3 @@ DBF.create('IpWhiteList',{
         method     : 'PUT'
     }
 });
-
