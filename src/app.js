@@ -1,4 +1,11 @@
 import Vue from 'vue'
+
+if (module.hot) {//热加载
+  const api = require('vue-hot-reload-api')
+  api.install(Vue)
+  module.hot.accept()
+}
+
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 Vue.use(VueRouter);
