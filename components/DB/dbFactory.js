@@ -1,26 +1,16 @@
 import os from 'object-serialize'
 
 export default new class {
-    constructor() {
-        this.map = new Map();
-    }
     create(name, methods) {
-        return this.context[name] = new this.DB(methods);
+        this.DB(name,methods);
     }
-    set(key, value) {
-        this.map.set(key, value);
-    }
-    get(key) {
-        return this.map.get(key);
-    }
-    context() {
-        this.link = data => this.context.Data = data;
-    }
-    DB(methods) {
+    DB(name,methods) {
         for (let method in methods) {
             const config = methods[method];
-            this[method] = query => new Request(config, query, method);
+            if(!this[name])this[name] = [];
+            this[name][method] = query => new Request(config, query, method);
         }
+        return this;
     }
 }
 
