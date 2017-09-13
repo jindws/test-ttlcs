@@ -86,6 +86,7 @@
             return {
                 /*列表*/
                 IpWhiteList: [],
+                deletedType: '',
                 /*新增*/
                 addDisabled: true,
                 addIpWhiteListVisible: false,
@@ -144,7 +145,7 @@
                     this.total = result.total;
                     /!*列表展示，时间格式转换 *!/
                     this.IpWhiteList = result.pageList.map(item => {
-                        console.log(item.type)
+                        this.deletedType = item.type;
                         return Object.assign({}, item, {
                             startTime: moment(item.startTime).format('YYYY-MM-DD HH:mm:ss'),
                             endTime: moment(item.endTime).format('YYYY-MM-DD HH:mm:ss')
@@ -277,6 +278,7 @@
         mounted() {
             /*列表*/
             this.getList();
+            console.log(this.deletedType)
         }
     }
 </script>
