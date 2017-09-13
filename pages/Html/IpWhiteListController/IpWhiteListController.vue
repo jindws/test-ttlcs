@@ -14,13 +14,13 @@
             <el-table-column prop="status" label="状态"></el-table-column>
             <el-table-column prop="operates" label="操作" width="200">
                 <template scope="scope">
-                    <el-button type="danger" @click="deleted(scope.$index, scope.row)"
+                    <el-button v-if='scope.row.type !== "PERSONAL"' type="danger" @click="deleted(scope.$index, scope.row)"
                                size="small" :disabled="deleteDisabled">删除
                     </el-button>
-                    <el-button type="info" @click="modify(scope.$index, scope.row)" size="small"
+                    <el-button v-if='scope.row.type !== "PERSONAL"' type="info" @click="modify(scope.$index, scope.row)" size="small"
                                :disabled="modifyDisabled">编辑
                     </el-button>
-                    <el-button type="warning" @click="approve(scope.$index, scope.row)" size="small"
+                    <el-button v-if='scope.row.type !== "ALL"' type="warning" @click="approve(scope.$index, scope.row)" size="small"
                                :disabled="approveDisabled">审批
                     </el-button>
                 </template>
@@ -153,6 +153,16 @@
                     });
                 }, data => {
                     console.log('失败', data);
+                    // var data = {"code":0,"msg":"操作成功","data":{"total":5,"operates":["列表","添加","删除","修改","审批"],"pageSize":5,"pageList":[{"id":1,"type":"PERSONAL","ip":"192.168.3.35","startTime":1504948945000,"endTime":1504949545000,"createName":"江国勋","updateName":"江国勋","status":"AGREE"},{"id":2,"type":"PERSONAL","ip":"192.168.3.35","startTime":1505119940000,"endTime":1505120540000,"createName":"江国勋","updateName":"江国勋","status":"UNKNOWN"},{"id":3,"type":"ALL","ip":"192.168.3.36","startTime":null,"endTime":null,"createName":"江国勋","updateName":"江国勋","status":"UNKNOWN"},{"id":4,"type":"ALL","ip":"192.168.3.39","startTime":null,"endTime":null,"createName":"江国勋","updateName":"江国勋","status":"UNKNOWN"},{"id":7,"type":"ALL","ip":"169.32.3.65","startTime":null,"endTime":null,"createName":"江国勋","updateName":"江国勋","status":"UNKNOWN"}],"pageNum":1}}
+                    //
+                    // const result = data.data;
+                    // this.IpWhiteList = result.pageList.map(item => {
+                    //     console.log(item.type)
+                    //     return Object.assign({}, item, {
+                    //         startTime: moment(item.startTime).format('YYYY-MM-DD HH:mm:ss'),
+                    //         endTime: moment(item.endTime).format('YYYY-MM-DD HH:mm:ss')
+                    //     });
+                    // });
                 });
             },
             /*新增公共ip白名单对话框*/
