@@ -1,8 +1,8 @@
 import Vue from 'vue'
 
 if (module.hot) {//热加载
-  const api = require('vue-hot-reload-api')
-  api.install(Vue)
+  const api = require('vue-hot-reload-api');
+  api.install(Vue);
   module.hot.accept()
 }
 
