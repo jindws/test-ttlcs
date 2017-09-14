@@ -169,6 +169,9 @@
                         });
                     });
                 }, data => {
+                    if (data.code == 3304) {
+                        window.location.href = '#/login';
+                    }
                     console.log('失败', data)
                 });
             },

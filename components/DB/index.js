@@ -5,18 +5,22 @@ export default DBF
 
 /*隐藏权限：登录，上传图片等*/
 DBF.create('HidePermission', {
+    /*申请ip白名单*/
     applyIpWhiteList: {
         url       : '/HidePermission/applyIpWhiteList',
         method    : 'POST'
     },
+    /*主页，导航目录*/
     mainpage: {
         url       : '/HidePermission/mainpage',
         method    : 'GET'
     },
+    /*登录*/
     signIn: {
         url       : '/HidePermission/signIn',
         method    : 'GET',
     },
+    /*退出*/
     signOut: {
         url       : '/HidePermission/signOut',
         method    : 'DELETE'

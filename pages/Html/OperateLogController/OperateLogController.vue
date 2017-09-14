@@ -26,7 +26,7 @@
                 <el-button type="primary" @click="queryOperateLogController">查询</el-button>
             </el-form-item>
         </el-form>
-        <!--TODO 列表-->
+        <!-- 列表-->
         <el-table :data="OperateLogControllerList" style="width: 100%" border>
             <el-table-column prop="id" label="ID" width="70"></el-table-column>
             <el-table-column prop="operatorName" label="操作人" width="100"></el-table-column>
@@ -35,8 +35,8 @@
             <el-table-column prop="operate" label="操作"></el-table-column>
             <el-table-column prop="respCode" label="结果">
                 <template scope="scope">
-                    <span v-if='scope.row.respCode==0' class="success">成功</span>
-                    <span v-if='scope.row.respCode!=0' class="fail">失败</span>
+                    <span v-if='scope.row.respCode === 0' class="success">成功</span>
+                    <span v-else class="fail">失败</span>
                 </template>
             </el-table-column>
             <el-table-column prop="operateTime" label="操作时间" width="200"></el-table-column>
@@ -71,7 +71,7 @@
             }
         },
         methods: {
-            /*TODO 列表*/
+            /* 列表*/
             getList() {
                 this.$DB.OperateLog.list({
                     pagesize: '10',
@@ -86,6 +86,9 @@
                         });
                     });
                 }, data => {
+                    if (data.code == 3304) {
+                        window.location.href = '#/login';
+                    }
                     console.log('失败', data)
                 })
             },
@@ -93,7 +96,7 @@
             queryOperateLogController() {
 
             },
-            /*TODO 当前第几页*/
+            /*分页，当前第几页*/
             handleCurrentChange(val) {
                 this.currentPage = val;
                 this.getList();
