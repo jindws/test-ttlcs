@@ -50,6 +50,10 @@ export default {
               }
             })
         },
+        mainTabRemoveAll(state){
+            state.mainTab=[]
+            state.activeName = 'home'
+        },
         setMenus(state,menus){
             state.menus = menus
         },

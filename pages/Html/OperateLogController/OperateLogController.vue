@@ -107,14 +107,3 @@
         }
     }
 </script>
-
-<style lang="css">
-    .success{
-        color: #5FB878;
-        font-weight: bold;
-    }
-    .fail{
-        color: #FF5722;
-        font-weight: bold;
-    }
-</style>

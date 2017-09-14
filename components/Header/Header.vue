@@ -56,7 +56,8 @@
             ...mapMutations([
                 'select', // 映射 this.select() 为 this.$store.commit('select')
                 'mainTabAdd',
-                'refeshNow'
+                'refeshNow',
+                'mainTabRemoveAll'
             ]),
             refresh() {
                 this.refeshNow()
@@ -65,8 +66,10 @@
             },
             handleCommand(command) {
                 if (command == 'cancel') {
-                    this.$DB.HidePermission.signOut({}).then(result => {
-                        window.location.href = '#/login';
+                    this.$DB.HidePermission.signOut({})
+                    .then(async result => {
+                        await this.mainTabRemoveAll()
+                        location.hash = 'login';
                     }, data => {
                         console.log(data);
                         if(data.code == 3304){
