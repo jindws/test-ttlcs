@@ -1,0 +1,13 @@
+.success {
+    color: #5FB878;
+    font-weight: bold;
+}
+
+.fail {
+    color: #FF5722;
+    font-weight: bold;
+}
+
+.el-table__header-wrapper table, .el-table__body-wrapper table {
+    width: 100% !important;
+}
