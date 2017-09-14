@@ -135,3 +135,25 @@ DBF.create('IpWhiteList',{
         method     : 'PUT'
     }
 });
+DBF.create('Schedule',{
+    /*增加一条定时任务*/
+    add: {
+        url        : '/Schedule',
+        method     : 'POST'
+    },
+    /*列表*/
+    list: {
+        url        : '/Schedule/list',
+        method     : 'GET'
+    },
+    /*删除一条定时任务*/
+    deleted: {
+        url        : '/Schedule/{id}',
+        method     : 'DELETE'
+    },
+    /*修改一条定时任务*/
+    modify: {
+        url         : '/Schedule/{id}',
+        method      : 'PUT'
+    }
+});

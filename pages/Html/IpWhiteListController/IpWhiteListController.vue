@@ -59,7 +59,7 @@
                 <el-button type="success" @click="editIpWhiteListpSub">立即提交</el-button>
             </div>
         </el-dialog>
-        <!--TODO 审批界面-->
+        <!--审批界面-->
         <el-dialog title="审批" :visible.sync="approveIpWhiteListVisible" :close-on-click-modal="false"
                    @close="approveIpWhiteListCloseReset">
             <el-form :model="approveIpWhiteList" ref="approveIpWhiteList" style="margin-bottom: -24px;">
@@ -246,12 +246,12 @@
                     }
                 })
             },
-            /*TODO 审批*/
+            /* 审批*/
             approve(index, row) {
                 this.approveIpWhiteListVisible = true;
                 this.approveIpWhiteList.id = row.id;
             },
-            /*TODO 审批成功*/
+            /* 审批成功*/
             approveIpWhiteListpSub() {
                 this.$DB.IpWhiteList.approve({
                     id: this.approveIpWhiteList.id,
@@ -267,7 +267,7 @@
                     console.log('失败', data)
                 });
             },
-            /*TODO 审批关闭，重置界面*/
+            /* 审批关闭，重置界面*/
             approveIpWhiteListCloseReset() {
                 this.approveIpWhiteList.radio = '';
             },
