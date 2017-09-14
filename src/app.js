@@ -15,7 +15,7 @@ import './base.css'
 /*导入小图标*/
 import 'font-awesome/css/font-awesome.min.css'
 
-import {Tabs,TabPane,Message,Dialog,Button,Table,TableColumn,Form,FormItem,Switch,Input,Dropdown,DropdownMenu,DropdownItem,MessageBox,Select,Option,Pagination,Tree,Radio,RadioGroup} from 'element-ui'
+import {Tabs,TabPane,Message,Dialog,Button,Table,TableColumn,Form,FormItem,Switch,Input,Dropdown,DropdownMenu,DropdownItem,MessageBox,Select,Option,Pagination,Tree,Radio,RadioGroup, DatePicker} from 'element-ui'
 Vue.prototype.$msgbox = MessageBox;
 Vue.prototype.$message = Message;
 Vue.prototype.$confirm = MessageBox.confirm;
@@ -38,6 +38,7 @@ Vue.use(Pagination);
 Vue.use(Tree);
 Vue.use(Radio);
 Vue.use(RadioGroup);
+Vue.use(DatePicker);
 
 //fetch
 import 'whatwg-fetch'
