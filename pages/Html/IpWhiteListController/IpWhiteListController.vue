@@ -146,8 +146,8 @@
                     /!*列表展示，时间格式转换 *!/
                     this.IpWhiteList = result.pageList.map(item => {
                         return Object.assign({}, item, {
-                            startTime: moment(item.startTime).format('YYYY-MM-DD HH:mm:ss'),
-                            endTime: moment(item.endTime).format('YYYY-MM-DD HH:mm:ss')
+                            startTime: item.startTime?moment(item.startTime).format('YYYY-MM-DD HH:mm:ss'):'',
+                            endTime: item.endTime?moment(item.endTime).format('YYYY-MM-DD HH:mm:ss'):''
                         });
                     });
                 }, data => {
