@@ -5,7 +5,7 @@
         <span slot="label"><i class="el-icon-menu"></i>我的桌面</span>
       我的桌面
     </el-tab-pane>
-    <el-tab-pane v-for='itm in getMainTabs' :name="itm.ctrlName"  :key='itm.ctrlName'>
+    <el-tab-pane v-for='itm in getMainTabs' :name="itm.ctrlName"  :key='itm.ctrlName' :style='{height:paneHeight}' >
       <span slot="label"><i class="el-icon-document"></i> {{itm.name}}</span>
       <XHtml :temp='itm.ctrlName' v-if='!(itm.ctrlName===activeName&&!show)'></XHtml>
     </el-tab-pane>
@@ -21,7 +21,8 @@ import XHtml from '../Html'
 export default {
   data(){
     return{
-      show:true
+      show:true,
+      paneHeight:document.body.scrollHeight - 200 +'px',
     }
   },
   components:{
