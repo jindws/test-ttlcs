@@ -1,62 +1,141 @@
 <template>
-  <section class='ScheduleController'>
-      ScheduleController
-      <el-tree
-        :data="list"
-        show-checkbox
-        default-expand-all
-        node-key="id"
-        highlight-current
-        ref="tree"
-        >
-      </el-tree>
-  </section>
+    <section class='ScheduleController'>
+        <!--TODO 工具栏，增加操作-->
+        <el-button type="primary" @click="addScheduleController" :disabled="addDisabled">添加</el-button>
+        <!--TODO 列表-->
+        <el-table :data="ScheduleList" style="width: 100%" border>
+            <el-table-column prop="id" label="ID" width="70"></el-table-column>
+            <el-table-column prop="name" label="任务名称" width="180"></el-table-column>
+            <el-table-column prop="beanName" label="string bean名称"></el-table-column>
+            <el-table-column prop="methodName" label="方法名称"></el-table-column>
+            <el-table-column prop="cron" label="cron表达式"></el-table-column>
+            <el-table-column prop="updateId" label="最近一次更新管理员id"></el-table-column>
+            <el-table-column prop="updateTime" label="更新时间"></el-table-column>
+            <el-table-column prop="operates" label="操作">
+                <template scope="scope">
+                    <el-button size="small" type="danger" @click="deleted(scope.$index, scope.row)" :disabled="deleteDisabled">删除</el-button>
+                    <el-button size="small" type='info' @click="modify(scope.$index, scope.row)" :disabled="modifyDisabled">编辑</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+        <!--TODO 新增对话框-->
+        <el-dialog title="添加" :visible.sync="addScheduleVisible">
+            <el-form :model="addScheduleForm" :rules="addScheduleFormRules">
+                <el-form-item label="定时任务名字" :label-width="formLabelWidth" prop="name">
+                    <el-input v-model="addScheduleForm.name" auto-complete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="bean的名字" :label-width="formLabelWidth" prop="beanName">
+                    <el-input v-model="addScheduleForm.beanName" auto-complete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="方法名" :label-width="formLabelWidth" prop="methodName">
+                    <el-input v-model="addScheduleForm.methodName" auto-complete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="cron表达式" :label-width="formLabelWidth" prop="cron">
+                    <el-input v-model="addScheduleForm.cron" auto-complete="off"></el-input>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="ScheduleResetClose('addScheduleForm')">重置</el-button>
+                <el-button type="success" @click="addScheduleSub">立即提交</el-button>
+            </div>
+        </el-dialog>
+        <!--分页-->
+        <el-pagination @current-change="handleCurrentChange" :current-page.sync="currentPage"
+                layout="prev, pager, next, jumper" :total="total" style="float:right;margin:20px 10px 0;">
+        </el-pagination>
+    </section>
 </template>
 
 <script>
-export default {
-  data(){
-    return{
-        list:[],
-        checkedLists:[],
-    }
-  },
-  methods:{
-      submodules(sub){
-        const result = []
-        const children = sub.map((itm,index)=>{
-          const dt = {
-            label:itm.name,
-            children:this.operate(itm.operate)
-          }
-          result.push(dt)
-        })
+    import moment from 'moment'
+    export default {
+        data() {
+            return {
+                /*列表*/
+                ScheduleList: [],
+                /*新增界面*/
+                addDisabled: true,
+                addScheduleVisible: false,
+                addScheduleForm: {
+                    name: '',
+                    beanName: '',
+                    methodName: '',
+                    cron: ''
+                },
+                addScheduleFormRules:{
+                    name: [{required: true, message: '请输入定时任务名字', trigger: 'blur'}],
+                    beanName: [{required: true, message: '请输入bean的名字', trigger: 'blur'}],
+                    methodName: [{required: true, message: '请输入方法名', trigger: 'blur'}],
+                    cron: [{required: true, message: '请输入cron表达式', trigger: 'blur'}]
+                },
+                /*删除*/
+                deleteDisabled: true,
+                /*修改*/
+                modifyDisabled: true,
+                /*对话框*/
+                formLabelWidth: '120px',
+                /*分页*/
+                currentPage: 1,
+                total: 0,
+            }
+        },
+        methods: {
+            /*列表*/
+            getList(){
+                this.$DB.Schedule.list({
+                    pageSize: '10',
+                    pageNum: this.currentPage
+                }).then(result => {
+                    /*分页*/
+                    this.total = result.total;
+                    /*权限判断，实现按钮是否可执行。*/
+                    if (result.operates.includes("添加")) {
+                        this.addDisabled = false;
+                    }
+                    if (result.operates.includes("删除")) {
+                        this.deleteDisabled = false;
+                    }
+                    if (result.operates.includes("修改")) {
+                        this.modifyDisabled = false;
+                    }
+                    /*列表*/
+                    this.ScheduleList = result.pageList.map(item => {
+                        return Object.assign({},item,{
+                            updateTime: moment(item.updateTime).format('YYYY-MM-DD HH:mm:ss')
+                        })
+                    });
+                },data => {
+                    console.log('失败',data)
+                });
+            },
+            /*新增定时任务对话框*/
+            addScheduleController(){
+                this.addScheduleVisible = true;
+            },
+            /*TODO 新增提交*/
+            addScheduleSub(){
 
-        return result;
-      },
-      operate(ope){
-        return ope.map(itm=>{
-          if(itm.status){
-              this.checkedLists.push(itm.id)
-          }
-          return {
-            label: itm.name,
-            id:+itm.id
-          }
-        })
-      }
-  },
-  mounted(){
-    var re = JSON.parse(JSON.stringify({"code":0,"msg":"操作成功","data":[{"module":"扩展管理","submodules":[{"ctrlName":"ScheduleController","htmlName":"Ext_Schedule","operate":[{"ctrlMethod":"list","name":"列表","id":27,"status":0}],"name":"定时任务","statusLen":0}],"statusLen":0},{"module":"系统管理","submodules":[{"ctrlName":"AdminGroupController","htmlName":"Sys_adminGroup","operate":[{"ctrlMethod":"update","name":"修改","id":4,"status":0},{"ctrlMethod":"list","name":"列表","id":1,"status":0},{"ctrlMethod":"remove","name":"删除","id":3,"status":1},{"ctrlMethod":"updatePermission","name":"权限修改","id":5,"status":0},{"ctrlMethod":"manage","name":"权限管理","id":6,"status":0},{"ctrlMethod":"save","name":"添加","id":2,"status":0}],"name":"管理组管理","statusLen":0},{"ctrlName":"AdminController","htmlName":"Sys_admin","operate":[{"ctrlMethod":"update","name":"修改","id":9,"status":0},{"ctrlMethod":"list","name":"列表","id":7,"status":0},{"ctrlMethod":"save","name":"添加","id":8,"status":0}],"name":"管理员管理","statusLen":0},{"ctrlName":"IpWhiteListController","htmlName":"Sys_ipWhiteList","operate":[{"ctrlMethod":"update","name":"修改","id":25,"status":0},{"ctrlMethod":"list","name":"列表","id":21,"status":0},{"ctrlMethod":"remove","name":"删除","id":24,"status":0},{"ctrlMethod":"auditing","name":"审批","id":26,"status":0},{"ctrlMethod":"save","name":"添加","id":23,"status":0}],"name":"Ip白名单","statusLen":0},{"ctrlName":"PermissionController","htmlName":"Sys_power","operate":[{"ctrlMethod":"update","name":"修改","id":13,"status":0},{"ctrlMethod":"list","name":"列表","id":10,"status":0},{"ctrlMethod":"remove","name":"删除","id":12,"status":0},{"ctrlMethod":"save","name":"添加","id":11,"status":0}],"name":"权限管理","statusLen":0},{"ctrlName":"OperateLogController","htmlName":"Sys_log","operate":[{"ctrlMethod":"list","name":"列表","id":14,"status":0}],"name":"管理员操作日志","statusLen":0}],"statusLen":0}]}))
-    re.data.map(async (itm,index)=>{
-      let it = {
-        label:itm.module,
-        children:this.submodules(itm.submodules)
-      };
-      await this.list.push(it)
-      this.$refs.tree.setCheckedKeys(this.checkedLists)
-    })
-      console.log(this.list)
-  }
-}
+            },
+            /*新增重置*/
+            ScheduleResetClose(formName) {
+                this.$refs[formName].resetFields();
+            },
+            /*TODO 删除*/
+            deleted(index,row){
+
+            },
+            /*TODO 编辑*/
+            modify(index,row){
+
+            },
+            /*分页*/
+            handleCurrentChange(val){
+                this.currentPage = val;
+                this.getList();
+            },
+        },
+        mounted() {
+            this.getList();
+        }
+    }
 </script>

@@ -5,18 +5,22 @@ export default DBF
 
 /*隐藏权限：登录，上传图片等*/
 DBF.create('HidePermission', {
+    /*申请ip白名单*/
     applyIpWhiteList: {
         url       : '/HidePermission/applyIpWhiteList',
         method    : 'POST'
     },
+    /*主页，导航目录*/
     mainpage: {
         url       : '/HidePermission/mainpage',
         method    : 'GET'
     },
+    /*登录*/
     signIn: {
         url       : '/HidePermission/signIn',
         method    : 'GET',
     },
+    /*退出*/
     signOut: {
         url       : '/HidePermission/signOut',
         method    : 'DELETE'
@@ -129,5 +133,27 @@ DBF.create('IpWhiteList',{
     modify: {
         url        : '/IpWhiteList/{id}',
         method     : 'PUT'
+    }
+});
+DBF.create('Schedule',{
+    /*增加一条定时任务*/
+    add: {
+        url        : '/Schedule',
+        method     : 'POST'
+    },
+    /*列表*/
+    list: {
+        url        : '/Schedule/list',
+        method     : 'GET'
+    },
+    /*删除一条定时任务*/
+    deleted: {
+        url        : '/Schedule/{id}',
+        method     : 'DELETE'
+    },
+    /*修改一条定时任务*/
+    modify: {
+        url         : '/Schedule/{id}',
+        method      : 'PUT'
     }
 });
