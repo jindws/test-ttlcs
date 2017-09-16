@@ -1,7 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const os = require('os')
+const HappyPack = require('happypack');
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 let publicPath = '';
 // publicPath = 'ttl-web-systemttl-web-system';
 
@@ -37,7 +39,8 @@ module.exports = {
             loader: 'vue-loader'
         }, {
             test: /\.js$/,
-            loader: 'babel-loader',
+            // loader: 'babel-loader',
+            loader: 'happypack/loader?id=happybabel',
             exclude: /node_modules/
         },{
             test: /\.css$/,
@@ -64,6 +67,13 @@ module.exports = {
     },
     watch:true,
     plugins: [
+        new HappyPack({
+         id: 'happybabel',
+         loaders: ['babel-loader'],
+         threadPool: happyThreadPool,
+         cache: true,
+         verbose: true
+       }),
         // 开发版本
         new webpack.DefinePlugin({
             'process.env': {
