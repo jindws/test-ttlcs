@@ -55,12 +55,12 @@ function Request(config,body) {
                /* reject({
                   code,data,...err
                 });*/
-                if (data.code === 3303) {
+                if (code === 3303) {
                     window.location.href = '#/login'
                 } else {
                     $message({
                         type: 'error',
-                        message: data.msg
+                        message: err.msg
                     })
                 }
             }
