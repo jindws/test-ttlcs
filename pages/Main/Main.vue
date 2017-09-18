@@ -19,7 +19,6 @@
     import {mapGetters, mapMutations} from 'vuex'
 
     import XHtml from '../Html'
-
     export default {
         data() {
             return {

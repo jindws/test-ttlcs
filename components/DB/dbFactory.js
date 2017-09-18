@@ -1,4 +1,5 @@
 import os from 'object-serialize'
+// import os from 'object-param'
 
 export default new class {
     create(name, methods) {
