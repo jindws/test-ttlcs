@@ -58,14 +58,15 @@ function Request(config,body) {
                 if (data.code === 3303) {
                     window.location.href = '#/login'
                 } else {
-                    this.$message({
+                    $message({
                         type: 'error',
                         message: data.msg
                     })
                 }
             }
-        }).catch(()=>reject({
-          errorMsg:'请求失败',
+        }).catch(()=>$message({
+            type: 'error',
+            message: '请求失败,请稍后再试'
         }))
     })
 }
