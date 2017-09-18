@@ -19,6 +19,7 @@ import {Tabs,TabPane,Message,Dialog,Button,Table,TableColumn,Form,FormItem,Switc
 Vue.prototype.$msgbox = MessageBox;
 Vue.prototype.$message = Message;
 Vue.prototype.$confirm = MessageBox.confirm;
+window.$message = Message;
 Vue.use(Tabs);
 Vue.use(TabPane);
 Vue.use(Dialog);

@@ -52,15 +52,6 @@
                         }).then(result => {
                             window.location.href = '#/';
                             Store.save(result);
-                        }, data => {
-                            if(data.code === 3303){
-                                window.location.href = '#/login'
-                            }else{
-                                this.$message({
-                                    type: 'error',
-                                    message: data.msg
-                                })
-                            }
                         });
                     } else {
                         this.$message({
@@ -80,15 +71,6 @@
                         type: 'success',
                         message: '申请Ip白名单成功'
                     });
-                },data => {
-                    if (data.code === 3303) {
-                        window.location.href = '#/login'
-                    } else {
-                        this.$message({
-                            type: 'error',
-                            message: data.msg
-                        })
-                    }
                 })
             }
         },

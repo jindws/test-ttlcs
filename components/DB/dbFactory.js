@@ -1,5 +1,4 @@
 import os from 'object-serialize'
-// import os from 'object-param'
 
 export default new class {
     create(name, methods) {
@@ -47,25 +46,28 @@ function Request(config,body) {
         /*const Head = 'ttl-web-system';*/
         // const Head = __PRO__?'/ttl-web-system':'https://www.tongtongli.com/ttl-web-system';//__PRO__===true 表示线上环境
         fetch(Head+url,option).then(data => data.json()).then(({code,data,...err}) => {
-            if (code == 0) {
+            if (code === 0) {
                 /*成功*/
-                resolve(data)
+                resolve(data);
+                console.log('成功',data)
+            } else if (code === 3303) {
+                window.location.href = '#/login'
             } else {
                 /*错误信息*/
-               /* reject({
-                  code,data,...err
-                });*/
-                if (data.code === 3303) {
-                    window.location.href = '#/login'
-                } else {
-                    this.$message({
-                        type: 'error',
-                        message: data.msg
-                    })
-                }
+                /* reject({
+                   code,data,...err
+                 });*/
+                $message({
+                    type: 'error',
+                    message: err.msg
+                });
+                console.log('失败',{
+                    code,data,...err
+                })
             }
-        }).catch(()=>reject({
-          errorMsg:'请求失败',
+        }).catch(()=>$message({
+            type: 'error',
+            message: '请求失败,请稍后再试'
         }))
     })
 }

@@ -47,9 +47,6 @@
             };
         },
         methods: {
-            addAdminGroup() {
-
-            },
             selectMenu(tab) {
                 this.select(tab.index)//菜单流水号
             },
@@ -59,11 +56,13 @@
                 'refeshNow',
                 'mainTabRemoveAll'
             ]),
+            /*刷新*/
             refresh() {
                 this.refeshNow()
                 this.refreshing = true;
                 setTimeout(() => this.refreshing = false, 1000)
             },
+            /*下拉框选择*/
             handleCommand(command) {
                 if (command == 'cancel') {
                     this.$DB.HidePermission.signOut({})

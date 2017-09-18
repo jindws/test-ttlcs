@@ -1,26 +1,24 @@
 .main {
-    flex: 1;
-    margin: 20px;
+	flex: 1;
+	margin: 20px;
 }
 
 .main .el-tabs {
-    min-height: 100%;
+	min-height: 100%;
 }
 
 .main .el-tabs__nav> :first-child .el-icon-close {
-    visibility: hidden;
+	visibility: hidden;
 }
 
 .main .el-tabs__header {
-    background-color: #f2f2f2;
-    border: 1px solid #d1dbe5;
+	background-color: #f2f2f2;
+	border: 1px solid #d1dbe5;
 }
-
-.main .el-tabs--border-card {
-    border: none;
-    box-shadow: none;
+.main .el-tabs--border-card{
+	border: none;
+	box-shadow: none;
 }
-
 .main .el-tabs__content{
 	border: 1px solid #d1dbe5;
 	box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
@@ -29,4 +27,3 @@
 .main .el-tabs__content .el-tab-pane{
 	overflow: auto;
 }
-

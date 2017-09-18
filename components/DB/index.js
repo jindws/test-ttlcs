@@ -10,10 +10,20 @@ DBF.create('HidePermission', {
         url       : '/HidePermission/applyIpWhiteList',
         method    : 'POST'
     },
+    /*修改密码*/
+    changePassword: {
+        url       : '/HidePermission/changePassword',
+        method    : 'PUT'
+    },
     /*主页，导航目录*/
     mainpage: {
         url       : '/HidePermission/mainpage',
         method    : 'GET'
+    },
+    /*修改手机*/
+    resetPhone: {
+        url       : '/HidePermission/resetPhone',
+        method    : 'PUT'
     },
     /*登录*/
     signIn: {
@@ -26,14 +36,14 @@ DBF.create('HidePermission', {
         method    : 'DELETE'
     }
 });
-/*系统管理：管理员操作日志*/
+/*系统管理5：管理员操作日志*/
 DBF.create('OperateLog', {
     list: {
         url       : '/OperateLog/list',
         method    : 'GET'
     }
 });
-/*系统管理：管理组*/
+/*系统管理1：管理组*/
 DBF.create('AdminGroup', {
     /*增加管理组*/
     add: {
@@ -66,7 +76,7 @@ DBF.create('AdminGroup', {
         method    : 'PUT'
     }
 });
-/*系统管理：管理员*/
+/*系统管理2：管理员*/
 DBF.create('Admin', {
     /*增加管理员*/
     add: {
@@ -84,7 +94,7 @@ DBF.create('Admin', {
         method    : 'PUT'
     }
 });
-/*系统管理：权限管理*/
+/*系统管理4：权限管理*/
 DBF.create('Permission',{
     /*增加权限*/
     add: {
@@ -107,7 +117,7 @@ DBF.create('Permission',{
         method     : 'PUT'
     }
 });
-/*系统管理： Ip白名单*/
+/*系统管理3： Ip白名单*/
 DBF.create('IpWhiteList',{
     /*Ip白名单列表*/
     list: {
@@ -135,6 +145,7 @@ DBF.create('IpWhiteList',{
         method     : 'PUT'
     }
 });
+/*扩展管理1：定时任务*/
 DBF.create('Schedule',{
     /*增加一条定时任务*/
     add: {
@@ -155,5 +166,74 @@ DBF.create('Schedule',{
     modify: {
         url         : '/Schedule/{id}',
         method      : 'PUT'
+    }
+});
+/*系统管理6：系统配置管理*/
+DBF.create('SystemConfig',{
+    /*增加系统配置*/
+    add: {
+        url         : '/SystemConfig',
+        method      : 'POST'
+    },
+    /*系统配置列表*/
+    list: {
+        url         : '/SystemConfig/list',
+        method      : 'GET'
+    },
+    /*删除系统配置*/
+    deleted: {
+        url         : '/SystemConfig/{id}',
+        method      : 'DELETE'
+    },
+    /*修改系统配置*/
+    modify: {
+        url         : '/SystemConfig/{id}',
+        method      : 'PUT'
+    }
+});
+/*运营管理1：消息模板管理*/
+DBF.create('MessageModel',{
+    /*增加消息模板*/
+    add: {
+        url         : '/MessageModel',
+        method      : 'POST'
+    },
+    /*消息模板列表*/
+    list: {
+        url         : '/MessageModel/list',
+        method      : 'GET'
+    },
+    /*根据用户id短信内容发送短信*/
+    sendShortMessagesByContent: {
+        url         : '/MessageModel/sendShortMessagesByContent',
+        method      : 'POST'
+    },
+    /*根据用户id模板id发送短信*/
+    sendShortMessagesById: {
+        url         : '/MessageModel/sendShortMessagesById',
+        method      : 'POST'
+    },
+    /*删除消息模板*/
+    deleted: {
+        url         : '/MessageModel/{id}',
+        method      : 'DELETE'
+    },
+    /*修改休息模板*/
+    modify: {
+        url         : '/MessageModel/{id}',
+        method      : 'PUT'
+    }
+});
+/*运营管理2：消息管理*/
+DBF.create('Message',{
+    /*消息详情*/
+    detail: {
+        url         : '/Message/detail/{id}',
+        method      : 'GET'
+    },
+    /*消息列表*/
+    list: {
+        url         : '/Message/list',
+        method      : 'GET'
     }
 });
