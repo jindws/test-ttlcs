@@ -1,5 +1,6 @@
 <template>
     <section class='login'>
+        <!--登录的表单-->
         <el-form ref="loginForm" :model="login" :rules="rules" class="login-box">
             <p>通通理财后台管理系统</p>
             <el-form-item prop="account">
@@ -52,13 +53,20 @@
                             window.location.href = '#/';
                             Store.save(result);
                         }, data => {
-                            console.log('失败', data);
-                            if (data.code == 3306) {
-                                this.$message.error('用户名或密码错误' + data.data + '次');
+                            if(data.code === 3303){
+                                window.location.href = '#/login'
+                            }else{
+                                this.$message({
+                                    type: 'error',
+                                    message: data.msg
+                                })
                             }
                         });
                     } else {
-                        console.log('error submit!!');
+                        this.$message({
+                            type: 'error',
+                            message: 'error submit!!'
+                        });
                         return false;
                     }
                 });
@@ -73,7 +81,14 @@
                         message: '申请Ip白名单成功'
                     });
                 },data => {
-                    console.log('成功',data)
+                    if (data.code === 3303) {
+                        window.location.href = '#/login'
+                    } else {
+                        this.$message({
+                            type: 'error',
+                            message: data.msg
+                        })
+                    }
                 })
             }
         },
@@ -86,5 +101,3 @@
     }
 </script>
 
-<style lang="css">
-</style>

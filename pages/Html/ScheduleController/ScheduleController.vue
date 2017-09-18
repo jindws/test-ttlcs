@@ -1,8 +1,8 @@
 <template>
     <section class='ScheduleController'>
-        <!--TODO 工具栏，增加操作-->
+        <!-- 工具栏，增加操作-->
         <el-button type="primary" @click="addScheduleController" :disabled="addDisabled">添加</el-button>
-        <!--TODO 列表-->
+        <!-- 列表-->
         <el-table :data="ScheduleList" style="width: 100%" border>
             <el-table-column prop="id" label="ID" width="70"></el-table-column>
             <el-table-column prop="name" label="任务名称" width="180"></el-table-column>
@@ -104,8 +104,6 @@
                             updateTime: moment(item.updateTime).format('YYYY-MM-DD HH:mm:ss')
                         })
                     });
-                },data => {
-                    console.log('失败',data)
                 });
             },
             /*新增定时任务对话框*/

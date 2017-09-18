@@ -1,6 +1,6 @@
 <template>
     <section class="AdminController">
-        <!--主界面-->
+        <!--操作按钮-->
         <el-button type="primary" @click="addAdmin" :disabled="addDisabled">添加管理员</el-button>
         <!--列表-->
         <el-table :data="AdminList" border style="width: 100%">
@@ -65,9 +65,11 @@
                                    :key="item.id"></el-option>
                     </el-select>
                 </el-form-item>
-                <el-form-item label="状态" prop="status" :label-width="formLabelWidth" >
-                    <el-radio class="radio" v-model="editAdminForm.radio" label="DELETED" style="margin-left:20px">删除</el-radio>
-                    <el-radio class="radio" v-model="editAdminForm.radio" label="NORMAL">正常</el-radio>
+                <el-form-item label="状态" :label-width="formLabelWidth">
+                    <el-radio-group v-model="editAdminForm.radio">
+                        <el-radio label="DELETED" style="margin-left:20px">删除</el-radio>
+                        <el-radio label="NORMAL">正常</el-radio>
+                    </el-radio-group>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -123,7 +125,6 @@
                 /*分页*/
                 currentPage: 1,
                 total: 0,
-                pageNum: 1,
 
                 /*编辑页面*/
                 modifyDisabled: true,
@@ -135,7 +136,6 @@
                     email: '',
                     select: '',
                     radio: 'NORMAL',
-                    adminGroupId: ''
                 },
             }
         },
@@ -143,21 +143,15 @@
             /*获取列表信息*/
             getList() {
                 this.$DB.Admin.list({
-                    pageNum: this.pageNum,
+                    pageNum: this.currentPage,
                     pageSize: '10'
                 }).then(result => {
                     /*权限判断，实现按钮是否可执行。*/
                     if (result.operates.includes("添加")) {
                         this.addDisabled = false;
                     }
-                    if (result.operates.includes("删除")) {
-                        this.deleteDisabled = false;
-                    }
                     if (result.operates.includes("修改")) {
                         this.modifyDisabled = false;
-                    }
-                    if (result.operates.includes("权限管理")) {
-                        this.manageDisabled = false;
                     }
                     /*工具栏，分页*/
                     this.total = result.total;
@@ -168,11 +162,6 @@
                             updateTime: moment(item.updateTime).format('YYYY-MM-DD HH:mm:ss')
                         });
                     });
-                }, data => {
-                    if (data.code == 3304) {
-                        window.location.href = '#/login';
-                    }
-                    console.log('失败', data)
                 });
             },
             /*重置*/
@@ -192,8 +181,6 @@
                         };
                         this.options.push(select);
                     });
-                },data => {
-                    console.log('失败',data)
                 });
             },
             /*新增*/
@@ -212,12 +199,13 @@
                                 type: 'success',
                                 message: '添加管理员成功'
                             });
-                        }, data => {
-                            this.$message({
-                                type: 'warning',
-                                message: data.msg
-                            });
                         });
+                    }else{
+                        this.$message({
+                            type: 'error',
+                            message: 'error submit!!'
+                        });
+                        return false;
                     }
                 });
             },
@@ -233,11 +221,14 @@
             /*显示编辑对话框*/
             modify(index,row) {
                 this.editAdminVisible = true;
-                this.editAdminForm.name = row.name;
-                this.editAdminForm.phone = row.phone;
-                this.editAdminForm.email = row.email;
-                this.editAdminForm.select = row.adminGroupId;
-                this.editAdminForm.id = row.id;
+                this.editAdminForm = {
+                    name: row.name,
+                    email: row.email,
+                    phone: row.phone,
+                    select: row.adminGroupId,
+                    id: row.id,
+                    radio: 'NORMAL'
+                };
                 /*所属管理组列表*/
                 this.$DB.AdminGroup.list({
                 }).then(result => {
@@ -248,8 +239,6 @@
                         };
                         this.options.push(select);
                     });
-                },data => {
-                    console.log('失败',data)
                 });
             },
             /*编辑页面提交*/
@@ -265,13 +254,11 @@
                         message: '修改成功'
                     });
                     this.getList();
-                },data => {
-                    console.log('失败',data)
                 })
             },
             /*分页跳转到输入的页面*/
             handleCurrentChange(val) {
-                this.pageNum = val;
+                this.currentPage = val;
                 this.getList();
             },
         },
@@ -280,5 +267,5 @@
         },
     }
 </script>
-<style lang="css">
-</style>
+
+

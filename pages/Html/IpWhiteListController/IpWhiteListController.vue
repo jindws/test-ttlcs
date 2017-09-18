@@ -55,20 +55,17 @@
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="editIpWhiteListCloseReset">重置</el-button>
+                <el-button @click="IpWhiteListCloseReset('editIpWhiteListForm')">重置</el-button>
                 <el-button type="success" @click="editIpWhiteListpSub">立即提交</el-button>
             </div>
         </el-dialog>
         <!--审批界面-->
-        <el-dialog title="审批" :visible.sync="approveIpWhiteListVisible" :close-on-click-modal="false"
-                   @close="approveIpWhiteListCloseReset">
+        <el-dialog title="审批" :visible.sync="approveIpWhiteListVisible" :close-on-click-modal="false">
             <el-form :model="approveIpWhiteList" ref="approveIpWhiteList" style="margin-bottom: -24px;">
                 <el-form-item label="是否同意">
                     <el-radio-group v-model="approveIpWhiteList.radio">
-                        <el-radio class="radio" label="AGREE" style="margin-left:20px">
-                            同意
-                        </el-radio>
-                        <el-radio class="radio" label="DISAGREE">不同意</el-radio>
+                        <el-radio label="AGREE" style="margin-left:20px">同意</el-radio>
+                        <el-radio label="DISAGREE">不同意</el-radio>
                     </el-radio-group>
                 </el-form-item>
             </el-form>
@@ -102,7 +99,8 @@
                 modifyDisabled: true,
                 editIpWhiteListVisible: false,
                 editIpWhiteListForm: {
-                    ip: ''
+                    ip: '',
+                    id: ''
                 },
                 editIpWhiteListRules: {
                     ip: [{required: true, message: '公共白名单ip不能为空', trigger: 'blur'}]
@@ -111,12 +109,12 @@
                 approveDisabled: true,
                 approveIpWhiteListVisible: false,
                 approveIpWhiteList: {
+                    id: '',
                     radio: ''
                 },
                 /*分页*/
                 currentPage: 1,
                 total: 0,
-                pageNum: 1,
                 /*对话框表单宽度*/
                 formLabelWidth: '120px',
             }
@@ -126,7 +124,7 @@
             getList() {
                 this.$DB.IpWhiteList.list({
                     pagesize: '10',
-                    pageNum: this.pageNum,
+                    pageNum: this.currentPage,
                 }).then(result => {
                     /*权限判断，实现按钮是否可执行。*/
                     if (result.operates.includes("添加")) {
@@ -151,10 +149,14 @@
                         });
                     });
                 }, data => {
-                    if (data.code == 3304) {
-                        window.location.href = '#/login';
+                    if (data.code === 3303) {
+                        window.location.href = '#/login'
+                    } else {
+                        this.$message({
+                            type: 'error',
+                            message: data.msg
+                        })
                     }
-                    console.log('失败', data);
                 });
             },
             /*新增公共ip白名单对话框*/
@@ -179,11 +181,21 @@
                                 type: 'success'
                             });
                         }, data => {
-                            if (data.code == 3304) {
-                                window.location.href = '#/login';
+                            if (data.code === 3303) {
+                                window.location.href = '#/login'
+                            } else {
+                                this.$message({
+                                    type: 'error',
+                                    message: data.msg
+                                })
                             }
-                            console.log('失败', data)
                         })
+                    }else{
+                        this.$message({
+                            type: 'error',
+                            message: 'error submit!!'
+                        });
+                        return false;
                     }
                 });
             },
@@ -203,10 +215,14 @@
                             message: '删除成功!'
                         });
                     }, data => {
-                        if (data.code == 3304) {
-                            window.location.href = '#/login';
+                        if (data.code === 3303) {
+                            window.location.href = '#/login'
+                        } else {
+                            this.$message({
+                                type: 'error',
+                                message: data.msg
+                            })
                         }
-                        console.log('失败', data);
                     });
                 }).catch(() => {
                     this.$message({
@@ -218,13 +234,10 @@
             /* 编辑对话框*/
             modify(index, row) {
                 this.editIpWhiteListVisible = true;
-                this.editIpWhiteListForm.ip = row.ip;
-                this.editIpWhiteListForm.id = row.id;
-            },
-            /* 编辑重置*/
-            editIpWhiteListCloseReset() {
-                this.editIpWhiteListForm = {ip: ''};
-                this.$refs.editIpWhiteListForm.resetFields();
+                this.editIpWhiteListForm = {
+                    ip: row.ip,
+                    id: row.id
+                };
             },
             /* 编辑提交*/
             editIpWhiteListpSub() {
@@ -241,15 +254,31 @@
                                 message: '修改成功'
                             });
                         }, data => {
-                            console.log('失败', data)
+                            if (data.code === 3303) {
+                                window.location.href = '#/login'
+                            } else {
+                                this.$message({
+                                    type: 'error',
+                                    message: data.msg
+                                })
+                            }
                         })
+                    }else{
+                        this.$message({
+                            type: 'error',
+                            message: 'error submit!!'
+                        });
+                        return false;
                     }
                 })
             },
             /* 审批*/
             approve(index, row) {
                 this.approveIpWhiteListVisible = true;
-                this.approveIpWhiteList.id = row.id;
+                this.approveIpWhiteList = {
+                    id: row.id,
+                    radio: row.status
+                }
             },
             /* 审批成功*/
             approveIpWhiteListpSub() {
@@ -264,25 +293,26 @@
                         message: '审批成功'
                     });
                 }, data => {
-                    console.log('失败', data)
+                    if (data.code === 3303) {
+                        window.location.href = '#/login'
+                    } else {
+                        this.$message({
+                            type: 'error',
+                            message: data.msg
+                        })
+                    }
                 });
-            },
-            /* 审批关闭，重置界面*/
-            approveIpWhiteListCloseReset() {
-                this.approveIpWhiteList.radio = '';
             },
             /*分页跳转到输入的页面*/
             handleCurrentChange(val) {
-                this.pageNum = val;
+                this.currentPage = val;
                 this.getList();
             },
         },
         mounted() {
             /*列表*/
             this.getList();
-            console.log(this.deletedType)
         }
     }
 </script>
-<style lang="css">
-</style>
+

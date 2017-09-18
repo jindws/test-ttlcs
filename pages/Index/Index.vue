@@ -1,7 +1,10 @@
 <template>
     <section class='index'>
+        <!--主页面-->
+        <!--头部-->
         <XHeader/>
         <section class='container'>
+            <!--左菜单-->
             <LeftMenu/>
             <div class="mainBox">
                 <XMain/>
@@ -21,12 +24,17 @@
 
     export default {
         mounted() {
-            this.$DB.HidePermission.mainpage({}).then(async re => {
-                await this.setMenus(re)
+            this.$DB.HidePermission.mainpage({}).then(async result => {
+                await this.setMenus(result);
                 this.select(0);
             }, async data => {
-                if (data.code == 3304) {
-                    window.location.href = '#/login';
+                if (data.code === 3303) {
+                    window.location.href = '#/login'
+                } else {
+                    this.$message({
+                        type: 'error',
+                        message: data.msg
+                    })
                 }
             })
         },

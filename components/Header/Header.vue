@@ -68,13 +68,8 @@
                 if (command == 'cancel') {
                     this.$DB.HidePermission.signOut({})
                     .then(async result => {
-                        await this.mainTabRemoveAll()
+                        await this.mainTabRemoveAll();
                         location.hash = 'login';
-                    }, data => {
-                        console.log(data);
-                        if(data.code == 3304){
-                            window.location.href = '#/login';
-                        }
                     })
                 } else if (command === 'userChangePhone') {
                     this.mainTabAdd({
@@ -104,5 +99,3 @@
     }
 </script>
 
-<style lang="css">
-</style>

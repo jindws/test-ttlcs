@@ -20,6 +20,7 @@ dd {
 body {
 	padding: 0px;
 	margin: 0px auto;
+	min-width: 1314px;
 }
 
 a {

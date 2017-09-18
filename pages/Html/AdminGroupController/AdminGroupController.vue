@@ -41,11 +41,11 @@
                       ref="manageList">
             </el-tree>
             <!--权限管理操作-->
-            <el-button type="success" @click="getCheckedKeys">立即提交</el-button>
+            <el-button type="success" @click="getCheckedKeys" :disabled="manageModifyDisabled">立即提交</el-button>
             <el-button :plain="true" type="success" @click="manageReset">恢复</el-button>
         </section>
         <!--新增界面-->
-        <el-dialog title="添加管理员组" :visible.sync="addAdminGroupVisible" :close-on-click-modal="false" @close="closeAddAdminGroup">
+        <el-dialog title="添加管理员组" :visible.sync="addAdminGroupVisible" :close-on-click-modal="false" @close="AdminGroupReset('addAdminGroupForm')">
             <el-form :model="addAdminGroupForm" :rules="addAdminGroupRules" ref="addAdminGroupForm">
                 <el-form-item label="管理组名称" :label-width="formLabelWidth" prop="name">
                     <el-input ref="name" v-model="addAdminGroupForm.name" auto-complete="off"
@@ -53,13 +53,13 @@
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="AdminGroupReset">重置</el-button>
+                <el-button @click="AdminGroupReset('addAdminGroupForm')">重置</el-button>
                 <el-button type="success" @click="addAdminGroupSub">立即提交</el-button>
             </div>
         </el-dialog>
         <!--编辑界面-->
         <el-dialog title="编辑管理员组" :visible.sync="editAdminGroup" :close-on-click-modal="false"
-                   @close="closeEditAdminGroup">
+                   @close="AdminGroupReset('editAdminGroupForm')">
             <el-form :model="editAdminGroupForm" :rules="editAdminGroupRules" ref="editAdminGroupForm">
                 <el-form-item label="管理组名称" :label-width="formLabelWidth" prop="name">
                     <el-input v-model="editAdminGroupForm.name" auto-complete="off"
@@ -67,7 +67,7 @@
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="AdminGroupReset">重置</el-button>
+                <el-button @click="AdminGroupReset('editAdminGroupForm')">重置</el-button>
                 <el-button type="success" @click="editAdminGroupSub">立即提交</el-button>
             </div>
         </el-dialog>
@@ -102,6 +102,7 @@
                 modifyDisabled: true,
                 editAdminGroup: false,
                 editAdminGroupForm: {
+                    id: '',
                     name: ''
                 },
                 editAdminGroupRules: {
@@ -122,18 +123,18 @@
                 manageList: [],
                 checkedList: [],
                 treeTitle: '',
+                manageModifyDisabled: true,
 
                 /*分页*/
                 currentPage: 1,
                 total: 0,
-                pageNum: 1,
             }
         },
         methods: {
             /*获取列表信息*/
             getList() {
                 this.$DB.AdminGroup.list({
-                    pageNum: this.pageNum,
+                    pageNum: this.currentPage,
                     pageSize: '10'
                 }).then(result => {
                     /*权限判断，实现按钮是否可执行。*/
@@ -149,6 +150,9 @@
                     if (result.operates.includes("权限管理")) {
                         this.manageDisabled = false;
                     }
+                    if (result.operates.includes("权限修改")) {
+                        this.manageModifyDisabled = false;
+                    }
                     /*工具栏，分页*/
                     this.total = result.total;
                     /*列表展示，时间格式转换 */
@@ -159,16 +163,19 @@
                         });
                     });
                 }, data => {
-                    console.log('失败', data)
-                    if (data.code == 3304) {
-                        window.location.href = '#/login';
+                    if (data.code === 3303) {
+                        window.location.href = '#/login'
+                    } else {
+                        this.$message({
+                            type: 'error',
+                            message: data.msg
+                        })
                     }
                 })
             },
             /*重置*/
-            AdminGroupReset() {
-                this.addAdminGroupForm = {name : ''};
-                this.editAdminGroupForm = {name : ''};
+            AdminGroupReset(formName) {
+                this.$refs[formName].resetFields();
             },
             /*显示新增对话框页面*/
             addAdminGroup() {
@@ -189,11 +196,21 @@
                                 message: '添加成功'
                             });
                         }, data => {
-                            this.$message({
-                                type: 'warning',
-                                message: data.msg
-                            });
+                            if (data.code === 3303) {
+                                window.location.href = '#/login'
+                            } else {
+                                this.$message({
+                                    type: 'error',
+                                    message: data.msg
+                                })
+                            }
                         });
+                    }else{
+                        this.$message({
+                            type: 'error',
+                            message: 'error submit!!'
+                        });
+                        return false;
                     }
                 });
             },
@@ -214,12 +231,12 @@
                             message: '删除成功!'
                         });
                     }, data => {
-                        if(data.code == 3304){
+                        if(data.code == 3303){
                             window.location.href = '#/login';
                         }else{
                             /*3302对不起你没有相应的权限,3309还存在子管理组和子管理员*/
                             this.$message({
-                                type: 'warning',
+                                type: 'error',
                                 message: data.msg
                             });
                         }
@@ -235,8 +252,10 @@
             /*显示编辑界面对话框*/
             modify(index, row) {
                 this.editAdminGroup = true;
-                this.editAdminGroupForm.name = row.name;
-                this.editAdminGroupForm.id = row.id;
+                this.editAdminGroupForm = {
+                    id: row.id,
+                    name: row.name
+                }
             },
 
             /*编辑*/
@@ -249,19 +268,33 @@
                         }).then(result => {
                             this.editAdminGroup = false;
                             this.getList();
-                        }, data => {
                             this.$message({
-                                type: 'warning',
-                                message: data.msg
-                            });
+                                type: 'success',
+                                message: '修改成功'
+                            })
+                        }, data => {
+                            if (data.code === 3303) {
+                                window.location.href = '#/login'
+                            } else {
+                                this.$message({
+                                    type: 'error',
+                                    message: data.msg
+                                })
+                            }
                         });
+                    }else{
+                        this.$message({
+                            type: 'error',
+                            message: 'error submit!!'
+                        });
+                        return false;
                     }
                 });
             },
 
             /*分页跳转到输入的页面*/
             handleCurrentChange(val) {
-                this.pageNum = val;
+                this.currentPage = val;
                 this.getList();
             },
             /*权限管理树结构的children*/
@@ -310,7 +343,14 @@
                         this.$refs.manageList.setCheckedKeys(this.checkedList);
                     });
                 }, data => {
-                    console.log(data)
+                    if (data.code === 3303) {
+                        window.location.href = '#/login'
+                    } else {
+                        this.$message({
+                            type: 'error',
+                            message: data.msg
+                        })
+                    }
                 })
             },
             /*权限管理界面关闭*/
@@ -334,6 +374,14 @@
                         type: 'success'
                     });
                 },data => {
+                    if (data.code === 3303) {
+                        window.location.href = '#/login'
+                    } else {
+                        this.$message({
+                            type: 'error',
+                            message: data.msg
+                        })
+                    }
                     console.log('失败',data);
                 })
             },
@@ -341,14 +389,6 @@
             manageReset(){
                 this.$refs.manageList.setCheckedKeys(this.checkedList);
             },
-            /*关闭新增对话框之后去除验证结果并重置数据*/
-            closeAddAdminGroup(){
-                this.$refs.addAdminGroupForm.resetFields();
-            },
-            /*关闭编辑对话框之后重置并去除验证结果*/
-            closeEditAdminGroup(){
-                this.$refs.editAdminGroupForm.resetFields();
-            }
         },
         mounted() {
             this.getList();

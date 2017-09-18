@@ -4,16 +4,16 @@
         <el-button type="primary" @click="addPermission" :disabled="addDisabled">添加模块</el-button>
         <!--列表-->
         <el-table :data="PermissionList" border style="width: 100%">
-            <el-table-column prop="id" label="ID" width="70"></el-table-column>
+            <el-table-column prop="id" label="ID" width="60"></el-table-column>
             <el-table-column prop="module" label="模块名称"></el-table-column>
             <el-table-column prop="moduleSort" label="模块排序" width="100"></el-table-column>
             <el-table-column prop="submodule" label="子模块名称"></el-table-column>
             <el-table-column prop="submoduleSort" label="子模块排序"></el-table-column>
             <el-table-column prop="operate" label="操作名称"></el-table-column>
-            <el-table-column prop="ctrlName" label="控制器名称"width="200"></el-table-column>
+            <el-table-column prop="ctrlName" label="控制器名称"></el-table-column>
             <el-table-column prop="ctrlMethod" label="控制器方法"></el-table-column>
             <el-table-column prop="updateName" label="操作人"></el-table-column>
-            <el-table-column prop="updateTime" label="更新时间" width="200"></el-table-column>
+            <el-table-column prop="updateTime" label="更新时间"></el-table-column>
             <el-table-column prop="operates" label="操作" width="160">
                 <template scope="scope">
                     <el-button type="danger" @click="deleted(scope.$index, scope.row)"
@@ -265,7 +265,7 @@
                             message: '删除成功!'
                         });
                     }, data => {
-                        if(data.code == 3304){
+                        if(data.code == 3303){
                             window.location.href = '#/login';
                         }else{
                             /*3302对不起你没有相应的权限,3309还存在子管理组和子管理员*/
@@ -314,7 +314,7 @@
                             })
                         },data => {
                             console.log('失败',data)
-                            if(data.code == 3304){
+                            if(data.code == 3303){
                                 window.location.href = '#/login';
                             }
                         })

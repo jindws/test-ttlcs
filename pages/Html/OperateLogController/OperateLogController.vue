@@ -91,11 +91,6 @@
                             operateTime: moment(item.operateTime).format('YYYY-MM-DD HH:mm:ss'),
                         });
                     });
-                }, data => {
-                    if (data.code == 3304) {
-                        window.location.href = '#/login';
-                    }
-                    console.log('失败', data)
                 })
             },
             /*分页，当前第几页*/
