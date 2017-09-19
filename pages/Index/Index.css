@@ -1,0 +1,18 @@
+.index {
+    height: 100%;
+    overflow: hidden;
+}
+
+.index .container {
+    height: 100%;
+}
+
+.index > section {
+    display: flex;
+    height: 100%;
+}
+.index .mainBox {
+    width: 0;
+    flex: 1;
+}
+

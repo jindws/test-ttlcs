@@ -24,18 +24,10 @@
 
     export default {
         mounted() {
-            this.$DB.HidePermission.mainpage({}).then(async result => {
+            this.$DB.HidePermission.mainpage({
+            }).then(async result => {
                 await this.setMenus(result);
                 this.select(0);
-            }, async data => {
-                if (data.code === 3303) {
-                    window.location.href = '#/login'
-                } else {
-                    this.$message({
-                        type: 'error',
-                        message: data.msg
-                    })
-                }
             })
         },
         methods: {

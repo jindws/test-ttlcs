@@ -16,9 +16,9 @@
                   您好：<span>{{name}}</span><i class="el-icon-caret-bottom el-icon--right"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown" class="dropdown">
-                    <el-dropdown-item command="userChangePhone"><i class="fa fa-user-o" style="margin-right: 6px;"></i>修改手机
+                    <el-dropdown-item command="UserChangePhone"><i class="fa fa-user-o" style="margin-right: 6px;"></i>修改手机
                     </el-dropdown-item>
-                    <el-dropdown-item command="userInfo"><i class="fa fa-unlock-alt" style="margin-right: 6px;"></i>修改密码
+                    <el-dropdown-item command="UserInfo"><i class="fa fa-unlock-alt" style="margin-right: 6px;"></i>修改密码
                     </el-dropdown-item>
                     <el-dropdown-item command="cancel"><i class="fa fa-sign-out" style="margin-right: 6px;"></i>注销
                     </el-dropdown-item>
@@ -70,13 +70,13 @@
                         await this.mainTabRemoveAll();
                         location.hash = 'login';
                     })
-                } else if (command === 'userChangePhone') {
+                } else if (command === 'UserChangePhone') {
                     this.mainTabAdd({
                         ctrlName: command,
                         name: '修改手机',
                         htmlName: "Ext_Schedule"
                     })
-                } else if (command === 'userInfo') {
+                } else if (command === 'UserInfo') {
                     this.mainTabAdd({
                         ctrlName: command,
                         name: '修改密码',
