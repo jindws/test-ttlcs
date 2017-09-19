@@ -175,7 +175,9 @@
             },
             /*重置*/
             AdminGroupReset(formName) {
-                this.$refs[formName].resetFields();
+                // this.$refs[formName].resetFields();
+                // this.editAdminGroupForm = Object.assign({},this.editAdminGroupForm,{name:''})
+                this.$set(this.editAdminGroupForm, 'name')
             },
             /*显示新增对话框页面*/
             addAdminGroup() {
