@@ -45,6 +45,9 @@
 	position: absolute;
 	right: 20px;
 }
+.header .header-right button{
+	width: 45px;
+}
 .header .el-dropdown-menu{
 	font-size: 14px;
 	color: #555;

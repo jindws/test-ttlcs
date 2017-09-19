@@ -17,9 +17,8 @@ import 'font-awesome/css/font-awesome.min.css'
 
 import {Tabs,TabPane,Message,Dialog,Button,Table,TableColumn,Form,FormItem,Switch,Input,Dropdown,DropdownMenu,DropdownItem,MessageBox,Select,Option,Pagination,Tree,Radio,RadioGroup, DatePicker} from 'element-ui'
 Vue.prototype.$msgbox = MessageBox;
-Vue.prototype.$message = Message;
 Vue.prototype.$confirm = MessageBox.confirm;
-window.$message = Message;
+window.$message = Vue.prototype.$message = Message;
 Vue.use(Tabs);
 Vue.use(TabPane);
 Vue.use(Dialog);
