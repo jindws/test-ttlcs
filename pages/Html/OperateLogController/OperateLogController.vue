@@ -100,9 +100,9 @@
             }
         },
         mounted() {
+            /*列表*/
             this.getList();
         }
     }
 </script>
-<style lang="css">
-</style>
+

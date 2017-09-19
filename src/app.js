@@ -47,7 +47,7 @@ import DB from '@/DB'
 Object.defineProperty(Vue.prototype,'$DB',{value:DB});
 
 import Login from '../pages/Login'
-import Index from '../pages/Index'
+import Index from '../pages/Index/index'
 
 
 import vuexStore from './vuex'

@@ -263,6 +263,7 @@
             },
         },
         mounted() {
+            /*列表*/
             this.getList();
         },
     }

@@ -141,22 +141,13 @@
                     }
                     /*工具栏，分页*/
                     this.total = result.total;
-                    /!*列表展示，时间格式转换 *!/
+                    /*列表展示，时间格式转换 */
                     this.IpWhiteList = result.pageList.map(item => {
                         return Object.assign({}, item, {
                             startTime: item.startTime?moment(item.startTime).format('YYYY-MM-DD HH:mm:ss'):'',
                             endTime: item.endTime?moment(item.endTime).format('YYYY-MM-DD HH:mm:ss'):''
                         });
                     });
-                }, data => {
-                    if (data.code === 3303) {
-                        window.location.href = '#/login'
-                    } else {
-                        this.$message({
-                            type: 'error',
-                            message: data.msg
-                        })
-                    }
                 });
             },
             /*新增公共ip白名单对话框*/
@@ -166,6 +157,7 @@
             /*关闭对话框，重置对话框*/
             IpWhiteListCloseReset(formName) {
                 this.$refs[formName].resetFields();
+                console.log(this.editIpWhiteListForm.ip);
             },
             /*新增公共白名单ip提交*/
             addIpWhiteListpSub() {
@@ -180,15 +172,6 @@
                                 message: '添加成功',
                                 type: 'success'
                             });
-                        }, data => {
-                            if (data.code === 3303) {
-                                window.location.href = '#/login'
-                            } else {
-                                this.$message({
-                                    type: 'error',
-                                    message: data.msg
-                                })
-                            }
                         })
                     }else{
                         this.$message({
@@ -214,15 +197,6 @@
                             type: 'success',
                             message: '删除成功!'
                         });
-                    }, data => {
-                        if (data.code === 3303) {
-                            window.location.href = '#/login'
-                        } else {
-                            this.$message({
-                                type: 'error',
-                                message: data.msg
-                            })
-                        }
                     });
                 }).catch(() => {
                     this.$message({
@@ -253,15 +227,6 @@
                                 type: 'success',
                                 message: '修改成功'
                             });
-                        }, data => {
-                            if (data.code === 3303) {
-                                window.location.href = '#/login'
-                            } else {
-                                this.$message({
-                                    type: 'error',
-                                    message: data.msg
-                                })
-                            }
                         })
                     }else{
                         this.$message({
@@ -292,15 +257,6 @@
                         type: 'success',
                         message: '审批成功'
                     });
-                }, data => {
-                    if (data.code === 3303) {
-                        window.location.href = '#/login'
-                    } else {
-                        this.$message({
-                            type: 'error',
-                            message: data.msg
-                        })
-                    }
                 });
             },
             /*分页跳转到输入的页面*/

@@ -40,9 +40,6 @@
                 <el-form-item label="模块排序" prop="moduleSort" :label-width="formLabelWidth">
                     <el-input v-model="addPermissionForm.moduleSort" auto-complete="off" placeholder="请输入序号"></el-input>
                 </el-form-item>
-                <el-form-item label="对应前端页面名称" prop="htmlName" :label-width="formLabelWidth">
-                    <el-input v-model="addPermissionForm.htmlName" auto-complete="off" placeholder="请输入对应前端页面名称"></el-input>
-                </el-form-item>
                 <el-form-item label="子模块名称" prop="submodule" :label-width="formLabelWidth">
                     <el-input v-model="addPermissionForm.submodule" auto-complete="off" placeholder="请输入子模块"></el-input>
                 </el-form-item>
@@ -62,9 +59,11 @@
                     <el-input v-model="addPermissionForm.ctrlMethod" auto-complete="off"
                               placeholder="请输入控制器名称"></el-input>
                 </el-form-item>
-                <el-form-item label="显示方式" prop="display" :label-width="formLabelWidth" >
-                    <el-radio class="radio" v-model="addPermissionForm.radio" label="HIDE" style="margin-left:20px">隐藏</el-radio>
-                    <el-radio class="radio" v-model="addPermissionForm.radio" label="SHOW">显示</el-radio>
+                <el-form-item label="显示方式" :label-width="formLabelWidth" >
+                    <el-radio-group v-model="addPermissionForm.radio">
+                        <el-radio label="HIDE" style="margin-left:20px">隐藏</el-radio>
+                        <el-radio label="SHOW">显示</el-radio>
+                    </el-radio-group>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -95,7 +94,7 @@
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="editReset">重置</el-button>
+                <el-button @click="closeReset('editPermissionForm')">重置</el-button>
                 <el-button type="success" @click="editPermissionSub">立即提交</el-button>
             </div>
         </el-dialog>
@@ -122,13 +121,11 @@
                 addPermissionForm: {
                     module: '',
                     moduleSort: '',
-                    htmlName: '',
                     submodule: '',
                     submoduleSort: '',
                     operate: '',
                     ctrlName: '',
                     ctrlMethod: '',
-                    display: '',
                     radio: 'SHOW',
                 },
                 addPermissionRules: {
@@ -145,7 +142,6 @@
                     operate: [{required: true, message: '请输入操作名称', trigger: 'blur'}],
                     ctrlName: [{required: true, message: '请输入控制器名称', trigger: 'blur'}],
                     ctrlMethod: [{required: true, message: '请输入控制器方法', trigger: 'blur'}],
-                    htmlName: [{required: true, message: '请输入对应前端页面的名称', trigger: 'blur'}],
                 },
                 /*删除*/
                 deleteDisabled: true,
@@ -176,7 +172,6 @@
                 /*分页*/
                 currentPage: 1,
                 total: 0,
-                pageNum: 1,
                 /*对话框表单宽度*/
                 formLabelWidth: '120px',
             }
@@ -186,7 +181,7 @@
             getList(){
                 this.$DB.Permission.list({
                     pagesize: '10',
-                    pageNum: this.pageNum,
+                    pageNum: this.currentPage,
                 }).then(result => {
                     /*权限判断，实现按钮是否可执行。*/
                     if (result.operates.includes("添加")) {
@@ -198,9 +193,6 @@
                     if (result.operates.includes("修改")) {
                         this.modifyDisabled = false;
                     }
-                    if (result.operates.includes("权限管理")) {
-                        this.manageDisabled = false;
-                    }
                     /*工具栏，分页*/
                     this.total = result.total;
                     /*列表展示，时间格式转换 */
@@ -209,10 +201,7 @@
                             updateTime: moment(item.updateTime).format('YYYY-MM-DD HH:mm:ss')
                         });
                     });
-                },data => {
-                    console.log('失败',data);
                 })
-
             },
             /*新增的对话框*/
             addPermission(){
@@ -225,7 +214,6 @@
                         this.$DB.Permission.add({
                             module: this.addPermissionForm.module,
                             submodule: this.addPermissionForm.submodule,
-                            htmlName: this.addPermissionForm.htmlName,
                             operate: this.addPermissionForm.operate,
                             ctrlName: this.addPermissionForm.ctrlName,
                             ctrlMethod: this.addPermissionForm.ctrlMethod,
@@ -239,15 +227,15 @@
                                 message: '添加成功'
                             });
                             this.getList();
-                        },data => {
-                            console.log('失败',data)
                         })
+                    }else{
+                        this.$message({
+                            type: 'error',
+                            message: 'error submit!!'
+                        });
+                        return false;
                     }
                 });
-            },
-            /*新增对话框重置*/
-            addPermissionReset(){
-                this.$refs.addPermissionForm.resetFields();
             },
             /*删除确认框*/
             deleted(index,row){
@@ -264,17 +252,6 @@
                             type: 'success',
                             message: '删除成功!'
                         });
-                    }, data => {
-                        if(data.code == 3303){
-                            window.location.href = '#/login';
-                        }else{
-                            /*3302对不起你没有相应的权限,3309还存在子管理组和子管理员*/
-                            this.$message({
-                                type: 'warning',
-                                message: data.msg
-                            });
-                        }
-                        console.log('失败',data)
                     });
                 }).catch(() => {
                     this.$message({
@@ -285,17 +262,18 @@
             },
             /*编辑对话框*/
             modify(index,row){
+                this.editPermissionForm = {
+                    id: row.id,  //要修改的权限id
+                    module: row.module,  //模块名称
+                    moduleSort: row.moduleSort, //模块排序
+                    submodule: row.submodule, //子模块名称
+                    submoduleSort: row.submoduleSort,//子模块排序
+                    operate: row.operate,//操作名称
+                };
                 this.editPermissionVisible = true;
-                this.editPermissionForm.id = row.id;  //要修改的权限id
-                this.editPermissionForm.module = row.module;  //模块名称
-                this.editPermissionForm.moduleSort = row.moduleSort; //模块排序
-                this.editPermissionForm.submodule = row.submodule; //子模块名称
-                this.editPermissionForm.submoduleSort = row.submoduleSort;//子模块排序
-                this.editPermissionForm.operate = row.operate;//操作名称
             },
             /*编辑提交*/
             editPermissionSub(){
-                console.log(this.editPermissionForm.moduleSort)
                 this.$refs.editPermissionForm.validate((valid) => {
                     if (valid) {
                         this.$DB.Permission.modify({
@@ -312,37 +290,24 @@
                                 type: 'success',
                                 message: '修改成功'
                             })
-                        },data => {
-                            console.log('失败',data)
-                            if(data.code == 3303){
-                                window.location.href = '#/login';
-                            }
                         })
+                    }else{
+                        this.$message({
+                            type: 'error',
+                            message: 'error submit!!'
+                        });
+                        return false;
                     }
                 });
             },
             /*分页跳转到输入的页面*/
             handleCurrentChange(val){
-                this.pageNum = val;
+                this.currentPage = val;
                 this.getList();
             },
             /*关闭对话框时,重置对话框并消除验证状态。重置操作*/
             closeReset(formName){
                 this.$refs[formName].resetFields();
-            },
-            /*重置编辑对话框*/
-            editReset(){
-                this.editPermissionForm = {
-                    module: '',
-                        moduleSort: '',
-                        submodule: '',
-                        submoduleSort: '',
-                        operate: '',
-                        ctrlName: '',
-                        ctrlMethod: '',
-                        updateName: '',
-                };
-                this.$refs.editPermissionForm.resetFields();
             }
         },
         mounted()  {
@@ -352,5 +317,3 @@
     }
 </script>
 
-<style lang="css">
-</style>

@@ -23,3 +23,44 @@ li{
 	padding: 0;
 	line-height: 34px;
 }
+.el-table__header-wrapper table, .el-table__body-wrapper table {
+	width: 100% !important;
+}
+.el-table {
+	margin-top: 10px;
+	text-align: center;
+}
+
+.el-table th > .cell {
+	text-align: center;
+}
+
+.el-button {
+	opacity: 0.8;
+}
+
+.el-dialog--small {
+	width: 450px;
+}
+
+.el-dialog__header {
+	padding: 0 20px;
+	border-bottom: 1px solid #eee;
+	font-size: 14px;
+	color: #333;
+	height: 42px;
+	line-height: 42px;
+	overflow: hidden;
+	background-color: #F8F8F8;
+	border-radius: 2px 2px 0 0;
+}
+
+.el-dialog__headerbtn .el-dialog__close {
+	line-height: 42px;
+	color: #333;
+	font-size: 14px;
+}
+
+.el-dialog__body .el-input__inner {
+	border-radius: 0px;
+}

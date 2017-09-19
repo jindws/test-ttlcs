@@ -43,6 +43,7 @@
             }
         },
         methods: {
+            /*登录*/
             signIn() {
                 this.$refs.loginForm.validate((valid) => {
                     if (valid) {

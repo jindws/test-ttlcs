@@ -162,18 +162,9 @@
                             updateTime: moment(item.updateTime).format('YYYY-MM-DD HH:mm:ss')
                         });
                     });
-                }, data => {
-                    if (data.code === 3303) {
-                        window.location.href = '#/login'
-                    } else {
-                        this.$message({
-                            type: 'error',
-                            message: data.msg
-                        })
-                    }
                 })
             },
-            /*重置*/
+            /*重置对话框，关闭重置*/
             AdminGroupReset(formName) {
                 this.$refs[formName].resetFields();
             },
@@ -195,15 +186,6 @@
                                 type: 'success',
                                 message: '添加成功'
                             });
-                        }, data => {
-                            if (data.code === 3303) {
-                                window.location.href = '#/login'
-                            } else {
-                                this.$message({
-                                    type: 'error',
-                                    message: data.msg
-                                })
-                            }
                         });
                     }else{
                         this.$message({
@@ -230,16 +212,6 @@
                             type: 'success',
                             message: '删除成功!'
                         });
-                    }, data => {
-                        if(data.code == 3303){
-                            window.location.href = '#/login';
-                        }else{
-                            /*3302对不起你没有相应的权限,3309还存在子管理组和子管理员*/
-                            this.$message({
-                                type: 'error',
-                                message: data.msg
-                            });
-                        }
                     });
                 }).catch(() => {
                     this.$message({
@@ -272,15 +244,6 @@
                                 type: 'success',
                                 message: '修改成功'
                             })
-                        }, data => {
-                            if (data.code === 3303) {
-                                window.location.href = '#/login'
-                            } else {
-                                this.$message({
-                                    type: 'error',
-                                    message: data.msg
-                                })
-                            }
                         });
                     }else{
                         this.$message({
@@ -342,15 +305,6 @@
                         /*设置选中的节点*/
                         this.$refs.manageList.setCheckedKeys(this.checkedList);
                     });
-                }, data => {
-                    if (data.code === 3303) {
-                        window.location.href = '#/login'
-                    } else {
-                        this.$message({
-                            type: 'error',
-                            message: data.msg
-                        })
-                    }
                 })
             },
             /*权限管理界面关闭*/
@@ -373,16 +327,6 @@
                         message: '权限更新成功',
                         type: 'success'
                     });
-                },data => {
-                    if (data.code === 3303) {
-                        window.location.href = '#/login'
-                    } else {
-                        this.$message({
-                            type: 'error',
-                            message: data.msg
-                        })
-                    }
-                    console.log('失败',data);
                 })
             },
             /*权限管理恢复操作*/
@@ -391,9 +335,8 @@
             },
         },
         mounted() {
+            /*列表*/
             this.getList();
         },
     }
 </script>
-<style lang="css">
-</style>
