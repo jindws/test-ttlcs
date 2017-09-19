@@ -342,8 +342,3 @@
         },
     }
 </script>
-<<<<<<< HEAD
-<style lang="css">
-</style>
-=======
->>>>>>> f5713d1614a1cec3e3a1e314393d70407ea2ed76
